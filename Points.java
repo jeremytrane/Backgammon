@@ -1,10 +1,10 @@
 import java.util.Stack;
 
-public class Point {
+public class Points {
 
     protected Stack<Checkers> checkers = new Stack<Checkers>();
 
-    public Point(Stack<Checkers> checkers) {
+    public Points(Stack<Checkers> checkers) {
         this.checkers = checkers;
     }
 
