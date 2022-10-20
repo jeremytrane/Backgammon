@@ -4,8 +4,7 @@ public class Game {
     public static void main(String[] args) { 
 
         Scanner in = new Scanner(System.in);
-        String player1;
-        String player2;
+        String player1, player2;
 
         System.out.println("Please enter name of player 1:");
         player1 = in.nextLine();
