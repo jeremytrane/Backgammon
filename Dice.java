@@ -1,22 +1,24 @@
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Dice {
 
-    private int diceOne;
-	private int diceTwo;
+	int dots;
 
-    public Dice(Dice d) {
-        diceOne = d.diceOne;
-		diceTwo = d.diceTwo;
-        int[] possibleDiceRolls = {1, 2, 3, 4, 5, 6};
+	public Dice() {
 	}
-	
-	public int getDiceOne(){
-		return diceOne;
+
+	public int getDots() {
+		return dots;
 	}
-	
-	public int getDiceTwo(){
-		return diceTwo;
+
+	public void setDots(int dots) {
+		this.dots = dots;
+	}
+
+	public int rollDice(Dice d) {
+		int randomNumber = ThreadLocalRandom.current().nextInt(1, 6 + 1);
+		d.setDots(randomNumber);
+		return randomNumber;
 	}
 
 }
