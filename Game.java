@@ -4,18 +4,16 @@ public class Game {
     public static void main(String[] args) { 
 
         Scanner in = new Scanner(System.in);
-        String player1, player2;
+        String name1, name2;
+        final int INITIAL_CHECKERS=15;
 
         System.out.println("Please enter name of player 1:");
-        player1 = in.nextLine();
+        name1 = in.nextLine();
         System.out.println("Please enter name of player 2");
-        player2 = in.nextLine();
+        name2 = in.nextLine();
 
-        Player players = new Player(player1,player2);
-
-        Board board = new Board();
-
-        board.Draw();
+        Player player_1 = new Player(name1,INITIAL_CHECKERS);
+        Player player_2 = new Player(name2,INITIAL_CHECKERS);
 
 
         in.close();

@@ -1,18 +1,18 @@
 
 public class Player {
     private String name1;
-    private String name2;
+    private int checkerCount;
 
-    public Player(String n1, String n2){ 
+    public Player(String n1, int checkers){ 
         name1 = n1;
-        name2 = n2;
+        checkerCount = checkers;
     }
 
-    public String getPlayer1(){
+    public String getPlayerName(){
         return name1;
     } 
-    public String getPlayer2(){
-        return name2;
+    public int getCheckerCount(){
+        return checkerCount;
     }
 
 }
