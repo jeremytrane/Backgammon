@@ -6,21 +6,31 @@ public class Dice {
 	private int diceOne;
 	private int diceTwo;
 
-	public Dices(Dices d) {
-		diceOne = d.diceOne;
-		diceTwo = d.diceTwo;
-
-	public int getDots() {
-		return dots;
+	public Dice() {
 	}
 
-	public void setDots(int dots) {
-		this.dots = dots;
+	public int getDiceOne() {
+		return diceOne;
 	}
 
-	public int rollDice(Dice d) {
-		int randomNumber = ThreadLocalRandom.current().nextInt(1, 6 + 1);
-		d.setDots(randomNumber);
+	public void setDiceOne(int diceOne) {
+		this.diceOne = diceOne;
+	}
+
+	public int getDiceTwo() {
+		return diceTwo;
+	}
+
+	public void setDiceTwo(int diceTwo) {
+		this.diceTwo = diceTwo;
+	}
+
+	public int[] rollDie(Dice diceOne, Dice diceTwo) {
+		int[] randomNumber = new int[1];
+		randomNumber[0] = ThreadLocalRandom.current().nextInt(1, 6 + 1);
+		randomNumber[1] = ThreadLocalRandom.current().nextInt(1, 6 + 1);
+		diceOne.setDiceOne(randomNumber[0]);
+		diceTwo.setDiceTwo(randomNumber[1]);
 		return randomNumber;
 	}
 
