@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Game {
     public static void main(String[] args) { 
+
         Scanner in = new Scanner(System.in);
         String player1;
         String player2;
@@ -13,9 +14,10 @@ public class Game {
 
         Player players = new Player(player1,player2);
 
-        Dice firstDice = new Dice();
-        firstDice.rollDice(firstDice);
-        System.out.println(firstDice.getDots());
+        Board board = new Board();
+
+        board.Draw();
+
 
         in.close();
     }
