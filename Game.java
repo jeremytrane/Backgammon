@@ -23,9 +23,8 @@ public class Game {
             if (move.equalsIgnoreCase("Q")) {
                 break;
             }
-
+            
         }
-
 
         in.close();
     }
