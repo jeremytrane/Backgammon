@@ -3,9 +3,12 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Dice {
 
 	int dots;
+	private int diceOne;
+	private int diceTwo;
 
-	public Dice() {
-	}
+	public Dices(Dices d) {
+		diceOne = d.diceOne;
+		diceTwo = d.diceTwo;
 
 	public int getDots() {
 		return dots;
