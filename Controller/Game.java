@@ -1,4 +1,8 @@
+package Controller;
 import java.util.Scanner;
+
+import Model.Player;
+import View.Board;
 
 public class Game {
     public static void main(String[] args) { 
