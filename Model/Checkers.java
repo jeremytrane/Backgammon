@@ -1,4 +1,5 @@
 package Model;
+
 enum Colour{WHITE,BLACK};
 
 public class Checkers {
