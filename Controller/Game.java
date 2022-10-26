@@ -5,11 +5,13 @@ import Model.Player;
 import View.Board;
 
 public class Game {
+    private static final String Colour = null;
+
     public static void main(String[] args) { 
 
         Scanner in = new Scanner(System.in);
         String name1, name2, move;
-        final int INITIAL_CHECKERS=15;
+        final var INITIAL_CHECKERS=15;
 
         System.out.println("Please enter name of player 1:");
         name1 = in.nextLine();

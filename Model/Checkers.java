@@ -1,7 +1,5 @@
 package Model;
 
-enum Colour{WHITE,BLACK};
-
 public class Checkers {
 
     public Colour checkerColour;
