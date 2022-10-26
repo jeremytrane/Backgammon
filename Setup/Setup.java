@@ -2,6 +2,7 @@ package Setup;
 
 import java.util.Scanner;
 import Model.Player;
+import Model.Points;
 import View.Board;
 
 public class Setup {
@@ -26,7 +27,9 @@ private static void setupMessage() {
 }
 
 private static void setupPieces() {
-        
+
+        Points[] allPoints = new Points();
+
     }
 
 private static void boardSetup() {

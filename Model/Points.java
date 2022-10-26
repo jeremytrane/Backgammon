@@ -5,8 +5,11 @@ public class Points {
 
     protected Stack<Checkers> checkers = new Stack<Checkers>();
 
-    public Points(Stack<Checkers> checkers) {
-        this.checkers = checkers;
+    public Points(Colour colour, int howManyCheckers) {
+        Stack<Checkers> checkers;
+        for (int i = 0; i < howManyCheckers; i++) {
+            checkers.add(colour);
+        }
     }
 
     public void popChecker() {
