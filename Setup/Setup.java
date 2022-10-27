@@ -73,7 +73,7 @@ public static Points[] defaultBoard() {
 
     }
 
-public void getFirstTurn(Dice[] die, Player player1, Player player2){
+public static void getFirstTurn(Dice[] die, Player player1, Player player2){
         int sum1,sum2;
         boolean equal = true;
         while(equal){
@@ -83,7 +83,7 @@ public void getFirstTurn(Dice[] die, Player player1, Player player2){
             Dice.rollDie(die);
             System.out.println(player2 + " rolls: " + die[0].getDots() + " " + die[1].getDots());
             sum2 = die[0].getDots() + die[1].getDots();
-            
+
             if(sum1>sum2){
                 player1.setTurn(1);
                 player2.setTurn(-1);

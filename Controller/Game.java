@@ -21,7 +21,7 @@ public class Game {
         System.out.println("Please enter name of player 2:");
         Player player_2 = Setup.setupPlayer(in);
 
-        
+        Setup.getFirstTurn(bothDie,player_1,player_2);
 
         while (player_1.getCheckerCount()!=0 || player_2.getCheckerCount()!=0) {
 
