@@ -18,7 +18,7 @@ public class Dice {
 	}
 
 	public static int[] rollDie(Dice[] die) {
-		int[] randomNumber = new int[1];
+		int[] randomNumber = new int[2];
 		randomNumber[0] = ThreadLocalRandom.current().nextInt(1, 6 + 1);
 		randomNumber[1] = ThreadLocalRandom.current().nextInt(1, 6 + 1);
 		die[0].setDots(randomNumber[0]);
