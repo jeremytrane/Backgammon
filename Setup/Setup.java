@@ -6,7 +6,6 @@ import Model.Colour;
 import Model.Dice;
 import Model.Player;
 import Model.Points;
-import View.Board;
 
 public class Setup {
 
