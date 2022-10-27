@@ -19,5 +19,9 @@ public class Points {
     public void addChecker(Checkers checker) {
         this.checkers.add(checker);
     }
+
+    public Colour getLowestCheckerColour(Checkers checker) {
+        return checker.getCheckerColour();
+    }
     
 }

@@ -8,4 +8,12 @@ public class Checkers {
 		this.checkerColour = checkerColour;
 	}
 
+    public Colour getCheckerColour() {
+      return checkerColour;
+    }
+
+    public void setCheckerColour(Colour checkerColour) {
+      this.checkerColour = checkerColour;
+    }
+
 }
