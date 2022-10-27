@@ -4,35 +4,25 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Dice {
 
 	int dots;
-	private int diceOne;
-	private int diceTwo;
 
 	public Dice(int dots) {
 		this.dots = dots;
 	}
 
-	public int getDiceOne() {
-		return diceOne;
+	public int getDots() {
+		return dots;
 	}
 
-	public void setDiceOne(int diceOne) {
-		this.diceOne = diceOne;
+	public void setDots(int dots) {
+		this.dots = dots;
 	}
 
-	public int getDiceTwo() {
-		return diceTwo;
-	}
-
-	public void setDiceTwo(int diceTwo) {
-		this.diceTwo = diceTwo;
-	}
-
-	public int[] rollDie(Dice diceOne, Dice diceTwo) {
+	public static int[] rollDie(Dice[] die) {
 		int[] randomNumber = new int[1];
 		randomNumber[0] = ThreadLocalRandom.current().nextInt(1, 6 + 1);
 		randomNumber[1] = ThreadLocalRandom.current().nextInt(1, 6 + 1);
-		diceOne.setDiceOne(randomNumber[0]);
-		diceTwo.setDiceTwo(randomNumber[1]);
+		die[0].setDots(randomNumber[0]);
+		die[1].setDots(randomNumber[1]);
 		return randomNumber;
 	}
 

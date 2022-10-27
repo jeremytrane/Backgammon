@@ -12,7 +12,7 @@ public class Game {
 
         Scanner in = new Scanner(System.in);
 
-        Setup.setupAndRun();
+        Dice[] bothDie = Setup.setupAndRun();
         
         System.out.println("Please enter name of player 1:");
         Player player_1 = Setup.setupPlayer(in);
@@ -25,7 +25,7 @@ public class Game {
             if (move.equalsIgnoreCase("Q")) {
                 break;
             } else if (move.equalsIgnoreCase("R")) {
-                //Dice.rollDie();
+                Dice.rollDie(bothDie);
             }
             
         }

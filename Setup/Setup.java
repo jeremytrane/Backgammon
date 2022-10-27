@@ -10,9 +10,10 @@ import View.Board;
 
 public class Setup {
 
-    public static void setupAndRun() {
+    public static Dice[] setupAndRun() {
         setupMessage();
-        setupPieces();
+        Dice[] bothDie = setupPieces();
+        return bothDie;
     }
 
 private static void setupMessage() {
@@ -27,7 +28,7 @@ private static void setupMessage() {
 
 }
 
-private static void setupPieces() {
+private static Dice[] setupPieces() {
 
         Points[] allPoints = new Points[24];
         allPoints[0] = new Points(Colour.W, 5);
@@ -56,10 +57,12 @@ private static void setupPieces() {
         allPoints[23] = new Points(Colour.B, 5);
 
         Dice[] bothDie = new Dice[2];
-        bothDie[0] = new Dice(0);
+        bothDie[0] = new Dice(1);
         bothDie[1] = new Dice(0);
 
         boardSetup(allPoints, bothDie);
+
+        return bothDie;
 
     }
 
