@@ -11,7 +11,6 @@ public class Setup {
 
     public static void setupAndRun() {
         setupMessage();
-        setupPlayer();
         setupPieces();
     }
 
@@ -62,15 +61,13 @@ private static void boardSetup(Points[] allPoints) {
         Board.Draw(allPoints);
     }
 
-public static Player setupPlayer() {
-    Scanner in = new Scanner(System.in);
+public static Player setupPlayer(Scanner in) {
     String name;
     final var INITIAL_CHECKERS=15;
 
     name = in.nextLine();
 
-    Player player_1 = new Player(name,INITIAL_CHECKERS);
-    in.close();
-    return player_1;
+    Player player= new Player(name,INITIAL_CHECKERS);
+    return player;
     }
 }
