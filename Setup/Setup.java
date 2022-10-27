@@ -57,7 +57,7 @@ private static Dice[] setupPieces() {
         allPoints[23] = new Points(Colour.B, 5);
 
         Dice[] bothDie = new Dice[2];
-        bothDie[0] = new Dice(1);
+        bothDie[0] = new Dice(0);
         bothDie[1] = new Dice(0);
 
         boardSetup(allPoints, bothDie);
