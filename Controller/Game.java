@@ -21,6 +21,8 @@ public class Game {
         System.out.println("Please enter name of player 2:");
         Player player_2 = Setup.setupPlayer(in);
 
+        
+
         while (player_1.getCheckerCount()!=0 || player_2.getCheckerCount()!=0) {
 
             Board.Draw(allPoints, bothDie);
@@ -38,4 +40,8 @@ public class Game {
 
     }
     
+    public static void swapTurn(Player player1, Player player2){
+        player1.setTurn(-player1.getTurn());
+        player2.setTurn(-player2.getTurn());
+    }
 }

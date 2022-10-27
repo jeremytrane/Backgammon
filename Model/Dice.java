@@ -17,13 +17,12 @@ public class Dice {
 		this.dots = dots;
 	}
 
-	public static int[] rollDie(Dice[] die) {
+	public static void rollDie(Dice[] die) {
 		int[] randomNumber = new int[2];
 		randomNumber[0] = ThreadLocalRandom.current().nextInt(1, 6 + 1);
 		randomNumber[1] = ThreadLocalRandom.current().nextInt(1, 6 + 1);
 		die[0].setDots(randomNumber[0]);
 		die[1].setDots(randomNumber[1]);
-		return randomNumber;
 	}
 
 }
