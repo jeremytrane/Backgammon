@@ -3,6 +3,7 @@ package Setup;
 import java.util.Scanner;
 
 import Model.Colour;
+import Model.Dice;
 import Model.Player;
 import Model.Points;
 import View.Board;
@@ -53,12 +54,17 @@ private static void setupPieces() {
         allPoints[21] = new Points(null, 0);
         allPoints[22] = new Points(null, 0);
         allPoints[23] = new Points(Colour.B, 5);
-        boardSetup(allPoints);
+
+        Dice[] bothDie = new Dice[2];
+        bothDie[0] = new Dice(0);
+        bothDie[1] = new Dice(0);
+
+        boardSetup(allPoints, bothDie);
 
     }
 
-private static void boardSetup(Points[] allPoints) {
-        Board.Draw(allPoints);
+private static void boardSetup(Points[] allPoints, Dice[] bothDie) {
+        Board.Draw(allPoints, bothDie);
     }
 
 public static Player setupPlayer(Scanner in) {

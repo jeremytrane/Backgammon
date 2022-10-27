@@ -7,7 +7,8 @@ public class Dice {
 	private int diceOne;
 	private int diceTwo;
 
-	public Dice() {
+	public Dice(int dots) {
+		this.dots = dots;
 	}
 
 	public int getDiceOne() {

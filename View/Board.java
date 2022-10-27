@@ -1,5 +1,6 @@
 package View;
 
+import Model.Dice;
 import Model.Points;
 
 public class Board {
@@ -8,7 +9,7 @@ public class Board {
 
     }
 
-    public static void Draw(Points[] allPoints){
+    public static void Draw(Points[] allPoints, Dice[] bothDie){
 
         System.out.println("||    1         2          3         4         5         6              7         8         9        10        11        12");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------");
@@ -18,8 +19,8 @@ public class Board {
         System.out.println("||  \u001B[31m\\    /\u001B[0m    \\    /    \u001B[31m\\    /\u001B[0m    \\    /    \u001B[31m\\    /\u001B[0m    \\    /   |||   \u001B[31m\\    /\u001B[0m    \\    /    \u001B[31m\\    /\u001B[0m    \\    /    \u001B[31m\\    /\u001B[0m    \\    /   ||");
         System.out.println("||   \u001B[31m\\  /\u001B[0m      \\  /      \u001B[31m\\  /\u001B[0m      \\  /      \u001B[31m\\  /\u001B[0m      \\  /    |||    \u001B[31m\\  /\u001B[0m      \\  /      \u001B[31m\\  /\u001B[0m      \\  /      \u001B[31m\\  /\u001B[0m      \\  /    ||");
         System.out.println("||    \u001B[31m\\/\u001B[0m        \\/        \u001B[31m\\/\u001B[0m        \\/        \u001B[31m\\/\u001B[0m        \\/     |||     \u001B[31m\\/\u001B[0m        \\/        \u001B[31m\\/\u001B[0m        \\/        \u001B[31m\\/\u001B[0m        \\/     ||");
-        System.out.println("||\u001B[0m                                                             |||                                                              ||");
-        System.out.println("||\u001B[0m                                                             |||                                                              ||");
+        System.out.println("||\u001B[0m                      ["+bothDie[0].getDiceOne() +"]                                    |||                                                              ||");
+        System.out.println("||\u001B[0m                      ["+bothDie[0].getDiceTwo() +"]                                    |||                                                              ||");
         System.out.println("||    /\\        \u001B[31m/\\\u001B[0m        /\\        \u001B[31m/\\\u001B[0m        /\\        \u001B[31m/\\\u001B[0m     |||     /\\        \u001B[31m/\\\u001B[0m        /\\        \u001B[31m/\\\u001B[0m        /\\        \u001B[31m/\\\u001B[0m     ||");
         System.out.println("||   /  \\      \u001B[31m/  \\\u001B[0m      /  \\      \u001B[31m/  \\\u001B[0m      /  \\      \u001B[31m/  \\\u001B[0m    |||    /  \\      \u001B[31m/  \\\u001B[0m      /  \\      \u001B[31m/  \\\u001B[0m      /  \\      \u001B[31m/  \\\u001B[0m    ||");
         System.out.println("||  /    \\    \u001B[31m/    \\\u001B[0m    /    \\    \u001B[31m/    \\\u001B[0m    /    \\    \u001B[31m/    \\\u001B[0m   |||   /    \\    \u001B[31m/    \\\u001B[0m    /    \\    \u001B[31m/    \\\u001B[0m    /    \\    \u001B[31m/    \\\u001B[0m   ||");

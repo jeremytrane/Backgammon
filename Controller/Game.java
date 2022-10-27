@@ -3,6 +3,7 @@ package Controller;
 import java.util.Scanner;
 
 import Model.Player;
+import Model.Dice;
 import Setup.Setup;
 
 public class Game {
@@ -23,6 +24,8 @@ public class Game {
             String move = in.nextLine();
             if (move.equalsIgnoreCase("Q")) {
                 break;
+            } else if (move.equalsIgnoreCase("R")) {
+                //Dice.rollDie();
             }
             
         }
