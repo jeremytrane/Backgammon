@@ -1,6 +1,6 @@
 package Model;
 
 public enum Colour {
-    WHITE, BLACK;
+    W, B;
     
 }
