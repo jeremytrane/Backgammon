@@ -2,6 +2,7 @@ package Main;
 
 import java.util.Scanner;
 
+import Model.Colour;
 import Model.Dice;
 import Model.Player;
 import Model.Points;
@@ -23,6 +24,8 @@ public class Backgammon {
         Player player_1 = Setup.setupPlayer(in);
         System.out.println("Please enter name of player 2:");
         Player player_2 = Setup.setupPlayer(in);
+        player_1.setColour(Colour.W);
+        player_2.setColour(Colour.B);
 
         Setup.getFirstTurn(bothDie,player_1,player_2);
 
