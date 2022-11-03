@@ -36,11 +36,22 @@ public class Backgammon {
                 break;
             } else if (move.equalsIgnoreCase("R")) {
                 Dice.rollDie(bothDie);
+            } else if (move.equalsIgnoreCase("Pip")) {
+                if (player_1.getTurnToken()==1) {
+                    System.out.println(player_1 + " has " + player_1.getCheckerCount() + " checkers left!");
+                } else {
+                    System.out.println(player_2 + " has " + player_2.getCheckerCount() + " checkers left!");
+                }
             }
         }
 
         in.close();
-        System.out.println("Game over!");
+
+        if (player_1.getCheckerCount()==0)  {
+            System.out.println("Game over!" + player_1 + "has won!");
+        } else {
+            System.out.println("Game over!" + player_2 + "has won!");
+        }
 
     }
     
