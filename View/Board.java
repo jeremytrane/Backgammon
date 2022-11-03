@@ -85,7 +85,7 @@ public class Board {
             Colour checkerColour = point.getCheckerColour(point.getCheckerIndex(0));
             if (point.getHowManyCheckers()>length && checkerColour==Colour.B) {
                 return "\u001B[31mX  \u001B[0m";
-            } else if (point.getHowManyCheckers() >= length && checkerColour==Colour.W) {
+            } else if (point.getHowManyCheckers() > length && checkerColour==Colour.W) {
                 return "\u001B[32mO  \u001B[0m"; 
             } else 
             return "   ";
@@ -98,7 +98,7 @@ public class Board {
             Colour checkerColour = point.getCheckerColour(point.getCheckerIndex(0));
             if (point.getHowManyCheckers()>length && checkerColour==Colour.B) {
                 return "\u001B[31mX  \u001B[0m";
-            } else if (point.getHowManyCheckers() >= length && checkerColour==Colour.W) {
+            } else if (point.getHowManyCheckers() > length && checkerColour==Colour.W) {
                 return "\u001B[32mO  \u001B[0m";
             } else 
             return "   ";
