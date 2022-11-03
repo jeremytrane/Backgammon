@@ -45,6 +45,8 @@ public class Backgammon {
                 } else {
                     System.out.println(player_2 + " has " + player_2.getCheckerCount() + " checkers left!");
                 }
+            } else if (move.equalsIgnoreCase("hint")) {
+                System.out.println("Enter pip to see player pip. Or enter a number from the moves listed below:\n");
             }
         }
 
