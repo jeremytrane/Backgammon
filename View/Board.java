@@ -86,9 +86,9 @@ public class Board {
         if (point.getHowManyCheckers()>0 ) {
             Colour checkerColour = point.getCheckerColour(point.getCheckerIndex(0));
             if (point.getHowManyCheckers()>length && checkerColour==Colour.B) {
-                return "\u001B[31m⦿  \u001B[0m";
+                return "\u001B[31mX  \u001B[0m";
             } else if (point.getHowManyCheckers() > length && checkerColour==Colour.W) {
-                return "\u001B[37m⦿  \u001B[0m"; 
+                return "\u001B[37mX  \u001B[0m"; 
             } else 
             return "   ";
         }
@@ -99,9 +99,9 @@ public class Board {
         if (point.getHowManyCheckers()>0) {
             Colour checkerColour = point.getCheckerColour(point.getCheckerIndex(0));
             if (point.getHowManyCheckers()>length && checkerColour==Colour.B) {
-                return "\u001B[31m⦿  \u001B[0m";
+                return "\u001B[31mX  \u001B[0m";
             } else if (point.getHowManyCheckers() > length && checkerColour==Colour.W) {
-                return "\u001B[37m⦿  \u001B[0m";
+                return "\u001B[37mX  \u001B[0m";
             } else 
             return "   ";
         }
@@ -109,7 +109,7 @@ public class Board {
     }
 
     public static Player whatPlayerTurn (Player player_1, Player player_2) {
-        if (player_1.getTurnToken()==-1) {
+        if (player_1.getTurnToken()==1) {
         return player_1;
         } else 
     return player_2;
