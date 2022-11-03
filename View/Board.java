@@ -1,7 +1,9 @@
 package View;
 
+import Model.Colour;
 import Model.Dice;
 import Model.Points;
+import java.util.Arrays;
 
 public class Board {
 
@@ -10,38 +12,83 @@ public class Board {
     }
 
     public static void Draw(Points[] allPoints, Dice[] bothDie) {
-        int length = lengthToPrint(allPoints);
+        int length1 = lengthToPrint1(allPoints);
+        int length2 = lengthToPrint2(allPoints);
         System.out.println(" 1  2  3  4  5  6  7  8  9  10 11 12");
         System.out.println("-------------------------------------");
 
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < length1; i++) {
             String point1 = whatToPrint(allPoints[i], i);
-            System.out.println("|                                    |");
-            System.out.println("|                                    |");
+            String point2 = whatToPrint(allPoints[i], i);
+            String point3 = whatToPrint(allPoints[i], i);
+            String point4 = whatToPrint(allPoints[i], i);
+            String point5 = whatToPrint(allPoints[i], i);
+            String point6 = whatToPrint(allPoints[i], i);
+            String point7 = whatToPrint(allPoints[i], i);
+            String point8 = whatToPrint(allPoints[i], i);
+            String point9 = whatToPrint(allPoints[i], i);
+            String point10 = whatToPrint(allPoints[i], i);
+            String point11 = whatToPrint(allPoints[i], i);
+            String point12 = whatToPrint(allPoints[i], i);
 
+            System.out.println("|" + point1 + point2 + point3 + point4 + point5 + point6 + point7 + point8 + point9 + point10 + point11 + point12 + "|");
         }
+
+        System.out.println("|                                   |");
+
+        for (int i = 0; i < length2; i++) {
+            String point13 = whatToPrint(allPoints[i], i);
+            String point14 = whatToPrint(allPoints[i], i);
+            String point15 = whatToPrint(allPoints[i], i);
+            String point16 = whatToPrint(allPoints[i], i);
+            String point17 = whatToPrint(allPoints[i], i);
+            String point18 = whatToPrint(allPoints[i], i);
+            String point19 = whatToPrint(allPoints[i], i);
+            String point20 = whatToPrint(allPoints[i], i);
+            String point21 = whatToPrint(allPoints[i], i);
+            String point22 = whatToPrint(allPoints[i], i);
+            String point23 = whatToPrint(allPoints[i], i);
+            String point24 = whatToPrint(allPoints[i], i);
+
+            System.out.println("|" + point13 + point14 + point15 + point16 + point17 + point18 + point19 + point20 + point21 + point22 + point23 + point24 + "|");
+             System.out.println("|                                    |");
+        }
+
         System.out.println("-------------------------------------");
         System.out.println(" 24 23 22 21 20 19 18 17 16 15 14 13");
         
     }
 
-    public static int lengthToPrint(Points[] allPoints) {
-        int maxLength = 0;
-        for (Points p: allPoints) {
-            if (p.getHowManyCheckers() > maxLength) {
-                maxLength = p.getHowManyCheckers();
+    public static int lengthToPrint1(Points[] allPoints) {
+        int maxLength1 = 0;
+        Points[] firstHalf = Arrays.copyOfRange(allPoints, 0, allPoints.length/2);
+        for (Points p: firstHalf) {
+            if (p.getHowManyCheckers() > maxLength1) {
+                maxLength1 = p.getHowManyCheckers();
             }
         }
-        return maxLength;
+        return maxLength1;
+    }
+
+    public static int lengthToPrint2(Points[] allPoints) {
+        int maxLength2 = 0;
+        Points[] secondHalf = Arrays.copyOfRange(allPoints, allPoints.length/2, allPoints.length);
+        for (Points p: secondHalf) {
+            if (p.getHowManyCheckers() > maxLength2) {
+                maxLength2 = p.getHowManyCheckers();
+            }
+        }
+        return maxLength2;
     }
 
     public static String whatToPrint(Points point, int length) {
-        if (point.getHowManyCheckers()>length&&) {
-            return "\u001B[31mX\u001B[0m";
-        } else if (point.getHowManyCheckers()>length&&) {
-            return "\u001B[32mO\u001B[0m"; 
+        Colour checkerColour = point.getCheckerColour(point.getCheckerIndex(0));
+        if (point.getHowManyCheckers()>=length && checkerColour==Colour.B) {
+            return "\u001B[31mX \u001B[0m";
+        } else if (point.getHowManyCheckers() >= length && checkerColour==Colour.W) {
+            return "\u001B[32mO \u001B[0m"; 
         } else 
-        return "";
+        return "  ";
     }
 
     public static void Draw1(Points[] allPoints, Dice[] bothDie){
