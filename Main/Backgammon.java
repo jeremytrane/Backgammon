@@ -40,6 +40,7 @@ public class Backgammon {
         }
 
         in.close();
+        System.out.println("Game over!");
 
     }
     
