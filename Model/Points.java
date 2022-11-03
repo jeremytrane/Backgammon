@@ -1,22 +1,22 @@
 package Model;
-import java.util.Stack;
+
+import java.util.ArrayList;
 
 public class Points {
 
-    protected Stack<Checkers> checkers = new Stack<Checkers>();
+    protected ArrayList<Checkers> checkers = new ArrayList<Checkers>();
     int howManyCheckers;
 
     public Points(Colour colour, int howManyCheckers) {
         this.howManyCheckers = howManyCheckers;
-        Stack<Checkers> checkers = new Stack<Checkers>();
+        checkers = new ArrayList<Checkers>();
         for (int i = 0; i < howManyCheckers; i++) {
-            Checkers e = new Checkers(colour);
-            checkers.add(e);
+            checkers.add(new Checkers(colour));
         }
     }
 
-    public void popChecker() {
-        this.checkers.pop();
+    public int getLength() {
+        return checkers.size();
     }
 
     public void addChecker(Checkers checker) {
