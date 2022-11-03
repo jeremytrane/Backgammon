@@ -15,7 +15,7 @@ public class Board {
         int length1 = lengthToPrint1(allPoints);
         int length2 = lengthToPrint2(allPoints);
         System.out.println("\n 1  2  3  4  5  6  |7  8  9  10 11 12");
-        System.out.println("-------------------|-------------------");
+        System.out.println("-------------------|-------------------   [" + bothDie[0].getDots() + "] [" + bothDie[1].getDots() + "]");
 
         for (int i = 0; i < length1; i++) {
             String point1 = whatToPrint1(allPoints[0], i);
@@ -84,9 +84,9 @@ public class Board {
         if (point.getHowManyCheckers()>0 ) {
             Colour checkerColour = point.getCheckerColour(point.getCheckerIndex(0));
             if (point.getHowManyCheckers()>length && checkerColour==Colour.B) {
-                return "\u001B[31m#  \u001B[0m";
+                return "\u001B[31m⦿  \u001B[0m";
             } else if (point.getHowManyCheckers() > length && checkerColour==Colour.W) {
-                return "\u001B[32mO  \u001B[0m"; 
+                return "\u001B[37m⦿  \u001B[0m"; 
             } else 
             return "   ";
         }
@@ -97,9 +97,9 @@ public class Board {
         if (point.getHowManyCheckers()>0) {
             Colour checkerColour = point.getCheckerColour(point.getCheckerIndex(0));
             if (point.getHowManyCheckers()>length && checkerColour==Colour.B) {
-                return "\u001B[31m#  \u001B[0m";
+                return "\u001B[31m⦿  \u001B[0m";
             } else if (point.getHowManyCheckers() > length && checkerColour==Colour.W) {
-                return "\u001B[32mO  \u001B[0m";
+                return "\u001B[37m⦿  \u001B[0m";
             } else 
             return "   ";
         }
