@@ -30,5 +30,9 @@ public class Points {
     public int getHowManyCheckers() {
         return howManyCheckers;
     }
+
+    public Checkers getCheckerIndex(int i) {
+        return checkers.get(i);
+    }
     
 }
