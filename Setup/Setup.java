@@ -88,13 +88,13 @@ public static void getFirstTurn(Dice[] die, Player player1, Player player2){
                 player1.setTurn(1);
                 player2.setTurn(-1);
                 equal = false;
-                System.out.println("Player 1 rolls higher and goes first.");
+                System.out.println(player1 + " rolls higher and goes first.");
             }
             else if(sum2>sum1){
                 player1.setTurn(-1);
                 player2.setTurn(1);
                 equal = false;
-                System.out.println("Player 2 rolls higher and goes first.");
+                System.out.println(player2 + " rolls higher and goes first.");
             }
             else{
                 System.out.println("Both are equal! Rolling again.");
