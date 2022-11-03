@@ -53,9 +53,11 @@ public class Backgammon {
         in.close();
 
         if (player_1.getCheckerCount()==0)  {
-            System.out.println("Game over!" + player_1 + "has won!");
+            System.out.println("Game over!" + player_1 + " has won!");
+        } else if (player_2.getCheckerCount()==0) {
+            System.out.println("Game over!" + player_2 + " has won!");
         } else {
-            System.out.println("Game over!" + player_2 + "has won!");
+            System.out.println("Game over!");
         }
 
     }
