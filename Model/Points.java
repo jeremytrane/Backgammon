@@ -23,7 +23,7 @@ public class Points {
         this.checkers.add(checker);
     }
 
-    public Colour getLowestCheckerColour(Checkers checker) {
+    public Colour getCheckerColour(Checkers checker) {
         return checker.getCheckerColour();
     }
 
