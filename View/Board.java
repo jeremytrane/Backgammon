@@ -14,7 +14,7 @@ public class Board {
     public static void Draw(Points[] allPoints, Dice[] bothDie) {
         int length1 = lengthToPrint1(allPoints);
         int length2 = lengthToPrint2(allPoints);
-        System.out.println(" 1  2  3  4  5  6  7  8  9  10 11 12");
+        System.out.println("\n 1  2  3  4  5  6  7  8  9  10 11 12");
         System.out.println("-------------------------------------");
 
         for (int i = 0; i < length1; i++) {
@@ -82,12 +82,15 @@ public class Board {
     }
 
     public static String whatToPrint(Points point, int length) {
-        Colour checkerColour = point.getCheckerColour(point.getCheckerIndex(0));
-        if (point.getHowManyCheckers()>=length && checkerColour==Colour.B) {
-            return "\u001B[31mX \u001B[0m";
-        } else if (point.getHowManyCheckers() >= length && checkerColour==Colour.W) {
-            return "\u001B[32mO \u001B[0m"; 
-        } else 
+        if (point.getHowManyCheckers()>0) {
+            Colour checkerColour = point.getCheckerColour(point.getCheckerIndex(point.getHowManyCheckers()-1));
+            if (point.getHowManyCheckers()>=length && checkerColour==Colour.B) {
+                return "\u001B[31mX \u001B[0m";
+            } else if (point.getHowManyCheckers() >= length && checkerColour==Colour.W) {
+                return "\u001B[32mO \u001B[0m"; 
+            } else 
+            return "  ";
+        }
         return "  ";
     }
 
