@@ -28,7 +28,7 @@ public class Backgammon {
 
         while (player_1.getCheckerCount()!=0 || player_2.getCheckerCount()!=0) {
 
-            Board.Draw(allPoints, bothDie);
+            Board.Draw(allPoints, bothDie, player_1, player_2);
 
             System.out.println("Please enter your move");
             String move = in.nextLine();

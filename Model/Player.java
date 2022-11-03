@@ -11,6 +11,14 @@ public class Player {
         checkerCount = checkers;
     }
 
+    public int getTurnToken() {
+        return turnToken;
+    }
+
+    public void setTurnToken(int turnToken) {
+        this.turnToken = turnToken;
+    }
+
     public int getCheckerCount(){
         return checkerCount;
     }
