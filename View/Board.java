@@ -14,8 +14,8 @@ public class Board {
     public static void Draw(Points[] allPoints, Dice[] bothDie) {
         int length1 = lengthToPrint1(allPoints);
         int length2 = lengthToPrint2(allPoints);
-        System.out.println("\n 1  2  3  4  5  6  ||7  8  9  10 11 12");
-        System.out.println("-------------------||-------------------");
+        System.out.println("\n 1  2  3  4  5  6  |7  8  9  10 11 12");
+        System.out.println("-------------------|-------------------");
 
         for (int i = 0; i < length1; i++) {
             String point1 = whatToPrint1(allPoints[0], i);
@@ -31,10 +31,10 @@ public class Board {
             String point11 = whatToPrint1(allPoints[10], i);
             String point12 = whatToPrint1(allPoints[11], i);
 
-            System.out.print("|" + point1 + point2 + point3 + point4 + point5 + point6 + "||" + point7 + point8 + point9 + point10 + point11 + point12 + "|\n");
+            System.out.print("|" + point1 + point2 + point3 + point4 + point5 + point6 + "|" + point7 + point8 + point9 + point10 + point11 + point12 + "|\n");
         }
 
-        System.out.println("-------------------||-------------------");
+        System.out.println("-------------------X-------------------");
 
         for (int i = 0; i < length2; i++) {
             String point13 = whatToPrint2(allPoints[12], i);
@@ -50,11 +50,11 @@ public class Board {
             String point23 = whatToPrint2(allPoints[22], i);
             String point24 = whatToPrint2(allPoints[23], i);
 
-            System.out.print("|" + point24 + point23 + point22 + point21 + point20 + point19 + "||" + point18 + point17 + point16 + point15 + point14 + point13 + "|\n");
+            System.out.print("|" + point24 + point23 + point22 + point21 + point20 + point19 + "|" + point18 + point17 + point16 + point15 + point14 + point13 + "|\n");
         }
 
-        System.out.println("-------------------||-------------------");
-        System.out.println("24 23 22 21 20 19   18 17 16 15 14 13");
+        System.out.println("-------------------|-------------------");
+        System.out.println("24 23 22 21 20 19  |18 17 16 15 14 13");
         
     }
 
@@ -84,7 +84,7 @@ public class Board {
         if (point.getHowManyCheckers()>0 ) {
             Colour checkerColour = point.getCheckerColour(point.getCheckerIndex(0));
             if (point.getHowManyCheckers()>length && checkerColour==Colour.B) {
-                return "\u001B[31mX  \u001B[0m";
+                return "\u001B[31m#  \u001B[0m";
             } else if (point.getHowManyCheckers() > length && checkerColour==Colour.W) {
                 return "\u001B[32mO  \u001B[0m"; 
             } else 
@@ -97,7 +97,7 @@ public class Board {
         if (point.getHowManyCheckers()>0) {
             Colour checkerColour = point.getCheckerColour(point.getCheckerIndex(0));
             if (point.getHowManyCheckers()>length && checkerColour==Colour.B) {
-                return "\u001B[31mX  \u001B[0m";
+                return "\u001B[31m#  \u001B[0m";
             } else if (point.getHowManyCheckers() > length && checkerColour==Colour.W) {
                 return "\u001B[32mO  \u001B[0m";
             } else 
