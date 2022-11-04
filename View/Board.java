@@ -11,6 +11,7 @@ public class Board {
     public static void Draw(Points[] allPoints, Dice[] bothDie, Player player_1, Player player_2) {
         int length1 = lengthToPrint1(allPoints);
         int length2 = lengthToPrint2(allPoints);
+        Checker bar;
         Player whatPlayer = whatPlayerTurn(player_1, player_2);
         System.out.println("\n 1  2  3  4  5  6  |7  8  9  10 11 12     It's your turn " + whatPlayer);
         System.out.println("-------------------|-------------------   [" + bothDie[0].getDots() + "] [" + bothDie[1].getDots() + "]");
