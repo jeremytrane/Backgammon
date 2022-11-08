@@ -8,6 +8,7 @@ import Model.Player;
 import Model.Points;
 import Setup.Setup;
 import View.Board;
+import Controller.UserInput;
 
 public class Backgammon {
 
@@ -16,9 +17,11 @@ public class Backgammon {
         Setup.setupMessage();
 
         Scanner in = new Scanner(System.in);
+        UserInput userInput = new UserInput();
 
         Dice[] bothDie = Setup.setupDie();
         Points[] allPoints = Setup.defaultBoard();
+
         
         System.out.println("Please enter name of player 1:");
         Player player_1 = Setup.setupPlayer(in);
@@ -35,19 +38,8 @@ public class Backgammon {
 
             System.out.println("Please enter your move");
             String move = in.nextLine();
-            if (move.equalsIgnoreCase("Q")) {
-                break;
-            } else if (move.equalsIgnoreCase("R")) {
-                Dice.rollDie(bothDie);
-            } else if (move.equalsIgnoreCase("Pip")) {
-                if (player_1.getTurnToken()==1) {
-                    System.out.println(player_1 + " has " + player_1.getCheckerCount() + " checkers left!");
-                } else {
-                    System.out.println(player_2 + " has " + player_2.getCheckerCount() + " checkers left!");
-                }
-            } else if (move.equalsIgnoreCase("hint")) {
-                System.out.println("Enter pip to see player pip. Or enter a number from the moves listed below:\n");
-            }
+            userInput.parseCommand(move,player_1,player_2,bothDie);
+            
         }
 
         in.close();

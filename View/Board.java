@@ -33,8 +33,8 @@ public class Board {
 
             System.out.print("|" + point1 + point2 + point3 + point4 + point5 + point6 + "|" + point7 + point8 + point9 + point10 + point11 + point12 + "|\n");
         }
-
-        System.out.println("-------------------X-------------------");
+        String barToPrint = whatIsBar(bar);
+        System.out.println("-------------------" + barToPrint + "-------------------");
 
         for (int i = 0; i < length2; i++) {
             String point13 = whatToPrint2(allPoints[12], i);
@@ -56,6 +56,15 @@ public class Board {
         System.out.println("-------------------|-------------------");
         System.out.println("24 23 22 21 20 19  |18 17 16 15 14 13");
         
+    }
+
+    public static String whatIsBar(Checkers bar) {
+        if (bar.getCheckerColour()==Colour.B)
+        return "\u001B[31mX\u001B[0m";
+        else if (bar.getCheckerColour()==Colour.W) {
+            return "\u001B[37mX\u001B[0m"; 
+        } else 
+        return "O";
     }
 
     public static int lengthToPrint1(Points[] allPoints) {
