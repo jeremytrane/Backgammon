@@ -1,14 +1,10 @@
 package View;
 
-<<<<<<< HEAD
-import Model.*;
-=======
 import Model.Checkers;
 import Model.Colour;
 import Model.Dice;
 import Model.Player;
 import Model.Points;
->>>>>>> f627d3a259505637f0c50238ffb3cce58bf6d4cb
 import java.util.Arrays;
 
 public class Board {
@@ -16,11 +12,7 @@ public class Board {
     public static void Draw(Points[] allPoints, Dice[] bothDie, Player player_1, Player player_2) {
         int length1 = lengthToPrint1(allPoints);
         int length2 = lengthToPrint2(allPoints);
-<<<<<<< HEAD
         Checkers bar = new Checkers(null);
-=======
-        Checkers bar;
->>>>>>> f627d3a259505637f0c50238ffb3cce58bf6d4cb
         Player whatPlayer = whatPlayerTurn(player_1, player_2);
         System.out.println("\n 1  2  3  4  5  6  |7  8  9  10 11 12     It's your turn " + whatPlayer);
         System.out.println("-------------------|-------------------   [" + bothDie[0].getDots() + "] [" + bothDie[1].getDots() + "]");
