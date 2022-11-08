@@ -33,7 +33,7 @@ public static Dice[] setupDie() {
 
 public static Player setupPlayer(Scanner in) {
     String name;
-    final var INITIAL_CHECKERS=15;
+    final int INITIAL_CHECKERS=15;
 
     name = in.nextLine();
 
