@@ -28,6 +28,8 @@ public class UserInput {
             }
         } else if (userCommand.equalsIgnoreCase("hint")) {
             System.out.println("Enter pip to see player pip. Or enter a number from the moves listed below:\n");
+        } else {
+            //String listOfPossibleMoves = possibleMoves(bothDie);
         }
 
     }
