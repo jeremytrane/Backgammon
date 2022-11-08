@@ -36,7 +36,7 @@ public class Board {
         String barToPrint = whatIsBar(bar);
         System.out.println("-------------------" + barToPrint + "-------------------");
 
-        for (int i = 0; i < length2; i++) {
+        for (int i = length2; i > -1; i--) {
             String point13 = whatToPrint2(allPoints[12], i);
             String point14 = whatToPrint2(allPoints[13], i);
             String point15 = whatToPrint2(allPoints[14], i);
