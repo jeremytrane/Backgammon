@@ -10,7 +10,7 @@ import org.junit.Test;
 public class SetupTest{
     @Test
     //@DisplayName("Checks that dice are created.")
-    void testDie(){
+    public void testDie(){
         Dice[] bothDie = Setup.setupDie();
         assertNotNull(bothDie[0]);
         assertNotNull(bothDie[1]);
