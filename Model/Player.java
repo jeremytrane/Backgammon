@@ -6,7 +6,7 @@ public class Player {
     private Colour colour;
     private int turnToken = -1;
 
-    public Player(String n1, int checkers){ 
+    public Player(String n1, int checkers) {
         name = n1;
         checkerCount = checkers;
     }
@@ -19,7 +19,7 @@ public class Player {
         this.turnToken = turnToken;
     }
 
-    public int getCheckerCount(){
+    public int getCheckerCount() {
         return checkerCount;
     }
 
@@ -41,17 +41,17 @@ public class Player {
 
     public void setColour(Colour colour) {
         this.colour = colour;
-    }    
+    }
 
-    public void setTurn(int turn){
+    public void setTurn(int turn) {
         turnToken = turn;
     }
 
-    public int getTurn(){
+    public int getTurn() {
         return turnToken;
     }
 
-    public String toString(){
+    public String toString() {
         return this.name;
     }
 }

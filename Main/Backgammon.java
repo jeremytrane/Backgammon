@@ -13,7 +13,7 @@ import Controller.UserInput;
 
 public class Backgammon {
 
-    public static void main(String[] args) { 
+    public static void main(String[] args) {
 
         Setup.setupMessage();
 
@@ -23,7 +23,6 @@ public class Backgammon {
         Dice[] bothDie = Setup.setupDie();
         Points[] allPoints = Setup.defaultBoard();
 
-        
         System.out.println("Please enter name of player 1:");
         Player player_1 = Setup.setupPlayer(in);
         System.out.println("Please enter name of player 2:");
@@ -31,33 +30,34 @@ public class Backgammon {
         player_1.setColour(Colour.W);
         player_2.setColour(Colour.B);
 
-        Setup.getFirstTurn(bothDie,player_1,player_2);
+        Setup.getFirstTurn(bothDie, player_1, player_2);
 
-        while (player_1.getCheckerCount()!=0 || player_2.getCheckerCount()!=0) {
+        while (player_1.getCheckerCount() != 0 || player_2.getCheckerCount() != 0) {
             Board.Draw(allPoints, bothDie, player_1, player_2);
 
             System.out.println("Please enter your move");
-            System.out.println("If you wish to enter a move please enter it in the order: point_number number_of_points_to_move.");
+            System.out.println(
+                    "If you wish to enter a move please enter it in the order: point_number number_of_points_to_move.");
             String move = in.nextLine();
-            userInput.parseCommand(move,player_1,player_2,bothDie, allPoints);
-            
+            userInput.parseCommand(move, player_1, player_2, bothDie, allPoints);
+
         }
 
         in.close();
 
-        if (player_1.getCheckerCount()==0)  {
+        if (player_1.getCheckerCount() == 0) {
             System.out.println("Game over!" + player_1 + " has won!");
-        } else if (player_2.getCheckerCount()==0) {
+        } else if (player_2.getCheckerCount() == 0) {
             System.out.println("Game over!" + player_2 + " has won!");
         } else {
             System.out.println("Game over!");
         }
 
     }
-    
-    public static void swapTurn(Player player1, Player player2){
+
+    public static void swapTurn(Player player1, Player player2) {
         player1.setTurn(-player1.getTurn());
         player2.setTurn(-player2.getTurn());
     }
-    
+
 }

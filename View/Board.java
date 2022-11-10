@@ -15,7 +15,8 @@ public class Board {
         Checkers bar = new Checkers(null);
         Player whatPlayer = whatPlayerTurn(player_1, player_2);
         System.out.println("\n 1  2  3  4  5  6  |7  8  9  10 11 12     It's your turn " + whatPlayer);
-        System.out.println("-------------------|-------------------   [" + bothDie[0].getDots() + "] [" + bothDie[1].getDots() + "]");
+        System.out.println("-------------------|-------------------   [" + bothDie[0].getDots() + "] ["
+                + bothDie[1].getDots() + "]");
 
         for (int i = 0; i < length1; i++) {
             String point1 = whatToPrint1(allPoints[0], i);
@@ -31,7 +32,8 @@ public class Board {
             String point11 = whatToPrint1(allPoints[10], i);
             String point12 = whatToPrint1(allPoints[11], i);
 
-            System.out.print("|" + point1 + point2 + point3 + point4 + point5 + point6 + "|" + point7 + point8 + point9 + point10 + point11 + point12 + "|\n");
+            System.out.print("|" + point1 + point2 + point3 + point4 + point5 + point6 + "|" + point7 + point8 + point9
+                    + point10 + point11 + point12 + "|\n");
         }
         String barToPrint = whatIsBar(bar);
         System.out.println("-------------------" + barToPrint + "-------------------");
@@ -50,25 +52,26 @@ public class Board {
             String point23 = whatToPrint2(allPoints[22], i);
             String point24 = whatToPrint2(allPoints[23], i);
 
-            System.out.print("|" + point13 + point14 + point15 + point16 + point17 + point18 + "|" + point19 + point20 + point21 + point22 + point23 + point24 + "|\n");
+            System.out.print("|" + point13 + point14 + point15 + point16 + point17 + point18 + "|" + point19 + point20
+                    + point21 + point22 + point23 + point24 + "|\n");
         }
         System.out.println("-------------------|-------------------");
         System.out.println("13 14 15 16 17 18  |19 20 21 22 23 24");
     }
 
     public static String whatIsBar(Checkers bar) {
-        if (bar.getCheckerColour()==Colour.B)
-        return "\u001B[31mX\u001B[0m";
-        else if (bar.getCheckerColour()==Colour.W) {
-            return "\u001B[37mX\u001B[0m"; 
-        } else 
-        return "O";
+        if (bar.getCheckerColour() == Colour.B)
+            return "\u001B[31mX\u001B[0m";
+        else if (bar.getCheckerColour() == Colour.W) {
+            return "\u001B[37mX\u001B[0m";
+        } else
+            return "O";
     }
 
     public static int lengthToPrint1(Points[] allPoints) {
         int maxLength1 = 0;
-        Points[] firstHalf = Arrays.copyOfRange(allPoints, 0, allPoints.length/2);
-        for (Points p: firstHalf) {
+        Points[] firstHalf = Arrays.copyOfRange(allPoints, 0, allPoints.length / 2);
+        for (Points p : firstHalf) {
             if (p.getHowManyCheckers() > maxLength1) {
                 maxLength1 = p.getHowManyCheckers();
             }
@@ -78,8 +81,8 @@ public class Board {
 
     public static int lengthToPrint2(Points[] allPoints) {
         int maxLength2 = 0;
-        Points[] secondHalf = Arrays.copyOfRange(allPoints, allPoints.length/2, allPoints.length);
-        for (Points p: secondHalf) {
+        Points[] secondHalf = Arrays.copyOfRange(allPoints, allPoints.length / 2, allPoints.length);
+        for (Points p : secondHalf) {
             if (p.getHowManyCheckers() > maxLength2) {
                 maxLength2 = p.getHowManyCheckers();
             }
@@ -88,36 +91,36 @@ public class Board {
     }
 
     public static String whatToPrint1(Points point, int length) {
-        if (point.getHowManyCheckers()>0 ) {
+        if (point.getHowManyCheckers() > 0) {
             Colour checkerColour = point.getCheckerColour(point.getCheckerIndex(0));
-            if (point.getHowManyCheckers()>length && checkerColour==Colour.B) {
+            if (point.getHowManyCheckers() > length && checkerColour == Colour.B) {
                 return "\u001B[31mX  \u001B[0m";
-            } else if (point.getHowManyCheckers() > length && checkerColour==Colour.W) {
-                return "\u001B[37mX  \u001B[0m"; 
-            } else 
-            return "   ";
+            } else if (point.getHowManyCheckers() > length && checkerColour == Colour.W) {
+                return "\u001B[37mX  \u001B[0m";
+            } else
+                return "   ";
         }
         return "   ";
     }
 
     public static String whatToPrint2(Points point, int length) {
-        if (point.getHowManyCheckers()>0) {
+        if (point.getHowManyCheckers() > 0) {
             Colour checkerColour = point.getCheckerColour(point.getCheckerIndex(0));
-            if (point.getHowManyCheckers()>length && checkerColour==Colour.B) {
+            if (point.getHowManyCheckers() > length && checkerColour == Colour.B) {
                 return "\u001B[31mX  \u001B[0m";
-            } else if (point.getHowManyCheckers() > length && checkerColour==Colour.W) {
+            } else if (point.getHowManyCheckers() > length && checkerColour == Colour.W) {
                 return "\u001B[37mX  \u001B[0m";
-            } else 
-            return "   ";
+            } else
+                return "   ";
         }
         return "   ";
     }
 
-    public static Player whatPlayerTurn (Player player_1, Player player_2) {
-        if (player_1.getTurnToken()==1) {
-        return player_1;
-        } else 
-    return player_2;
+    public static Player whatPlayerTurn(Player player_1, Player player_2) {
+        if (player_1.getTurnToken() == 1) {
+            return player_1;
+        } else
+            return player_2;
     }
 
 }

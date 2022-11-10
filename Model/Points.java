@@ -34,5 +34,5 @@ public class Points {
     public Checkers getCheckerIndex(int i) {
         return checkers.get(i);
     }
-    
+
 }

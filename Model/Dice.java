@@ -1,4 +1,5 @@
 package Model;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Dice {
