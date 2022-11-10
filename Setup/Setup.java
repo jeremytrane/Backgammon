@@ -56,18 +56,18 @@ public static Points[] defaultBoard() {
     allPoints[9] = new Points(null, 0);
     allPoints[10] = new Points(null, 0);
     allPoints[11] = new Points(Colour.W, 2);
-    allPoints[12] = new Points(Colour.B, 2);
+    allPoints[12] = new Points(Colour.B, 5);
     allPoints[13] = new Points(null, 0);
     allPoints[14] = new Points(null, 0);
     allPoints[15] = new Points(null, 0);
-    allPoints[16] = new Points(null, 0);
-    allPoints[17] = new Points(Colour.W, 5);
-    allPoints[18] = new Points(null, 0);
-    allPoints[19] = new Points(Colour.W, 3);
+    allPoints[16] = new Points(Colour.W, 3);
+    allPoints[17] = new Points(null, 0);
+    allPoints[18] = new Points(Colour.W, 5);
+    allPoints[19] = new Points(null, 0);
     allPoints[20] = new Points(null, 0);
     allPoints[21] = new Points(null, 0);
     allPoints[22] = new Points(null, 0);
-    allPoints[23] = new Points(Colour.B, 5);
+    allPoints[23] = new Points(Colour.B, 2);
 
     return allPoints;
 

@@ -1,5 +1,6 @@
 package Main;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import Model.Colour;
@@ -38,8 +39,7 @@ public class Backgammon {
             System.out.println("Please enter your move");
             System.out.println("If you wish to enter a move please enter it in the order: point_number number_of_points_to_move.");
             String move = in.nextLine();
-            //String possibleMoves = possibleMoves(bothDie, allPoints, player_1, player_2);
-            userInput.parseCommand(move,player_1,player_2,bothDie);
+            userInput.parseCommand(move,player_1,player_2,bothDie, allPoints);
             
         }
 
@@ -58,41 +58,6 @@ public class Backgammon {
     public static void swapTurn(Player player1, Player player2){
         player1.setTurn(-player1.getTurn());
         player2.setTurn(-player2.getTurn());
-    }
-    
-    public static String possibleMoves(Dice[] bothDie, Points[] allPoints, Player player_1, Player player_2) {
-        //Count how many white points there are
-        if (player_1.getTurnToken()==1)  {
-            int howManyWhitePoints = 0;
-            for (int i = 0; i < 24; i++) {
-                if (allPoints[i].getCheckerColour(allPoints[i].getCheckerIndex(0))==Colour.W) {
-                    howManyWhitePoints += 1;
-                }
-            }
-            Points[] pointsOfColourToMove = new Points[howManyWhitePoints];
-            for (int j = 0; j < 24; j++) {
-                if (allPoints[j].getCheckerColour(allPoints[j].getCheckerIndex(0))==Colour.W) {
-                    pointsOfColourToMove[j] = allPoints[j];
-                }
-            }
-        } else {
-            //Count how many black points there are
-            int howManyBlackPoints = 0;
-            for (int i = 0; i < 24; i++) {
-                if (allPoints[i].getCheckerColour(allPoints[i].getCheckerIndex(0))==Colour.B) {
-                    howManyBlackPoints += 1;
-                }
-            }
-            Points[] pointsOfColourToMove = new Points[howManyBlackPoints];
-            for (int j = 0; j < 24; j++) {
-                if (allPoints[j].getCheckerColour(allPoints[j].getCheckerIndex(0))==Colour.B) {
-                    pointsOfColourToMove[j] = allPoints[j];
-                }
-            }
-        }
-        String[] possibleMoves;
-        //Add for loop to calculate moves possible (checking if colour landing on is the same if the length is geater then 1), temp return statement
-        return "";
     }
     
 }
