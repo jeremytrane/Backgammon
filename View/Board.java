@@ -52,11 +52,12 @@ public class Board {
             String point23 = whatToPrint2(allPoints[22], i);
             String point24 = whatToPrint2(allPoints[23], i);
 
-            System.out.print("|" + point13 + point14 + point15 + point16 + point17 + point18 + "|" + point19 + point20
-                    + point21 + point22 + point23 + point24 + "|\n");
+            System.out.print("|" + point24 + point23 + point22 + point21 + point20 + point19 + "|" + point18 + point17
+                    + point16 + point15 + point14 + point13 + "|\n");
+
         }
         System.out.println("-------------------|-------------------");
-        System.out.println("13 14 15 16 17 18  |19 20 21 22 23 24");
+        System.out.println("24 23 22 21 20 19  |18 17 16 15 14 13");
     }
 
     public static String whatIsBar(Checkers bar) {

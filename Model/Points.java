@@ -6,9 +6,11 @@ public class Points {
 
     protected ArrayList<Checkers> checkers = new ArrayList<Checkers>();
     int howManyCheckers;
+    int pointNumber;
 
-    public Points(Colour colour, int howManyCheckers) {
+    public Points(Colour colour, int howManyCheckers, int pointNumber) {
         this.howManyCheckers = howManyCheckers;
+        this.pointNumber = pointNumber;
         checkers = new ArrayList<Checkers>();
         for (int i = 0; i < howManyCheckers; i++) {
             checkers.add(new Checkers(colour));
