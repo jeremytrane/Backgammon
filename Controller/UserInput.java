@@ -47,26 +47,54 @@ public class UserInput {
         ArrayList<String> possibleMoves = new ArrayList<String>();
         if (player_1.getTurnToken()==1)  {
             for (int i = 0; i < 24; i++) {
-                if (allPoints[i].getLength()>0){
-                    if (allPoints[i].getCheckerColour(allPoints[i].getCheckerIndex(0))==Colour.W) {
-                        //First dice if point is smaller then 2
-                        if ((i+bothDie[0].getDots()) >= 24 && allPoints[i+bothDie[0].getDots()].getLength()<2) {
-                            System.out.print("11" + i + " ");
+                if (allPoints[i].getLength()>0 && allPoints[i].getCheckerColour(allPoints[i].getCheckerIndex(0))==Colour.W){
+                    System.out.print(i+1+"NUMBER\n");
+                    System.out.println("1-");
+                    System.out.println(i+bothDie[0].getDots());
+                    //First dice if point is smaller then 2
+                    if ((i+bothDie[0].getDots()) <= 23 && allPoints[i+bothDie[0].getDots()].getLength()<2) {
+                        System.out.println("11-");
+                        possibleMoves.add((i+1) + " " + ((i+1)+bothDie[0].getDots()));
+                   } 
+                    //Second dice if point is smaller then 2
+                    System.out.println("2-");
+                    System.out.println(i+bothDie[1].getDots());
+                    if ((i+bothDie[1].getDots()) <= 23 && allPoints[i+bothDie[1].getDots()].getLength()<2) {
+                        System.out.println("22-");
+                        possibleMoves.add((i+1) + " " + ((i+1)+bothDie[1].getDots()));
+                    }
+                    //First and second dice if point is smaller then 2
+                    System.out.println("3-");
+                    System.out.println(i+bothDie[0].getDots()+bothDie[1].getDots());
+                    if ((i+bothDie[0].getDots()+bothDie[1].getDots()) <= 23 && allPoints[i+bothDie[0].getDots()+bothDie[1].getDots()].getLength()<2) {
+                        System.out.println("33-");
+                        possibleMoves.add((i+1) + " " + ((i+1)+bothDie[1].getDots()+bothDie[0].getDots()));
+                    } 
+                    //First dice if point is same colour
+                    System.out.println("4-");
+                    System.out.println(i);
+                    System.out.println(bothDie[0].getDots());
+                    if ((i+bothDie[0].getDots()) <= 23) {
+                        if (allPoints[i+bothDie[0].getDots()].getLength()>0 && allPoints[i+bothDie[0].getDots()].getCheckerColour(allPoints[i+bothDie[0].getDots()].getCheckerIndex(0))==Colour.W) {
+                            System.out.println("44-");
                             possibleMoves.add((i+1) + " " + ((i+1)+bothDie[0].getDots()));
-                        //Second dice if point is smaller then 2
-                        } else if ((i+bothDie[1].getDots()) <= 24 && allPoints[i+bothDie[1].getDots()].getLength()<2) {
-                            possibleMoves.add((i+1) + " " + ((i+1)+bothDie[1].getDots()));
-                        //First and second dice if point is smaller then 2
-                        } else if ((i+bothDie[0].getDots()+bothDie[1].getDots()) <= 24 && allPoints[i+bothDie[0].getDots()+bothDie[1].getDots()].getLength()<2) {
-                            possibleMoves.add((i+1) + " " + ((i+1)+bothDie[1].getDots()+bothDie[0].getDots()));
-                        //First dice if point is same colour
-                        } else if ((i+bothDie[0].getDots()) <= 24 && allPoints[i+bothDie[0].getDots()].getCheckerColour(allPoints[i+bothDie[0].getDots()].getCheckerIndex(0))==Colour.W) {
-                            possibleMoves.add((i+1) + " " + ((i+1)+bothDie[0].getDots()));
+                        }
+                    }
                         //Second dice if point is same colour
-                        }else if ((i+bothDie[1].getDots()) <= 24 && allPoints[i+bothDie[1].getDots()].getCheckerColour(allPoints[i+bothDie[1].getDots()].getCheckerIndex(0))==Colour.W) {
+                     System.out.println("5-");
+                     System.out.println(i+bothDie[1].getDots());
+                     if ((i+bothDie[1].getDots()) <= 23) {
+                        if (allPoints[i+bothDie[1].getDots()].getLength()>0 && allPoints[i+bothDie[1].getDots()].getCheckerColour(allPoints[i+bothDie[1].getDots()].getCheckerIndex(0))==Colour.W){
+                            System.out.println("55-");
                             possibleMoves.add((i+1) + " " + ((i+1)+bothDie[1].getDots()));
-                        //First and second dice if point is same colour
-                        }else if ((i+bothDie[0].getDots()+bothDie[1].getDots()) <= 24 && allPoints[i+bothDie[0].getDots()+bothDie[1].getDots()].getCheckerColour(allPoints[i+bothDie[0].getDots()+bothDie[1].getDots()].getCheckerIndex(0))==Colour.W) {
+                        }
+                    }
+                    //First and second dice if point is same colour
+                    System.out.println("6-");
+                    System.out.println(i+bothDie[0].getDots()+bothDie[1].getDots());
+                    if ((i+bothDie[0].getDots()+bothDie[1].getDots()) <= 23 ) {
+                        if (allPoints[i+bothDie[0].getDots()+bothDie[1].getDots()].getLength()>0 && allPoints[i+bothDie[0].getDots()+bothDie[1].getDots()].getCheckerColour(allPoints[i+bothDie[0].getDots()+bothDie[1].getDots()].getCheckerIndex(0))==Colour.W) {
+                            System.out.println("66-");
                             possibleMoves.add((i+1) + " " + ((i+1)+bothDie[1].getDots()+bothDie[0].getDots()));
                         }
                     }
@@ -75,26 +103,54 @@ public class UserInput {
         } else {
             //Count how many black points there are
             for (int i = 0; i < 24; i++) {
-                if (allPoints[i].getLength()>0){
-                    if (allPoints[i].getCheckerColour(allPoints[i].getCheckerIndex(0))==Colour.B) {
-                        //First dice if point is smaller then 2
-                        if ((i+bothDie[0].getDots()) <= 24 && allPoints[i+bothDie[0].getDots()].getLength()<2) {
-                            System.out.print("12" + i + " ");
+                if (allPoints[i].getLength()>0 && allPoints[i].getCheckerColour(allPoints[i].getCheckerIndex(0))==Colour.B){
+                    System.out.print(i+1+"NUMBER\n");
+                    System.out.println("1-");
+                    System.out.println(i+bothDie[0].getDots());
+                    //First dice if point is smaller then 2
+                    if ((i+bothDie[0].getDots()) <= 23 && allPoints[i+bothDie[0].getDots()].getLength()<2) {
+                        System.out.println("11-");
+                        possibleMoves.add((i+1) + " " + ((i+1)+bothDie[0].getDots()));
+                   } 
+                    //Second dice if point is smaller then 2
+                    System.out.println("2-");
+                    System.out.println(i+bothDie[1].getDots());
+                    if ((i+bothDie[1].getDots()) <= 23 && allPoints[i+bothDie[1].getDots()].getLength()<2) {
+                        System.out.println("22-");
+                        possibleMoves.add((i+1) + " " + ((i+1)+bothDie[1].getDots()));
+                    }
+                    //First and second dice if point is smaller then 2
+                    System.out.println("3-");
+                    System.out.println(i+bothDie[0].getDots()+bothDie[1].getDots());
+                    if ((i+bothDie[0].getDots()+bothDie[1].getDots()) <= 23 && allPoints[i+bothDie[0].getDots()+bothDie[1].getDots()].getLength()<2) {
+                        System.out.println("33-");
+                        possibleMoves.add((i+1) + " " + ((i+1)+bothDie[1].getDots()+bothDie[0].getDots()));
+                    } 
+                    //First dice if point is same colour
+                    System.out.println("4-");
+                    System.out.println(i);
+                    System.out.println(bothDie[0].getDots());
+                    if ((i+bothDie[0].getDots()) <= 23) {
+                        if (allPoints[i+bothDie[0].getDots()].getLength()>0 && allPoints[i+bothDie[0].getDots()].getCheckerColour(allPoints[i+bothDie[0].getDots()].getCheckerIndex(0))==Colour.B) {
+                            System.out.println("44-");
                             possibleMoves.add((i+1) + " " + ((i+1)+bothDie[0].getDots()));
-                        //Second dice if point is smaller then 2
-                        } else if ((i+bothDie[1].getDots()) <= 24 && allPoints[i+bothDie[1].getDots()].getLength()<2) {
+                        }
+                    }
+                        //Second dice if point is same colour
+                     System.out.println("5-");
+                     System.out.println(i+bothDie[1].getDots());
+                     if ((i+bothDie[1].getDots()) <= 23) {
+                        if (allPoints[i+bothDie[1].getDots()].getLength()>0 && allPoints[i+bothDie[1].getDots()].getCheckerColour(allPoints[i+bothDie[1].getDots()].getCheckerIndex(0))==Colour.B){
+                            System.out.println("55-");
                             possibleMoves.add((i+1) + " " + ((i+1)+bothDie[1].getDots()));
-                        //First and second dice if point is smaller then 2
-                        } else if ((i+bothDie[0].getDots()+bothDie[1].getDots()) <= 24 && allPoints[i+bothDie[0].getDots()+bothDie[1].getDots()].getLength()<2) {
-                            possibleMoves.add((i+1) + " " + ((i+1)+bothDie[1].getDots()+bothDie[0].getDots()));
-                        //First dice if point is same colour
-                        } else if ((i+bothDie[0].getDots()) <= 24 && allPoints[i+bothDie[0].getDots()].getCheckerColour(allPoints[i+bothDie[0].getDots()].getCheckerIndex(0))==Colour.B) {
-                            possibleMoves.add((i+1) + " " + ((i+1)+bothDie[0].getDots()));
-                         //Second dice if point is same colour
-                        }else if ((i+bothDie[1].getDots()) <= 24 && allPoints[i+bothDie[1].getDots()].getCheckerColour(allPoints[i+bothDie[1].getDots()].getCheckerIndex(0))==Colour.B) {
-                            possibleMoves.add((i+1) + " " + ((i+1)+bothDie[1].getDots()));
-                        //First and second dice if point is same colour
-                        }else if ((i+bothDie[0].getDots()+bothDie[1].getDots()) <= 24 && allPoints[i+bothDie[0].getDots()+bothDie[1].getDots()].getCheckerColour(allPoints[i+bothDie[0].getDots()+bothDie[1].getDots()].getCheckerIndex(0))==Colour.B) {
+                        }
+                    }
+                    //First and second dice if point is same colour
+                    System.out.println("6-");
+                    System.out.println(i+bothDie[0].getDots()+bothDie[1].getDots());
+                    if ((i+bothDie[0].getDots()+bothDie[1].getDots()) <= 23 ) {
+                        if (allPoints[i+bothDie[0].getDots()+bothDie[1].getDots()].getLength()>0 && allPoints[i+bothDie[0].getDots()+bothDie[1].getDots()].getCheckerColour(allPoints[i+bothDie[0].getDots()+bothDie[1].getDots()].getCheckerIndex(0))==Colour.B) {
+                            System.out.println("66-");
                             possibleMoves.add((i+1) + " " + ((i+1)+bothDie[1].getDots()+bothDie[0].getDots()));
                         }
                     }
