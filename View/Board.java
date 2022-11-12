@@ -14,7 +14,7 @@ public class Board {
         int length2 = lengthToPrint2(allPoints);
         Checkers bar = new Checkers(null);
         Player whatPlayer = whatPlayerTurn(player_1, player_2);
-        System.out.println("\n 1  2  3  4  5  6  |7  8  9  10 11 12     It's your turn " + whatPlayer);
+        System.out.println("\n 12 11 10 9  8  7  |6  5  4  3  2  1      It's your turn " + whatPlayer);
         System.out.println("-------------------|-------------------   [" + bothDie[0].getDots() + "] ["
                 + bothDie[1].getDots() + "]");
 
@@ -32,8 +32,8 @@ public class Board {
             String point11 = whatToPrint1(allPoints[10], i);
             String point12 = whatToPrint1(allPoints[11], i);
 
-            System.out.print("|" + point1 + point2 + point3 + point4 + point5 + point6 + "|" + point7 + point8 + point9
-                    + point10 + point11 + point12 + "|\n");
+            System.out.print("|" + point12 + point11 + point10 + point9 + point8 + point7 + "|" + point6 + point5 + point4
+                    + point3 + point2 + point1 + "|\n");
         }
         String barToPrint = whatIsBar(bar);
         System.out.println("-------------------" + barToPrint + "-------------------");
@@ -52,12 +52,12 @@ public class Board {
             String point23 = whatToPrint2(allPoints[22], i);
             String point24 = whatToPrint2(allPoints[23], i);
 
-            System.out.print("|" + point24 + point23 + point22 + point21 + point20 + point19 + "|" + point18 + point17
-                    + point16 + point15 + point14 + point13 + "|\n");
+            System.out.print("|" + point13 + point14 + point15 + point16 + point17 + point18 + "|" + point19 + point20
+                    + point21 + point22 + point23 + point24 + "|\n");
 
         }
         System.out.println("-------------------|-------------------");
-        System.out.println("24 23 22 21 20 19  |18 17 16 15 14 13");
+        System.out.println("13 14 15 16 17 18  |19 20 21 22 23 24");
     }
 
     public static String whatIsBar(Checkers bar) {
