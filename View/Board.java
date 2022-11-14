@@ -10,16 +10,16 @@ import java.util.Arrays;
 public class Board {
 
     public static void Draw(Points[] allPoints, Dice[] bothDie, Player player_1, Player player_2) {
-        int length1 = lengthToPrint1(allPoints);
-        int length2 = lengthToPrint2(allPoints);
+        int lengthTop = lengthToPrintTop(allPoints);
+        int lengthBottom = lengthToPrintBottom(allPoints);
         Checkers bar = new Checkers(null);
         Player whatPlayer = whatPlayerTurn(player_1, player_2);
-        pipDisplay(whatPlayer, allPoints);
+        pipDisplayTop(whatPlayer, allPoints);
         System.out.println("\n 12 11 10 9  8  7  |6  5  4  3  2  1      It's your turn " + whatPlayer);
         System.out.println("-------------------|-------------------   [" + bothDie[0].getDots() + "] ["
                 + bothDie[1].getDots() + "]");
 
-        for (int i = 0; i < length1; i++) {
+        for (int i = 0; i < lengthTop; i++) {
             String point1 = whatToPrint1(allPoints[0], i);
             String point2 = whatToPrint1(allPoints[1], i);
             String point3 = whatToPrint1(allPoints[2], i);
@@ -39,7 +39,7 @@ public class Board {
         String barToPrint = whatIsBar(bar);
         System.out.println("-------------------" + barToPrint + "-------------------");
 
-        for (int i = length2; i > -1; i--) {
+        for (int i = lengthBottom; i > -1; i--) {
             String point13 = whatToPrint2(allPoints[12], i);
             String point14 = whatToPrint2(allPoints[13], i);
             String point15 = whatToPrint2(allPoints[14], i);
@@ -66,7 +66,7 @@ public class Board {
     private static void pipDisplayBottom(Player whatPlayer, Points[] allPoints) {
         System.out.print(" ");
         for (int i = 12; i < 24; i++) {
-            if (i == 19){
+            if (i == 18){
                 System.out.print(" ");
             }
             if (whatPlayer.getColour()==Colour.W) {
@@ -85,15 +85,13 @@ public class Board {
         }
     }
 
-    private static void pipDisplay(Player whatPlayer, Points[] allPoints) {
+    private static void pipDisplayTop(Player whatPlayer, Points[] allPoints) {
         System.out.print(" ");
-        for (int i = 11; i > 0; i--) {
+        for (int i = 11; i > -1; i--) {
             if (i == 7){
                 System.out.print(" ");
             }
             if (whatPlayer.getColour()==Colour.W) {
-                System.out.print(allPoints[i].getLength());
-                System.out.print(allPoints[i].getCheckerColour(allPoints[i].getCheckerIndex(0)));
                 if (allPoints[i].getLength()>0 && allPoints[i].getCheckerColour(allPoints[i].getCheckerIndex(0))==Colour.W) {
                     System.out.print(allPoints[i].getHowManyCheckers() + "  ");
                 } else {
@@ -118,26 +116,26 @@ public class Board {
             return "O";
     }
 
-    public static int lengthToPrint1(Points[] allPoints) {
-        int maxLength1 = 0;
+    public static int lengthToPrintTop(Points[] allPoints) {
+        int maxLengthTop = 0;
         Points[] firstHalf = Arrays.copyOfRange(allPoints, 0, allPoints.length / 2);
         for (Points p : firstHalf) {
-            if (p.getHowManyCheckers() > maxLength1) {
-                maxLength1 = p.getHowManyCheckers();
+            if (p.getHowManyCheckers() > maxLengthTop) {
+                maxLengthTop = p.getHowManyCheckers();
             }
         }
-        return maxLength1;
+        return maxLengthTop;
     }
 
-    public static int lengthToPrint2(Points[] allPoints) {
-        int maxLength2 = 0;
+    public static int lengthToPrintBottom(Points[] allPoints) {
+        int maxLengthBottom = 0;
         Points[] secondHalf = Arrays.copyOfRange(allPoints, allPoints.length / 2, allPoints.length);
         for (Points p : secondHalf) {
-            if (p.getHowManyCheckers() > maxLength2) {
-                maxLength2 = p.getHowManyCheckers();
+            if (p.getHowManyCheckers() > maxLengthBottom) {
+                maxLengthBottom = p.getHowManyCheckers();
             }
         }
-        return maxLength2;
+        return maxLengthBottom;
     }
 
     public static String whatToPrint1(Points point, int length) {
