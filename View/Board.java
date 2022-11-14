@@ -14,6 +14,7 @@ public class Board {
         int length2 = lengthToPrint2(allPoints);
         Checkers bar = new Checkers(null);
         Player whatPlayer = whatPlayerTurn(player_1, player_2);
+        pipDisplay(whatPlayer, allPoints);
         System.out.println("\n 12 11 10 9  8  7  |6  5  4  3  2  1      It's your turn " + whatPlayer);
         System.out.println("-------------------|-------------------   [" + bothDie[0].getDots() + "] ["
                 + bothDie[1].getDots() + "]");
@@ -58,6 +59,54 @@ public class Board {
         }
         System.out.println("-------------------|-------------------");
         System.out.println("13 14 15 16 17 18  |19 20 21 22 23 24");
+        pipDisplayBottom(whatPlayer, allPoints);
+
+    }
+
+    private static void pipDisplayBottom(Player whatPlayer, Points[] allPoints) {
+        System.out.print(" ");
+        for (int i = 12; i < 24; i++) {
+            if (i == 19){
+                System.out.print(" ");
+            }
+            if (whatPlayer.getColour()==Colour.W) {
+                if (allPoints[i].getLength()>0 && allPoints[i].getCheckerColour(allPoints[i].getCheckerIndex(0))==Colour.W) {
+                    System.out.print(allPoints[i].getHowManyCheckers() + "  ");
+                } else {
+                    System.out.print("   ");
+                }
+            } else if (whatPlayer.getColour()==Colour.B) {
+                if (allPoints[i].getLength()>0 && allPoints[i].getCheckerColour(allPoints[i].getCheckerIndex(0))==Colour.B) {
+                    System.out.print(allPoints[i].getHowManyCheckers() + "  ");
+                } else {
+                    System.out.print("   ");
+                } 
+            }
+        }
+    }
+
+    private static void pipDisplay(Player whatPlayer, Points[] allPoints) {
+        System.out.print(" ");
+        for (int i = 11; i > 0; i--) {
+            if (i == 7){
+                System.out.print(" ");
+            }
+            if (whatPlayer.getColour()==Colour.W) {
+                System.out.print(allPoints[i].getLength());
+                System.out.print(allPoints[i].getCheckerColour(allPoints[i].getCheckerIndex(0)));
+                if (allPoints[i].getLength()>0 && allPoints[i].getCheckerColour(allPoints[i].getCheckerIndex(0))==Colour.W) {
+                    System.out.print(allPoints[i].getHowManyCheckers() + "  ");
+                } else {
+                    System.out.print("   ");
+                }
+            } else if (whatPlayer.getColour()==Colour.B) {
+                if (allPoints[i].getLength()>0 && allPoints[i].getCheckerColour(allPoints[i].getCheckerIndex(0))==Colour.B) {
+                    System.out.print(allPoints[i].getHowManyCheckers() + "  ");
+                } else {
+                    System.out.print("   ");
+                } 
+            }
+        }
     }
 
     public static String whatIsBar(Checkers bar) {

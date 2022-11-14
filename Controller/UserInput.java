@@ -25,11 +25,8 @@ public class UserInput {
         } else if (userCommand.equalsIgnoreCase("R")) {
             Dice.rollDie(bothDie);
         } else if (userCommand.equalsIgnoreCase("Pip")) {
-            if (player_1.getTurnToken() == 1) {
-                System.out.println(player_1 + " has " + player_1.getCheckerCount() + " checkers left!");
-            } else {
-                System.out.println(player_2 + " has " + player_2.getCheckerCount() + " checkers left!");
-            }
+            System.out.println(player_1 + " has " + player_1.getCheckerCount() + " checkers left!");
+            System.out.println(player_2 + " has " + player_2.getCheckerCount() + " checkers left!");
         } else if (userCommand.equalsIgnoreCase("hint")) {
             ArrayList<String> possibleMoves = possibleMoves(bothDie, allPoints, player_1, player_2);
             System.out.println("Enter pip to see player pip. Or enter a number from the moves listed below:\n");
