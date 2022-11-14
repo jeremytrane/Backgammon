@@ -29,16 +29,9 @@ public class UserInput {
         } else if (userCommand.equalsIgnoreCase("hint")) {
             ArrayList<String> possibleMoves = ValidMoves.possibleMoves(bothDie, allPoints, player_1, player_2);
             System.out.println("Enter pip to see player pip. Or enter a number from the moves listed below:\n");
-            printPossibleCommands(possibleMoves);
+            ValidMoves.printPossibleCommands(possibleMoves);
         } else {
             System.out.println("Invalid command!");
         }
     }
-
-    public void printPossibleCommands(ArrayList<String> possibleMoves) {
-        for (int i = 0; i < possibleMoves.size(); i++) {
-            System.out.println("[" + i + "] - Move a checker from point " + possibleMoves.get(i).split(" ")[0] + " to point " + possibleMoves.get(i).split(" ")[1]);
-        }
-    }
-
 }

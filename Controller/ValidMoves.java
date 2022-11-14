@@ -87,5 +87,11 @@ public class ValidMoves {
         }
         return possibleMoves;
     }
+
+    public static void printPossibleCommands(ArrayList<String> possibleMoves) {
+        for (int i = 0; i < possibleMoves.size(); i++) {
+            System.out.println("[" + i + "] - Move a checker from point " + possibleMoves.get(i).split(" ")[0] + " to point " + possibleMoves.get(i).split(" ")[1]);
+        }
+    }
     
 }
