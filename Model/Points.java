@@ -37,4 +37,8 @@ public class Points {
         return checkers.get(i);
     }
 
+    public int getPointNumber() {
+        return pointNumber;
+    }
+
 }
