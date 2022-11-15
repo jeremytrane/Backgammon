@@ -43,7 +43,7 @@ public class Setup {
 
     public static Points[] defaultBoard() {
 
-        Points[] allPoints = new Points[24];
+        Points[] allPoints = new Points[26];
         allPoints[0] = new Points(Colour.W, 2, 1);
         allPoints[1] = new Points(null, 0, 2);
         allPoints[2] = new Points(null, 0, 3);
@@ -68,6 +68,12 @@ public class Setup {
         allPoints[21] = new Points(null, 0, 22);
         allPoints[22] = new Points(null, 0, 23);
         allPoints[23] = new Points(Colour.B, 2, 24);
+
+        //This is the point for the white bar
+        allPoints[24] = new Points(Colour.W, 0, 25);
+        //This is the point for the black bar
+        allPoints[25] = new Points(Colour.B, 0, 26);
+
 
         return allPoints;
 

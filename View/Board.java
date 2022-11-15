@@ -15,8 +15,8 @@ public class Board {
         Checkers bar = new Checkers(null);
         Player whatPlayer = whatPlayerTurn(player_1, player_2);
         pipDisplayTop(whatPlayer, allPoints);
-        System.out.println("\n 12    11    10    9     8     7     |6     5     4     3     2     1      It's your turn " + whatPlayer);
-        System.out.println("\u001B[32m=====================================\u001B[0m|\u001B[32m=====================================\u001B[0m   [" + bothDie[0].getDots() + "] ["
+        System.out.println("\n 12    11    10    9     8     7     \u001B[32m|   |\u001B[0m6     5     4     3     2     1      It's your turn " + whatPlayer);
+        System.out.println("\u001B[32m=====================================|===|=====================================\u001B[0m   [" + bothDie[0].getDots() + "] ["
                 + bothDie[1].getDots() + "]");
 
         for (int i = 0; i < lengthTop; i++) {
@@ -32,12 +32,12 @@ public class Board {
             String point10 = whatToPrintTop(allPoints[9], i);
             String point11 = whatToPrintTop(allPoints[10], i);
             String point12 = whatToPrintTop(allPoints[11], i);
+            String point24 = whatIsBar(allPoints[24], i);
 
-            System.out.print("\u001B[32m|\u001B[0m" + point12 + point11 + point10 + point9 + point8 + point7 + "\u001B[32m|\u001B[0m" + point6 + point5 + point4
+            System.out.print("\u001B[32m|\u001B[0m" + point12 + point11 + point10 + point9 + point8 + point7 + "\u001B[32m|" + point24 + "|\u001B[0m" + point6 + point5 + point4
                     + point3 + point2 + point1 + "\u001B[32m|\u001B[0m\n");
         }
-        String barToPrint = whatIsBar(bar);
-        System.out.println("\u001B[32m=====================================\u001B[0m" + barToPrint + "\u001B[32m=====================================\u001B[0m");
+        System.out.println("\u001B[32m=====================================|BAR|=====================================\u001B[0m");
 
         for (int i = lengthBottom; i > -1; i--) {
             String point13 = whatToPrintBottom(allPoints[12], i);
@@ -52,13 +52,15 @@ public class Board {
             String point22 = whatToPrintBottom(allPoints[21], i);
             String point23 = whatToPrintBottom(allPoints[22], i);
             String point24 = whatToPrintBottom(allPoints[23], i);
+            String point25 = whatIsBar(allPoints[25], i);
 
-            System.out.print("\u001B[32m|\u001B[0m" + point13 + point14 + point15 + point16 + point17 + point18 + "\u001B[32m|\u001B[0m" + point19 + point20
+
+            System.out.print("\u001B[32m|\u001B[0m" + point13 + point14 + point15 + point16 + point17 + point18 + "\u001B[32m|" + point25 + "|\u001B[0m" + point19 + point20
                     + point21 + point22 + point23 + point24 + "\u001B[32m|\u001B[0m\n");
 
         }
-        System.out.println("\u001B[32m=====================================\u001B[0m|\u001B[32m=====================================\u001B[0m");
-        System.out.println("13    14    15    16    17    18     |19    20    21    22    23    24");
+        System.out.println("\u001B[32m=====================================|===|=====================================\u001B[0m");
+        System.out.println("13    14    15    16    17    18     \u001B[32m|   |\u001B[0m19    20    21    22    23    24");
         pipDisplayBottom(whatPlayer, allPoints);
 
     }
@@ -66,7 +68,7 @@ public class Board {
     private static void pipDisplayBottom(Player whatPlayer, Points[] allPoints) {
         for (int i = 12; i < 24; i++) {
             if (i == 18){
-                System.out.print("  ");
+                System.out.print("      ");
             }
             if (whatPlayer.getColour()==Colour.W) {
                 if (allPoints[i].getLength()>0 && allPoints[i].getCheckerColour(allPoints[i].getCheckerIndex(0))==Colour.W) {
@@ -88,7 +90,7 @@ public class Board {
         System.out.print(" ");
         for (int i = 11; i > -1; i--) {
             if (i == 5){
-                System.out.print(" ");
+                System.out.print("     ");
             }
             if (whatPlayer.getColour()==Colour.W) {
                 if (allPoints[i].getLength()>0 && allPoints[i].getCheckerColour(allPoints[i].getCheckerIndex(0))==Colour.W) {
@@ -126,15 +128,6 @@ public class Board {
         }
     } 
 
-    public static String whatIsBar(Checkers bar) {
-        if (bar.getCheckerColour() == Colour.B)
-            return "\u001B[31mX   \u001B[0m";
-        else if (bar.getCheckerColour() == Colour.W) {
-            return "\u001B[37mX   \u001B[0m";
-        } else
-            return "O";
-    }
-
     public static int lengthToPrintTop(Points[] allPoints) {
         int maxLengthTop = 0;
         Points[] firstHalf = Arrays.copyOfRange(allPoints, 0, allPoints.length / 2);
@@ -142,6 +135,9 @@ public class Board {
             if (p.getHowManyCheckers() > maxLengthTop) {
                 maxLengthTop = p.getHowManyCheckers();
             }
+        }
+        if (allPoints[24].getLength() > maxLengthTop) {
+            maxLengthTop = allPoints[24].getLength();
         }
         return maxLengthTop;
     }
@@ -154,7 +150,23 @@ public class Board {
                 maxLengthBottom = p.getHowManyCheckers();
             }
         }
+        if (allPoints[25].getLength() > maxLengthBottom) {
+            maxLengthBottom = allPoints[24].getLength();
+        }
         return maxLengthBottom;
+    }
+
+    public static String whatIsBar(Points point, int length) {
+        if (point.getHowManyCheckers() > 0) {
+            Colour checkerColour = point.getCheckerColour(point.getCheckerIndex(0));
+            if (point.getHowManyCheckers() > length && checkerColour == Colour.B) {
+                return "\u001B[31mX  \u001B[0m";
+            } else if (point.getHowManyCheckers() > length && checkerColour == Colour.W) {
+                return "\u001B[37mX  \u001B[0m";
+            } else
+                return "   ";
+        }
+        return "   ";
     }
 
     public static String whatToPrintTop(Points point, int length) {
