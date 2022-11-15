@@ -10,7 +10,6 @@ import Setup.Setup;
 import View.Board;
 import Controller.UserInput;
 
-
 public class Backgammon {
 
     public static void main(String[] args) {

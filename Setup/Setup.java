@@ -60,7 +60,7 @@ public class Setup {
         allPoints[13] = new Points(null, 0, 14);
         allPoints[14] = new Points(null, 0, 15);
         allPoints[15] = new Points(null, 0, 16);
-        allPoints[16] = new Points(Colour.B, 3, 17);
+        allPoints[16] = new Points(Colour.W , 3, 17);
         allPoints[17] = new Points(null, 0, 18);
         allPoints[18] = new Points(Colour.W, 5, 19);
         allPoints[19] = new Points(null, 0, 20);
