@@ -12,7 +12,6 @@ public class Board {
     public static void Draw(Points[] allPoints, Dice[] bothDie, Player player_1, Player player_2) {
         int lengthTop = lengthToPrintTop(allPoints);
         int lengthBottom = lengthToPrintBottom(allPoints);
-        Checkers bar = new Checkers(null);
         Player whatPlayer = whatPlayerTurn(player_1, player_2);
         pipDisplayTop(whatPlayer, allPoints);
         System.out.println("\n 12    11    10    9     8     7     \u001B[32m|   |\u001B[0m6     5     4     3     2     1      It's your turn " + whatPlayer);
