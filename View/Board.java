@@ -1,6 +1,5 @@
 package View;
 
-import Model.Checkers;
 import Model.Colour;
 import Model.Dice;
 import Model.Player;
