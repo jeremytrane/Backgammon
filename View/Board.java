@@ -118,11 +118,11 @@ public class Board {
             }   
         } else if (currentPoint.getLength() > 0 && currentPoint.getCheckerColour(currentPoint.getCheckerIndex(0))==Colour.B) {
             if ((25-currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() > 100) {
-                System.out.print((25-currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() + "   ");
+                System.out.print("\u001B[31m" + (25-currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() + "   \u001B[0m");
             } else if ((25-currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() < 100 && (25-currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() > 9) {
-                System.out.print((25-currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() + "    ");
+                System.out.print("\u001B[31m" + (25-currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() + "    \u001B[0m");
             }  else {
-            System.out.print((25-currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() + "     ");
+            System.out.print("\u001B[31m" + (25-currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() + "     \u001B[0m");
             }
         }
     } 
