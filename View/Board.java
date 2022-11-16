@@ -58,9 +58,9 @@ public class Board {
 
         }
         System.out.println("\u001B[32m=====================================|===|=====================================\u001B[0m");
-        System.out.println("13    14    15    16    17    18     \u001B[32m|   |\u001B[0m19    20    21    22    23    24\n");
+        System.out.println("13    14    15    16    17    18     \u001B[32m|   |\u001B[0m19    20    21    22    23    24");
         pipDisplayBottom(whatPlayer, allPoints);
-
+        System.out.print("\n");
     }
 
     private static void pipDisplayBottom(Player whatPlayer, Points[] allPoints) {
