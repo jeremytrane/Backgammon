@@ -187,11 +187,11 @@ public class ValidMoves {
         char[] listOrder = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
         if (!checkFinalQuarter(allPoints, player_1, player_2)) {
             for (int i = 0; i < possibleMoves.size(); i++) {
-                System.out.println("[" + listOrder[i] + "] - Move a checker from point " + possibleMoves.get(i).split(" ")[0] + " to point " + possibleMoves.get(i).split(" ")[1]);
+                System.out.println("[" + listOrder[i] + "]: " + possibleMoves.get(i).split(" ")[0] + "-" + possibleMoves.get(i).split(" ")[1]);
             }
         } else if (checkFinalQuarter(allPoints, player_1, player_2)) {
             for (int i = 0; i < possibleMovesLastQuarter.size(); i++) {
-                System.out.println("[" + listOrder[i] + "] - Move a checker from point " + possibleMovesLastQuarter.get(i).split(" ")[0] + " to point " + possibleMovesLastQuarter.get(i).split(" ")[1]);
+                System.out.println("[" + listOrder[i] + "]: " + possibleMovesLastQuarter.get(i).split(" ")[0] + "-" + possibleMovesLastQuarter.get(i).split(" ")[1]);
             }
         }
     }
@@ -207,6 +207,10 @@ public class ValidMoves {
             }
         }
         return false;
+    }
+
+    public void parsePossibleMoves() {
+
     }
 }
 
