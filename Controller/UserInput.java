@@ -29,8 +29,9 @@ public class UserInput {
             pipCount(player_1, player_2, allPoints);
         } else if (userCommand.equalsIgnoreCase("hint")) {
             ArrayList<String> possibleMoves = ValidMoves.possibleMoves(bothDie, allPoints, player_1, player_2);
+            ArrayList<String> possibleMovesLastQuarter = ValidMoves.possibleMoves(bothDie, allPoints, player_1, player_2);
             System.out.println("Enter pip to see player pip. Or enter a number from the moves listed below:\n");
-            ValidMoves.printPossibleCommands(possibleMoves);
+            ValidMoves.printPossibleCommands(possibleMoves, possibleMovesLastQuarter, allPoints, player_1, player_2);
         } else {
             System.out.println("Invalid command!");
         }

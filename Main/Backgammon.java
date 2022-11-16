@@ -34,9 +34,7 @@ public class Backgammon {
         while (player_1.getCheckerCount() != 0 || player_2.getCheckerCount() != 0) {
             Board.Draw(allPoints, bothDie, player_1, player_2);
 
-            System.out.println("Please enter your move");
-            System.out.println(
-                    "If you wish to enter a move please enter it in the order: point_number number_of_points_to_move.");
+            System.out.println("Enter your move:");
             String move = in.nextLine();
             userInput.parseCommand(move, player_1, player_2, bothDie, allPoints);
 
