@@ -1,7 +1,5 @@
 package Controller;
 
-import java.util.ArrayList;
-
 import Model.Colour;
 import Model.Dice;
 import Model.Player;
@@ -20,18 +18,15 @@ public class UserInput {
      */
     public void parseCommand(String userCommand, Player player_1, Player player_2, Dice[] bothDie, Points[] allPoints) {
 
-        if (userCommand.equalsIgnoreCase("Q")) {
+        if (userCommand.equalsIgnoreCase("quit")) {
             System.out.println("Game over!");
             System.exit(0);
-        } else if (userCommand.equalsIgnoreCase("R")) {
+        } else if (userCommand.equalsIgnoreCase("roll")) {
             Dice.rollDie(bothDie);
         } else if (userCommand.equalsIgnoreCase("Pip")) {
             pipCount(player_1, player_2, allPoints);
         } else if (userCommand.equalsIgnoreCase("hint")) {
-            ArrayList<String> possibleMoves = ValidMoves.possibleMoves(bothDie, allPoints, player_1, player_2);
-            ArrayList<String> possibleMovesLastQuarter = ValidMoves.possibleMoves(bothDie, allPoints, player_1, player_2);
-            System.out.println("Enter pip to see player pip. Or enter a number from the moves listed below:\n");
-            ValidMoves.printPossibleCommands(possibleMoves, possibleMovesLastQuarter, allPoints, player_1, player_2);
+            System.out.println("\u001B[1mEnter pip to see player's pip count, roll to roll the die, quit to exit the game, Or enter a letter from the moves listed below:");
         } else {
             System.out.println("Invalid command!");
         }
