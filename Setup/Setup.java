@@ -43,7 +43,7 @@ public class Setup {
 
     public static Points[] defaultBoard() {
 
-        Points[] allPoints = new Points[26];
+        Points[] allPoints = new Points[28];
         allPoints[0] = new Points(Colour.W, 2, 1);
         allPoints[1] = new Points(null, 0, 2);
         allPoints[2] = new Points(null, 0, 3);
@@ -73,6 +73,11 @@ public class Setup {
         allPoints[24] = new Points(Colour.W, 0, 25);
         //This is the point for the black bar
         allPoints[25] = new Points(Colour.B, 0, 26);
+
+        //This is the point for white stack-off
+        allPoints[26] = new Points(Colour.W, 0, 27);
+        //This is the point for black stack-off
+        allPoints[27] = new Points(Colour.B, 0, 28);
 
 
         return allPoints;
