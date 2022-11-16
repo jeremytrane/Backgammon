@@ -125,6 +125,14 @@ public class ValidMoves {
                             possibleMovesLastQuarter.add((i + 1) + " " + ((i + 1) + bothDie[1].getDots() + bothDie[0].getDots()));
                         }
                     }
+                    // If first die stack-off
+                    if ((i + bothDie[0].getDots()) > 23) {
+                        possibleMovesLastQuarter.add((i + 1) + " " + ((i + 1) + bothDie[0].getDots()));
+                    }
+                    // If second die stack-off
+                    if ((i + bothDie[1].getDots()) > 23) {
+                        possibleMovesLastQuarter.add((i + 1) + " " + ((i + 1) + bothDie[1].getDots()));
+                    }
                 }
             }
         } else {
@@ -160,6 +168,14 @@ public class ValidMoves {
                         if (allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots()].getLength() > 0  && allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots()].getCheckerColour(allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots()].getCheckerIndex(0)) == Colour.B) {
                             possibleMovesLastQuarter.add(24 - (i ) + " " + (24 - (i ) - bothDie[1].getDots() - bothDie[0].getDots()));
                         }
+                    }
+                    // If first die stack-off
+                    if ((i + bothDie[0].getDots()) > 23) {
+                        possibleMovesLastQuarter.add(24 - (i ) + " " + (24 - (i ) - bothDie[0].getDots()));
+                    }
+                    // If second die stack-off
+                    if ((i + bothDie[1].getDots()) > 23) {
+                        possibleMovesLastQuarter.add(24 - (i ) + " " + (24 - (i ) - bothDie[1].getDots()));
                     }
                 }
             }

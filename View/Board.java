@@ -13,8 +13,8 @@ public class Board {
         int lengthBottom = lengthToPrintBottom(allPoints);
         Player whatPlayer = whatPlayerTurn(player_1, player_2);
         pipDisplayTop(whatPlayer, allPoints);
-        System.out.println("\n 12    11    10    9     8     7     \u001B[32m|   |\u001B[0m6     5     4     3     2     1      It's your turn " + whatPlayer);
-        System.out.println("\u001B[32m=====================================|===|=====================================\u001B[0m   [" + bothDie[0].getDots() + "] ["
+        System.out.println("\n 12    11    10    9     8     7     \u001B[32m|   |\u001B[0m6     5     4     3     2     1           It's your turn " + whatPlayer);
+        System.out.println("\u001B[32m=====================================|===|=====================================\u001B[0m     Dice: [" + bothDie[0].getDots() + "] ["
                 + bothDie[1].getDots() + "]");
 
         for (int i = 0; i < lengthTop; i++) {
