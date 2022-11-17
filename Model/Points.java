@@ -41,4 +41,11 @@ public class Points {
         return pointNumber;
     }
 
+    public void moveChecker(Points pointToMoveFrom, Points pointToMoveTo) {
+        pointToMoveFrom.howManyCheckers -= 1;
+        pointToMoveTo.howManyCheckers += 1;
+        pointToMoveTo.checkers.add(pointToMoveFrom.getCheckerIndex(0));
+        pointToMoveFrom.checkers.remove(pointToMoveFrom.getCheckerIndex(0));
+    }
+
 }

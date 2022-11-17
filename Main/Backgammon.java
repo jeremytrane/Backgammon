@@ -34,11 +34,11 @@ public class Backgammon {
         Setup.getFirstTurn(bothDie, player_1, player_2);
 
         while (player_1.getCheckerCount() != 0 || player_2.getCheckerCount() != 0) {
-            System.out.print("=================================================================================================================================================\n");
+            System.out.print("=============================================================================================================================================\n");
             Board.Draw(allPoints, bothDie, player_1, player_2);
             ArrayList<String> possibleMoves = ValidMoves.possibleMoves(bothDie, allPoints, player_1, player_2);
             ArrayList<String> possibleMovesLastQuarter = ValidMoves.possibleMoves(bothDie, allPoints, player_1, player_2);
-            ValidMoves.printPossibleCommands(possibleMoves, possibleMovesLastQuarter, allPoints, player_1, player_2);
+            ValidMoves.printPossibleCommands(possibleMoves, possibleMovesLastQuarter, allPoints, player_1, player_2, bothDie);
             System.out.println("\nEnter your move:");
             String move = in.nextLine();
             userInput.parseCommand(move, player_1, player_2, bothDie, allPoints);

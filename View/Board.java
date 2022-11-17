@@ -109,19 +109,19 @@ public class Board {
     public static void pipCount(Points currentPoint) {
         if (currentPoint.getLength() > 0 && currentPoint.getCheckerColour(currentPoint.getCheckerIndex(0))==Colour.W) {
             if (currentPoint.getPointNumber()*currentPoint.getHowManyCheckers() > 100) {
-                System.out.print(currentPoint.getPointNumber()*currentPoint.getHowManyCheckers() + "   ");
+                System.out.print((25-currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() + "   ");
             } else if (currentPoint.getPointNumber()*currentPoint.getHowManyCheckers() < 100 && currentPoint.getPointNumber()*currentPoint.getHowManyCheckers() > 9) {
-                System.out.print(currentPoint.getPointNumber()*currentPoint.getHowManyCheckers() + "    ");
+                System.out.print((25-currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() + "    ");
             }  else {
-            System.out.print(currentPoint.getPointNumber()*currentPoint.getHowManyCheckers() + "     ");
+            System.out.print((25-currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() + "     ");
             }   
         } else if (currentPoint.getLength() > 0 && currentPoint.getCheckerColour(currentPoint.getCheckerIndex(0))==Colour.B) {
-            if ((25-currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() > 100) {
-                System.out.print("\u001B[31m" + (25-currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() + "   \u001B[0m");
-            } else if ((25-currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() < 100 && (25-currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() > 9) {
-                System.out.print("\u001B[31m" + (25-currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() + "    \u001B[0m");
+            if ((currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() > 100) {
+                System.out.print("\u001B[31m" + (currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() + "   \u001B[0m");
+            } else if ((currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() < 100 && (25-currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() > 9) {
+                System.out.print("\u001B[31m" + (currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() + "    \u001B[0m");
             }  else {
-            System.out.print("\u001B[31m" + (25-currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() + "     \u001B[0m");
+            System.out.print("\u001B[31m" + (currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() + "     \u001B[0m");
             }
         }
     } 

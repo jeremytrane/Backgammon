@@ -31,7 +31,7 @@ public class UserInput {
         } else if (userCommand.equalsIgnoreCase("hint")) {
             System.out.println("\u001B[1mEnter pip to see player's pip count, roll to roll the die, quit to exit the game, Or enter a letter from the moves listed below:");
         } else if (contains) {
-            System.out.println("Valid command!");
+            ValidMoves.makeMove(userCommand, bothDie, allPoints, player_1, player_2);
         } else {
             System.out.println("Invalid command!");
         }
@@ -42,9 +42,9 @@ public class UserInput {
         int blackPips = 0;
         for (Points p:allPoints) {
             if (p.getLength()>0 && p.getCheckerColour(p.getCheckerIndex(0))==Colour.W)  {
-                whitePips += p.getHowManyCheckers()*p.getPointNumber();
+                whitePips += p.getHowManyCheckers()*(25-p.getPointNumber());
             } else if (p.getLength()>0 && p.getCheckerColour(p.getCheckerIndex(0))==Colour.B) {
-                blackPips += p.getHowManyCheckers()*(25-p.getPointNumber());
+                blackPips += p.getHowManyCheckers()*p.getPointNumber();
             }
         }
         System.out.println(player_1 + " pip count: " + whitePips);
