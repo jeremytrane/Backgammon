@@ -2,6 +2,7 @@ package Controller;
 
 import java.util.Arrays;
 
+import Main.Backgammon;
 import Model.Colour;
 import Model.Dice;
 import Model.Player;
@@ -19,6 +20,7 @@ public class UserInput {
      * @param allPoints
      */
     public void parseCommand(String userCommand, Player player_1, Player player_2, Dice[] bothDie, Points[] allPoints) {
+        int turnTime = 0;
         String[] levalMovesList = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
         boolean contains = Arrays.stream(levalMovesList).anyMatch(userCommand::equals);
         if (userCommand.equalsIgnoreCase("quit")) {
@@ -32,9 +34,15 @@ public class UserInput {
             System.out.println("\u001B[1mEnter pip to see player's pip count, roll to roll the die, quit to exit the game, Or enter a letter from the moves listed below:");
         } else if (contains) {
             ValidMoves.makeMove(userCommand, bothDie, allPoints, player_1, player_2);
+            turnTime += 1;
+            if (turnTime == 2) {
+                turnTime = 0;
+            Backgammon.swapTurn(player_1, player_2);
+            }
         } else {
             System.out.println("Invalid command!");
         }
+ 
     }
 
     public void pipCount(Player player_1, Player player_2, Points[] allPoints) { 
