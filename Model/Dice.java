@@ -26,4 +26,9 @@ public class Dice {
 		die[1].setDots(randomNumber[1]);
 	}
 
+	public static void setDie(Dice[] die, int die_1, int die_2) {
+		die[0].setDots(die_1);
+		die[1].setDots(die_2);
+	}
+
 }
