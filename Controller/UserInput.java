@@ -1,6 +1,9 @@
 package Controller;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Arrays;
+import java.util.Scanner;
 
 import Main.Backgammon;
 import Model.Colour;
@@ -35,6 +38,12 @@ public class UserInput {
             pipCount(player_1, player_2, allPoints);
         } else if (userCommand.equalsIgnoreCase("hint")) {
             System.out.println("\u001B[1mEnter pip to see player's pip count, roll to roll the die, quit to exit the game, Or enter a letter from the moves listed below:");
+        } else if (userCommand.equalsIgnoreCase("test")) {
+            try {
+                testFromTxtFile(player_1, player_2, bothDie, allPoints);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         } else if (contains) {
             ValidMoves.makeMove(userCommand, bothDie, allPoints, player_1, player_2);
             turnTime += 1;
@@ -60,5 +69,20 @@ public class UserInput {
         }
         System.out.println(player_1 + " pip count: " + whitePips);
         System.out.println(player_2 + " pip count: " + blackPips);
+    }
+
+    public void testFromTxtFile(Player player_1, Player player_2, Dice[] bothDie, Points[] allPoints) throws FileNotFoundException{
+        File file = new File("Controller/test.txt");
+        Scanner sc = new Scanner(file);
+        String command;
+        int i = 1;
+
+        while (sc.hasNextLine()){
+            command = sc.nextLine();
+            System.out.println("\nCommand "+ i + ":  " + command);
+            parseCommand(command, player_1, player_2, bothDie, allPoints);
+            i++;
+        }
+        sc.close();
     }
 }
