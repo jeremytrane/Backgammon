@@ -20,12 +20,18 @@ public class SetupTest {
         assertNotNull(bothDie[1]);
     }
 
+    @Test
+    // @DisplayName("Checks that player is created.")
     public void testPlayerCreation(){
-        Scanner in = new Scanner(System.in);
+        String player_name = "J";
+        Scanner in = new Scanner(player_name);
         Player player = Setup.setupPlayer(in);
         assertNotNull(player);
+        assertEquals(player_name, player.getName());
     }
 
+    @Test
+    // @DisplayName("Checks that points are created.")
     public void testPointCreation(){
         Points[] points = Setup.defaultBoard();
 
