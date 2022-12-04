@@ -1,6 +1,10 @@
 package Controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 import Model.Colour;
 import Model.Dice;
 import Model.Player;
@@ -205,16 +209,24 @@ public class ValidMoves {
     public static void printPossibleCommands(ArrayList<String> possibleMoves, ArrayList<String> possibleMovesLastQuarter, Points[] allPoints, Player player_1, Player player_2, Dice[] bothDie) {
         char[] listOrder = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
         if (!checkFinalQuarter(allPoints, player_1, player_2)) {
+            removeDoubleMoves(possibleMoves);
             parsePossibleMoves(possibleMoves, bothDie);
             for (int i = 0; i < possibleMoves.size(); i++) {
                 System.out.println("[" + listOrder[i] + "]: " + possibleMoves.get(i).split(" ")[0] + "-" + possibleMoves.get(i).split(" ")[1]);            }
         } else if (checkFinalQuarter(allPoints, player_1, player_2)) {
+            removeDoubleMoves(possibleMoves);
             parsePossibleMovesLastQuarter(possibleMovesLastQuarter, bothDie);
             for (int i = 0; i < possibleMovesLastQuarter.size(); i++) {
                 System.out.println("[" + listOrder[i] + "]: " + possibleMovesLastQuarter.get(i).split(" ")[0] + "-" + possibleMovesLastQuarter.get(i).split(" ")[1]);            }
         }
     }
     
+    private static void removeDoubleMoves(ArrayList<String> possibleMoves) {
+        Set<String> set = new HashSet<>(possibleMoves);
+        possibleMoves.clear();
+        possibleMoves.addAll(set);
+    }
+
     public static boolean checkFinalQuarter(Points[] allPoints, Player player_1, Player player_2) {
         if (player_1.getTurnToken() == 1) {
             if (allPoints[18].getHowManyCheckers() + allPoints[19].getHowManyCheckers() + allPoints[20].getHowManyCheckers() + allPoints[21].getHowManyCheckers() + allPoints[22].getHowManyCheckers() + allPoints[23].getHowManyCheckers() + allPoints[26].getHowManyCheckers() == 15) {
