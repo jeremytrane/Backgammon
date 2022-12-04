@@ -203,16 +203,15 @@ public class ValidMoves {
     }
 
     public static void printPossibleCommands(ArrayList<String> possibleMoves, ArrayList<String> possibleMovesLastQuarter, Points[] allPoints, Player player_1, Player player_2, Dice[] bothDie) {
-        char[] listOrder = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
         if (!checkFinalQuarter(allPoints, player_1, player_2)) {
             parsePossibleMoves(possibleMoves, bothDie);
             for (int i = 0; i < possibleMoves.size(); i++) {
-                System.out.println("[" + listOrder[i] + "]: " + possibleMoves.get(i).split(" ")[0] + "-" + possibleMoves.get(i).split(" ")[1]);
+                System.out.println("[" + i + "]: " + possibleMoves.get(i).split(" ")[0] + "-" + possibleMoves.get(i).split(" ")[1]);
             }
         } else if (checkFinalQuarter(allPoints, player_1, player_2)) {
             parsePossibleMovesLastQuarter(possibleMovesLastQuarter, bothDie);
             for (int i = 0; i < possibleMovesLastQuarter.size(); i++) {
-                System.out.println("[" + listOrder[i] + "]: " + possibleMovesLastQuarter.get(i).split(" ")[0] + "-" + possibleMovesLastQuarter.get(i).split(" ")[1]);
+                System.out.println("[" + i + "]: " + possibleMovesLastQuarter.get(i).split(" ")[0] + "-" + possibleMovesLastQuarter.get(i).split(" ")[1]);
             }
         }
     }
@@ -236,14 +235,10 @@ public class ValidMoves {
         for (int i = 0; i < possibleMoves.size(); i++) {
             firstPoint[i] = possibleMoves.get(i).split(" ")[0];
             secondPoint[i] = possibleMoves.get(i).split(" ")[1];
-            //System.out.print(firstPoint[i] + " " + secondPoint[i] + "\n");
         }
 
         for (int j = 0; j < possibleMoves.size()-1; j++) {
-            if (firstPoint[j] == firstPoint[j+1] && Integer.parseInt(secondPoint[j]) - Integer.parseInt(firstPoint[j]) == bothDie[0].getDots() && Integer.parseInt(secondPoint[j+1]) - Integer.parseInt(firstPoint[j+1]) == bothDie[1].getDots()) {
-                System.out.print("removed");
-                possibleMoves.remove(possibleMoves.get(j));
-            }
+            
         }
     }
 
