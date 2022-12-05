@@ -32,16 +32,19 @@ public class Backgammon {
         player_2.setColour(Colour.B);
 
         Setup.getFirstTurn(bothDie, player_1, player_2);
-        boolean moveMade = false;
+        boolean moveMade = true;
         int spacesToMove;
         int[] dieToRemove;
         while (player_1.getCheckerCount() != 0 || player_2.getCheckerCount() != 0) {
 
-            bothDie = Setup.setupDie();
-            Dice.rollDie(bothDie);
+            if(moveMade){
+                bothDie = Setup.setupDie();
+                Dice.rollDie(bothDie);
+            }
             bothDie = Dice.checkDouble(bothDie);
 
             while(bothDie.length > 0){
+                
                 System.out.print("===========================================================================================================================================\n");
                 Board.Draw(allPoints, bothDie, player_1, player_2);
                 ArrayList<String> possibleMoves = ValidMoves.possibleMoves(bothDie, allPoints, player_1, player_2);
@@ -56,9 +59,14 @@ public class Backgammon {
                     dieToRemove = removeDieIndex(bothDie,spacesToMove);
                     bothDie = removeDie(bothDie, dieToRemove);
                 }
-                
+                else{
+                    break;
+                }
             }
-            swapTurn(player_1, player_2);
+            if(moveMade){
+                swapTurn(player_1, player_2);
+            }
+            
         }
 
         in.close();
