@@ -143,12 +143,7 @@ public class ValidMoves {
                                 possibleMoves.add(24 - (i ) + " " + (24 - (i ) - bothDie[1].getDots() - bothDie[0].getDots()));
                             }
                         }
-                    } else if (bothDie.length == 3) {
-
-                    } else if (bothDie.length == 4) {
-                        
-                    }
-
+                    } 
                 }
             }
         }
