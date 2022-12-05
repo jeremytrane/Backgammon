@@ -42,26 +42,33 @@ public class Points {
     }
 
     public void moveChecker(Points pointToMoveFrom, Points pointToMoveTo, Points whiteBar, Points blackBar) {
+        boolean bothNotEmpty = false;
+        if(pointToMoveFrom.howManyCheckers>0 && pointToMoveTo.howManyCheckers>0){
+            bothNotEmpty = true;
+        }
+
         pointToMoveFrom.howManyCheckers -= 1;
         pointToMoveTo.howManyCheckers += 1;
-        if(pointToMoveFrom.getCheckerIndex(0).getCheckerColour() != pointToMoveTo.getCheckerIndex(0).getCheckerColour()){
-            if(pointToMoveTo.getCheckerIndex(0).getCheckerColour() == Colour.B){
-                pointToMoveTo.howManyCheckers -= 1;
-                blackBar.howManyCheckers += 1;
-                blackBar.checkers.add(pointToMoveTo.getCheckerIndex(0));
-                pointToMoveTo.checkers.remove(pointToMoveTo.getCheckerIndex(0));
-            }
-            if(pointToMoveTo.getCheckerIndex(0).getCheckerColour() == Colour.W){
-                pointToMoveTo.howManyCheckers -= 1;
-                whiteBar.howManyCheckers += 1;
-                whiteBar.checkers.add(pointToMoveTo.getCheckerIndex(0));
-                pointToMoveTo.checkers.remove(pointToMoveTo.getCheckerIndex(0));
+
+        if(bothNotEmpty){
+            if((pointToMoveFrom.getCheckerIndex(0).getCheckerColour() != pointToMoveTo.getCheckerIndex(0).getCheckerColour())){
+                if(pointToMoveTo.getCheckerIndex(0).getCheckerColour() == Colour.B){
+                    pointToMoveTo.howManyCheckers -= 1;
+                    blackBar.howManyCheckers += 1;
+                    blackBar.checkers.add(pointToMoveTo.getCheckerIndex(0));
+                    pointToMoveTo.checkers.remove(pointToMoveTo.getCheckerIndex(0));
+                }
+                else if(pointToMoveTo.getCheckerIndex(0).getCheckerColour() == Colour.W){
+                    pointToMoveTo.howManyCheckers -= 1;
+                    whiteBar.howManyCheckers += 1;
+                    whiteBar.checkers.add(pointToMoveTo.getCheckerIndex(0));
+                    pointToMoveTo.checkers.remove(pointToMoveTo.getCheckerIndex(0));
+                }
             }
         }
-        else{
-            pointToMoveTo.checkers.add(pointToMoveFrom.getCheckerIndex(0));
-            pointToMoveFrom.checkers.remove(pointToMoveFrom.getCheckerIndex(0));
-        }
+        
+        pointToMoveTo.checkers.add(pointToMoveFrom.getCheckerIndex(0));
+        pointToMoveFrom.checkers.remove(pointToMoveFrom.getCheckerIndex(0));   
     }
 
 }
