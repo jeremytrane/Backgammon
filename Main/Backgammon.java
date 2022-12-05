@@ -115,21 +115,29 @@ public class Backgammon {
         for(int i : indicesToRemove){
             bothDie[i].setDots(7);
         }
-        if(indicesToRemove.length == 1){
-            dieRemoved.remove(indicesToRemove[0]);
-        }
-        else if(indicesToRemove.length == 2){
-            for(int i=0; i<dieRemoved.size();i++){
-                if(bothDie[i].getDots() == 7){
-                    dieRemoved.remove(i);
-                    break;
+
+        if(bothDie.length <= 2){
+            if(indicesToRemove.length == 1){
+                dieRemoved.remove(indicesToRemove[0]);
+            }
+            else if(indicesToRemove.length == 2){
+                for(int i=0; i<dieRemoved.size();i++){
+                    if(bothDie[i].getDots() == 7){
+                        dieRemoved.remove(i);
+                        break;
+                    }
+                }
+                for(int i=0; i<dieRemoved.size();i++){
+                    if(bothDie[i].getDots() == 7){
+                        dieRemoved.remove(i);
+                        break;
+                    }
                 }
             }
-            for(int i=0; i<dieRemoved.size();i++){
-                if(bothDie[i].getDots() == 7){
-                    dieRemoved.remove(i);
-                    break;
-                }
+        }
+        else if(bothDie.length >= 3){
+            for(int i=0; i<indicesToRemove.length;i++){
+                dieRemoved.remove(0);
             }
         }
 
