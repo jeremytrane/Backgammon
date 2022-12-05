@@ -22,8 +22,8 @@ public class UserInput {
      * @param userCommand
      * @param allPoints
      */
-    public void parseCommand(String userCommand, Player player_1, Player player_2, Dice[] bothDie, Points[] allPoints) {
-        int turnTime = 0;
+    public boolean parseCommand(String userCommand, Player player_1, Player player_2, Dice[] bothDie, Points[] allPoints) {
+        boolean moveMade = false;
         String[] levalMovesList = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
         boolean contains = Arrays.stream(levalMovesList).anyMatch(userCommand::equals);
         String[] userCommandSplit = userCommand.split(" ");
@@ -32,6 +32,8 @@ public class UserInput {
             System.exit(0);
         } else if (userCommand.equalsIgnoreCase("roll")) {
             Dice.rollDie(bothDie);
+        } else if (userCommand.equalsIgnoreCase("swap")) {
+            Backgammon.swapTurn(player_1, player_2);    
         } else if (userCommandSplit[0].equalsIgnoreCase("dice") && userCommandSplit.length == 3 && (Integer.parseInt(userCommandSplit[1])>0 && Integer.parseInt(userCommandSplit[1])<7) && (Integer.parseInt(userCommandSplit[2])>0 && Integer.parseInt(userCommandSplit[2])<7)) {
             Dice.setDie(bothDie, Integer.parseInt(userCommandSplit[1]), Integer.parseInt(userCommandSplit[2]));
         } else if (userCommand.equalsIgnoreCase("Pip")) {
@@ -46,15 +48,11 @@ public class UserInput {
             }
         } else if (contains) {
             ValidMoves.makeMove(userCommand, bothDie, allPoints, player_1, player_2);
-            turnTime += 1;
-            if (turnTime == 2) {
-                turnTime = 0;
-            Backgammon.swapTurn(player_1, player_2);
-            }
+            moveMade = true;
         } else {
             System.out.println("Invalid command!");
         }
- 
+        return moveMade;
     }
 
     public void pipCount(Player player_1, Player player_2, Points[] allPoints) { 
