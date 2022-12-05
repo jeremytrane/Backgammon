@@ -313,7 +313,7 @@ public class ValidMoves {
             moveToMake = 0;
         }
         if (!checkFinalQuarter(allPoints, player_1, player_2)) {
-            allPoints[0].moveChecker(allPoints[Integer.parseInt(possibleMoves.get(moveToMake).split(" ")[0])-1], allPoints[Integer.parseInt(possibleMoves.get(moveToMake).split(" ")[1])-1]);
+            allPoints[0].moveChecker(allPoints[Integer.parseInt(possibleMoves.get(moveToMake).split(" ")[0])-1], allPoints[Integer.parseInt(possibleMoves.get(moveToMake).split(" ")[1])-1], allPoints[24],allPoints[25]);
         } else if (checkFinalQuarter(allPoints, player_1, player_2)) {
         }
     }
