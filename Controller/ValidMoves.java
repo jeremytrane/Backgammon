@@ -18,132 +18,140 @@ public class ValidMoves {
         ArrayList<String> possibleMoves = new ArrayList<String>();
         int checkOneDiePlayable1 = 0;
         int checkOneDiePlayable2 = 0;
-        if (player_1.getTurnToken() == 1) {
-            for (int i = 0; i < 24; i++) {
-                if (allPoints[i].getLength() > 0 && allPoints[i].getCheckerColour(allPoints[i].getCheckerIndex(0)) == Colour.W) {
-                    // First dice if point is smaller then 2
-                    if ((i + bothDie[0].getDots()) <= 23 && allPoints[i + bothDie[0].getDots()].getLength() < 2) {
-                        possibleMoves.add((i + 1) + " " + ((i + 1) + bothDie[0].getDots()));
-                        checkOneDiePlayable1 += 1;
-                    }
-                    if(bothDie.length > 1){
-                        // Second dice if point is smaller then 2
-                        if ((i + bothDie[1].getDots()) <= 23 && allPoints[i + bothDie[1].getDots()].getLength() < 2) {
-                            possibleMoves.add((i + 1) + " " + ((i + 1) + bothDie[1].getDots()));
+        if(allPoints[24].getHowManyCheckers()>0){
+            possibleMoves = possibleMovesWhiteBar(bothDie, allPoints);
+        }
+        else if(allPoints[25].getHowManyCheckers()>0){
+            possibleMoves = possibleMovesBlackBar(bothDie, allPoints);
+        }
+        else{
+            if (player_1.getTurnToken() == 1) {
+                for (int i = 0; i < 24; i++) {
+                    if (allPoints[i].getLength() > 0 && allPoints[i].getCheckerColour(allPoints[i].getCheckerIndex(0)) == Colour.W) {
+                        // First dice if point is smaller then 2
+                        if ((i + bothDie[0].getDots()) <= 23 && allPoints[i + bothDie[0].getDots()].getLength() < 2) {
+                            possibleMoves.add((i + 1) + " " + ((i + 1) + bothDie[0].getDots()));
                             checkOneDiePlayable1 += 1;
                         }
-                        // First and second dice if point is smaller then 2
-                        if (checkOneDiePlayable1 != 0 &&(i + bothDie[0].getDots() + bothDie[1].getDots()) <= 23 && allPoints[i + bothDie[0].getDots() + bothDie[1].getDots()].getLength() < 2) {
-                            possibleMoves.add((i + 1) + " " + ((i + 1) + bothDie[1].getDots() + bothDie[0].getDots()));
-                        }
-                    }
-                    if (bothDie.length > 3) {
-                        if (i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots() <= 23 && allPoints[i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots()].getLength() < 2) {
-                            possibleMoves.add((i + 1) + " " + ((i + 1) + bothDie[1].getDots() + bothDie[0].getDots()+ bothDie[2].getDots()));
-                        }
-                        if (i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots() <= 23) {
-                            if (allPoints[i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots()].getLength() > 0 && allPoints[i + bothDie[0].getDots() + bothDie[1].getDots()+ bothDie[2].getDots()].getCheckerColour(allPoints[i + bothDie[0].getDots() + bothDie[1].getDots()+ bothDie[2].getDots()].getCheckerIndex(0)) == Colour.W) {
-                                possibleMoves.add((i + 1) + " " + ((i + 1) + bothDie[1].getDots() + bothDie[0].getDots() + bothDie[2].getDots()));
-                            }
-                        }
-                    } 
-                    if (bothDie.length == 4) {
-                        if (i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots() + bothDie[3].getDots() <= 23 && allPoints[i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots() + bothDie[3].getDots()].getLength() < 2) {
-                            possibleMoves.add((i + 1) + " " + ((i + 1) + bothDie[1].getDots() + bothDie[0].getDots()+ bothDie[2].getDots() + bothDie[3].getDots()));
-                        }
-                        if (i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots() + bothDie[3].getDots() <= 23) {
-                            if (allPoints[i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots() + bothDie[3].getDots()].getLength() > 0 && allPoints[i + bothDie[0].getDots() + bothDie[1].getDots()+ bothDie[2].getDots() + bothDie[3].getDots()].getCheckerColour(allPoints[i + bothDie[0].getDots() + bothDie[1].getDots()+ bothDie[2].getDots() + bothDie[3].getDots()].getCheckerIndex(0)) == Colour.W) {
-                                possibleMoves.add((i + 1) + " " + ((i + 1) + bothDie[1].getDots() + bothDie[0].getDots() + bothDie[2].getDots() + bothDie[3].getDots()));
-                            }
-                        }
-                    }
-                    // First dice if point is same colour
-                    if ((i + bothDie[0].getDots()) <= 23) {
-                        if (allPoints[i + bothDie[0].getDots()].getLength() > 0 && allPoints[i + bothDie[0].getDots()].getCheckerColour(allPoints[i + bothDie[0].getDots()].getCheckerIndex(0)) == Colour.W) {
-                            possibleMoves.add((i + 1) + " " + ((i + 1) + bothDie[0].getDots()));
-                            checkOneDiePlayable2 += 1;
-                        }
-                    }
-                    if(bothDie.length > 1){
-                        // Second dice if point is same colour
-                        if ((i + bothDie[1].getDots()) <= 23) {
-                            if (allPoints[i + bothDie[1].getDots()].getLength() > 0 && allPoints[i + bothDie[1].getDots()].getCheckerColour(allPoints[i + bothDie[1].getDots()].getCheckerIndex(0)) == Colour.W) {
+                        if(bothDie.length > 1){
+                            // Second dice if point is smaller then 2
+                            if ((i + bothDie[1].getDots()) <= 23 && allPoints[i + bothDie[1].getDots()].getLength() < 2) {
                                 possibleMoves.add((i + 1) + " " + ((i + 1) + bothDie[1].getDots()));
+                                checkOneDiePlayable1 += 1;
+                            }
+                            // First and second dice if point is smaller then 2
+                            if (checkOneDiePlayable1 != 0 &&(i + bothDie[0].getDots() + bothDie[1].getDots()) <= 23 && allPoints[i + bothDie[0].getDots() + bothDie[1].getDots()].getLength() < 2) {
+                                possibleMoves.add((i + 1) + " " + ((i + 1) + bothDie[1].getDots() + bothDie[0].getDots()));
+                            }
+                        }
+                        if (bothDie.length > 3) {
+                            if (i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots() <= 23 && allPoints[i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots()].getLength() < 2) {
+                                possibleMoves.add((i + 1) + " " + ((i + 1) + bothDie[1].getDots() + bothDie[0].getDots()+ bothDie[2].getDots()));
+                            }
+                            if (i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots() <= 23) {
+                                if (allPoints[i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots()].getLength() > 0 && allPoints[i + bothDie[0].getDots() + bothDie[1].getDots()+ bothDie[2].getDots()].getCheckerColour(allPoints[i + bothDie[0].getDots() + bothDie[1].getDots()+ bothDie[2].getDots()].getCheckerIndex(0)) == Colour.W) {
+                                    possibleMoves.add((i + 1) + " " + ((i + 1) + bothDie[1].getDots() + bothDie[0].getDots() + bothDie[2].getDots()));
+                                }
+                            }
+                        } 
+                        if (bothDie.length == 4) {
+                            if (i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots() + bothDie[3].getDots() <= 23 && allPoints[i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots() + bothDie[3].getDots()].getLength() < 2) {
+                                possibleMoves.add((i + 1) + " " + ((i + 1) + bothDie[1].getDots() + bothDie[0].getDots()+ bothDie[2].getDots() + bothDie[3].getDots()));
+                            }
+                            if (i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots() + bothDie[3].getDots() <= 23) {
+                                if (allPoints[i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots() + bothDie[3].getDots()].getLength() > 0 && allPoints[i + bothDie[0].getDots() + bothDie[1].getDots()+ bothDie[2].getDots() + bothDie[3].getDots()].getCheckerColour(allPoints[i + bothDie[0].getDots() + bothDie[1].getDots()+ bothDie[2].getDots() + bothDie[3].getDots()].getCheckerIndex(0)) == Colour.W) {
+                                    possibleMoves.add((i + 1) + " " + ((i + 1) + bothDie[1].getDots() + bothDie[0].getDots() + bothDie[2].getDots() + bothDie[3].getDots()));
+                                }
+                            }
+                        }
+                        // First dice if point is same colour
+                        if ((i + bothDie[0].getDots()) <= 23) {
+                            if (allPoints[i + bothDie[0].getDots()].getLength() > 0 && allPoints[i + bothDie[0].getDots()].getCheckerColour(allPoints[i + bothDie[0].getDots()].getCheckerIndex(0)) == Colour.W) {
+                                possibleMoves.add((i + 1) + " " + ((i + 1) + bothDie[0].getDots()));
                                 checkOneDiePlayable2 += 1;
                             }
                         }
-                        // First and second dice if point is same colour
-                        if (checkOneDiePlayable2 != 0 && (i + bothDie[0].getDots() + bothDie[1].getDots()) <= 23) {
-                            if (allPoints[i + bothDie[0].getDots() + bothDie[1].getDots()].getLength() > 0 && allPoints[i + bothDie[0].getDots() + bothDie[1].getDots()].getCheckerColour(allPoints[i + bothDie[0].getDots() + bothDie[1].getDots()].getCheckerIndex(0)) == Colour.W) {
-                                possibleMoves.add((i + 1) + " " + ((i + 1) + bothDie[1].getDots() + bothDie[0].getDots()));
+                        if(bothDie.length > 1){
+                            // Second dice if point is same colour
+                            if ((i + bothDie[1].getDots()) <= 23) {
+                                if (allPoints[i + bothDie[1].getDots()].getLength() > 0 && allPoints[i + bothDie[1].getDots()].getCheckerColour(allPoints[i + bothDie[1].getDots()].getCheckerIndex(0)) == Colour.W) {
+                                    possibleMoves.add((i + 1) + " " + ((i + 1) + bothDie[1].getDots()));
+                                    checkOneDiePlayable2 += 1;
+                                }
+                            }
+                            // First and second dice if point is same colour
+                            if (checkOneDiePlayable2 != 0 && (i + bothDie[0].getDots() + bothDie[1].getDots()) <= 23) {
+                                if (allPoints[i + bothDie[0].getDots() + bothDie[1].getDots()].getLength() > 0 && allPoints[i + bothDie[0].getDots() + bothDie[1].getDots()].getCheckerColour(allPoints[i + bothDie[0].getDots() + bothDie[1].getDots()].getCheckerIndex(0)) == Colour.W) {
+                                    possibleMoves.add((i + 1) + " " + ((i + 1) + bothDie[1].getDots() + bothDie[0].getDots()));
+                                }
                             }
                         }
                     }
                 }
-            }
 
-        } else {
-            // Count how many black points there are
-            for (int i = 0; i < 24; i++) {
-                if (allPoints[23-i].getLength() > 0 && allPoints[23-i].getCheckerColour(allPoints[23 - i].getCheckerIndex(0)) == Colour.B) {
-                    // First dice if point is smaller then 2
-                    if ((i + bothDie[0].getDots()) <= 23 && allPoints[23 - i - bothDie[0].getDots()].getLength() < 2) {
-                        possibleMoves.add(24 - (i ) + " " + (24 - (i ) - bothDie[0].getDots()));
-                        checkOneDiePlayable1 += 1;
-                    }
-                    if(bothDie.length > 1){
-                        // Second dice if point is smaller then 2
-                        if ((i + bothDie[1].getDots()) <= 23 && allPoints[23 - i - bothDie[1].getDots()].getLength() < 2) {
-                            possibleMoves.add(24 - (i ) + " " + (24 - (i ) - bothDie[1].getDots()));
+            } else {
+                // Count how many black points there are
+                for (int i = 0; i < 24; i++) {
+                    if (allPoints[23-i].getLength() > 0 && allPoints[23-i].getCheckerColour(allPoints[23 - i].getCheckerIndex(0)) == Colour.B) {
+                        // First dice if point is smaller then 2
+                        if ((i + bothDie[0].getDots()) <= 23 && allPoints[23 - i - bothDie[0].getDots()].getLength() < 2) {
+                            possibleMoves.add(24 - (i ) + " " + (24 - (i ) - bothDie[0].getDots()));
                             checkOneDiePlayable1 += 1;
                         }
-                        // First and second dice if point is smaller then 2
-                        if (checkOneDiePlayable1 != 0 && (i + bothDie[0].getDots() + bothDie[1].getDots()) <= 23 && allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots()].getLength() < 2) {
-                            possibleMoves.add(24 - (i ) + " " + (24 - (i ) - bothDie[1].getDots() - bothDie[0].getDots()));
-                        }
-                    } 
-                    if (bothDie.length > 3) {
-                        if (i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots()  <= 23 && allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots() - bothDie[2].getDots()].getLength() < 2) {
-                            possibleMoves.add(24 - (i ) + " " + (24 - (i ) - bothDie[0].getDots() - bothDie[1].getDots() - bothDie[2].getDots()));
-                        }
-                        if (i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots()<= 23) {
-                            if (allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots() - bothDie[2].getDots()].getLength() > 0  && allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots() - bothDie[2].getDots()].getCheckerColour(allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots() - bothDie[2].getDots()].getCheckerIndex(0)) == Colour.B) {
-                                possibleMoves.add(24 - (i ) + " " + (24 - (i ) - bothDie[1].getDots() - bothDie[0].getDots() - bothDie[2].getDots()));
-                            }
-                        }
-                    } 
-                    if (bothDie.length == 4) {
-                        if (i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots() + bothDie[3].getDots() <= 23 && allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots() - bothDie[2].getDots() - bothDie[3].getDots()].getLength() < 2) {
-                            possibleMoves.add(24 - (i ) + " " + (24 - (i ) - bothDie[1].getDots() - bothDie[0].getDots() - bothDie[2].getDots() - bothDie[3].getDots()));
-                        }
-                        if (i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots() + bothDie[3].getDots()<= 23) {
-                            if (allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots() - bothDie[2].getDots() - bothDie[3].getDots()].getLength() > 0  && allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots() - bothDie[2].getDots() - bothDie[3].getDots()].getCheckerColour(allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots() - bothDie[2].getDots() - bothDie[3].getDots()].getCheckerIndex(0)) == Colour.B) {
-                                possibleMoves.add(24 - (i ) + " " + (24 - (i ) - bothDie[0].getDots() - bothDie[1].getDots() - bothDie[2].getDots() - bothDie[3].getDots()));
-                            }
-                        }
-                    } 
-                    // First dice if point is same colour
-                    if ((i + bothDie[0].getDots()) <= 23) {
-                        if (allPoints[23 - i - bothDie[0].getDots()].getLength() > 0 && allPoints[23 - i - bothDie[0].getDots()].getCheckerColour(allPoints[23 - i - bothDie[0].getDots()].getCheckerIndex(0)) == Colour.B) {
-                            possibleMoves.add(24 - (i ) + " " + (24 - (i ) - bothDie[0].getDots()));
-                            checkOneDiePlayable2 += 1;
-                        }
-                    }
-                    if(bothDie.length > 1){
-                        // Second dice if point is same colour
-                        if ((i + bothDie[1].getDots()) <= 23) {
-                            if (allPoints[23 - i - bothDie[1].getDots()].getLength() > 0 && allPoints[23 - i - bothDie[1].getDots()].getCheckerColour(allPoints[23 - i - bothDie[1].getDots()].getCheckerIndex(0)) == Colour.B) {
+                        if(bothDie.length > 1){
+                            // Second dice if point is smaller then 2
+                            if ((i + bothDie[1].getDots()) <= 23 && allPoints[23 - i - bothDie[1].getDots()].getLength() < 2) {
                                 possibleMoves.add(24 - (i ) + " " + (24 - (i ) - bothDie[1].getDots()));
+                                checkOneDiePlayable1 += 1;
+                            }
+                            // First and second dice if point is smaller then 2
+                            if (checkOneDiePlayable1 != 0 && (i + bothDie[0].getDots() + bothDie[1].getDots()) <= 23 && allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots()].getLength() < 2) {
+                                possibleMoves.add(24 - (i ) + " " + (24 - (i ) - bothDie[1].getDots() - bothDie[0].getDots()));
+                            }
+                        } 
+                        if (bothDie.length > 3) {
+                            if (i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots()  <= 23 && allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots() - bothDie[2].getDots()].getLength() < 2) {
+                                possibleMoves.add(24 - (i ) + " " + (24 - (i ) - bothDie[0].getDots() - bothDie[1].getDots() - bothDie[2].getDots()));
+                            }
+                            if (i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots()<= 23) {
+                                if (allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots() - bothDie[2].getDots()].getLength() > 0  && allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots() - bothDie[2].getDots()].getCheckerColour(allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots() - bothDie[2].getDots()].getCheckerIndex(0)) == Colour.B) {
+                                    possibleMoves.add(24 - (i ) + " " + (24 - (i ) - bothDie[1].getDots() - bothDie[0].getDots() - bothDie[2].getDots()));
+                                }
+                            }
+                        } 
+                        if (bothDie.length == 4) {
+                            if (i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots() + bothDie[3].getDots() <= 23 && allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots() - bothDie[2].getDots() - bothDie[3].getDots()].getLength() < 2) {
+                                possibleMoves.add(24 - (i ) + " " + (24 - (i ) - bothDie[1].getDots() - bothDie[0].getDots() - bothDie[2].getDots() - bothDie[3].getDots()));
+                            }
+                            if (i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots() + bothDie[3].getDots()<= 23) {
+                                if (allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots() - bothDie[2].getDots() - bothDie[3].getDots()].getLength() > 0  && allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots() - bothDie[2].getDots() - bothDie[3].getDots()].getCheckerColour(allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots() - bothDie[2].getDots() - bothDie[3].getDots()].getCheckerIndex(0)) == Colour.B) {
+                                    possibleMoves.add(24 - (i ) + " " + (24 - (i ) - bothDie[0].getDots() - bothDie[1].getDots() - bothDie[2].getDots() - bothDie[3].getDots()));
+                                }
+                            }
+                        } 
+                        // First dice if point is same colour
+                        if ((i + bothDie[0].getDots()) <= 23) {
+                            if (allPoints[23 - i - bothDie[0].getDots()].getLength() > 0 && allPoints[23 - i - bothDie[0].getDots()].getCheckerColour(allPoints[23 - i - bothDie[0].getDots()].getCheckerIndex(0)) == Colour.B) {
+                                possibleMoves.add(24 - (i ) + " " + (24 - (i ) - bothDie[0].getDots()));
                                 checkOneDiePlayable2 += 1;
                             }
                         }
-                        // First and second dice if point is same colour
-                        if (checkOneDiePlayable2 != 0 && (i + bothDie[0].getDots() + bothDie[1].getDots()) <= 23) {
-                            if (allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots()].getLength() > 0  && allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots()].getCheckerColour(allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots()].getCheckerIndex(0)) == Colour.B) {
-                                possibleMoves.add(24 - (i ) + " " + (24 - (i ) - bothDie[1].getDots() - bothDie[0].getDots()));
+                        if(bothDie.length > 1){
+                            // Second dice if point is same colour
+                            if ((i + bothDie[1].getDots()) <= 23) {
+                                if (allPoints[23 - i - bothDie[1].getDots()].getLength() > 0 && allPoints[23 - i - bothDie[1].getDots()].getCheckerColour(allPoints[23 - i - bothDie[1].getDots()].getCheckerIndex(0)) == Colour.B) {
+                                    possibleMoves.add(24 - (i ) + " " + (24 - (i ) - bothDie[1].getDots()));
+                                    checkOneDiePlayable2 += 1;
+                                }
                             }
-                        }
-                    } 
+                            // First and second dice if point is same colour
+                            if (checkOneDiePlayable2 != 0 && (i + bothDie[0].getDots() + bothDie[1].getDots()) <= 23) {
+                                if (allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots()].getLength() > 0  && allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots()].getCheckerColour(allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots()].getCheckerIndex(0)) == Colour.B) {
+                                    possibleMoves.add(24 - (i ) + " " + (24 - (i ) - bothDie[1].getDots() - bothDie[0].getDots()));
+                                }
+                            }
+                        } 
+                    }
                 }
             }
         }
@@ -255,6 +263,29 @@ public class ValidMoves {
             }
         }
         return possibleMovesLastQuarter;
+    }
+
+    public static ArrayList<String> possibleMovesWhiteBar(Dice[] bothDie, Points[] allPoints){
+        ArrayList<String> possibleMoves = new ArrayList<String>();
+
+        for(Dice die : bothDie){
+            if(allPoints[die.getDots()-1].getCheckerIndex(0).getCheckerColour()==Colour.W || allPoints[die.getDots()-1].getHowManyCheckers()<=1){
+                possibleMoves.add(25 + " " + die.getDots());
+            }
+        } 
+
+        return possibleMoves;
+    }
+    public static ArrayList<String> possibleMovesBlackBar(Dice[] bothDie, Points[] allPoints){
+        ArrayList<String> possibleMoves = new ArrayList<String>();
+
+        for(Dice die : bothDie){
+            if(allPoints[24-die.getDots()].getCheckerIndex(0).getCheckerColour()==Colour.B || allPoints[24-die.getDots()].getHowManyCheckers()<=1){
+                possibleMoves.add(26 + " " + (25-die.getDots()));
+            }
+        } 
+
+        return possibleMoves;
     }
 
     public static void printPossibleCommands(ArrayList<String> possibleMoves, ArrayList<String> possibleMovesLastQuarter, Points[] allPoints, Player player_1, Player player_2, Dice[] bothDie) {
