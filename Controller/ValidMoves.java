@@ -58,7 +58,7 @@ public class ValidMoves {
         } else {
             // Count how many black points there are
             for (int i = 0; i < 24; i++) {
-                if (allPoints[i].getLength() > 0 && allPoints[i].getCheckerColour(allPoints[23 - i].getCheckerIndex(0)) == Colour.B) {
+                if (allPoints[23-i].getLength() > 0 && allPoints[23-i].getCheckerColour(allPoints[23 - i].getCheckerIndex(0)) == Colour.B) {
                     // First dice if point is smaller then 2
                     if ((i + bothDie[0].getDots()) <= 23 && allPoints[23 - i - bothDie[0].getDots()].getLength() < 2) {
                         possibleMoves.add(24 - (i ) + " " + (24 - (i ) - bothDie[0].getDots()));
@@ -305,5 +305,70 @@ public class ValidMoves {
             allPoints[0].moveChecker(allPoints[Integer.parseInt(possibleMoves.get(moveToMake).split(" ")[0])-1], allPoints[Integer.parseInt(possibleMoves.get(moveToMake).split(" ")[1])-1]);
         } else if (checkFinalQuarter(allPoints, player_1, player_2)) {
         }
+    }
+
+    public static int getMoveSpaces(String userCommand, ArrayList<String> possibleMoves) { 
+        int moveToMake;
+        int spacesToMove;
+        switch (userCommand.toUpperCase()) {
+            case "A":
+            moveToMake = 0;
+            case "B":
+            moveToMake = 1;
+            case "C":
+            moveToMake = 2;
+            case "D":
+            moveToMake = 3;
+            case "E":
+            moveToMake = 4;
+            case "F":
+            moveToMake = 5;
+            case "G":
+            moveToMake = 6;
+            case "H":
+            moveToMake = 7;
+            case "I":
+            moveToMake = 8;
+            case "J":
+            moveToMake = 9;
+            case "K":
+            moveToMake = 10;
+            case "L":
+            moveToMake = 11;
+            case "M":
+            moveToMake = 12;
+            case "N":
+            moveToMake = 13;
+            case "O":
+            moveToMake = 14;
+            case "P":
+            moveToMake = 15;
+            case "Q":
+            moveToMake = 16;
+            case "R":
+            moveToMake = 17;
+            case "S":
+            moveToMake = 18;
+            case "T":
+            moveToMake = 19;
+            case "U":
+            moveToMake = 20;
+            case "V":
+            moveToMake = 21;
+            case "W":
+            moveToMake = 22;
+            case "X":
+            moveToMake = 23;
+            case "Y":
+            moveToMake = 24;
+            case "Z":
+            moveToMake = 25;
+            default:
+            moveToMake = 0;
+        }
+        String[] moveStrings = possibleMoves.get(moveToMake).split(" ");
+        spacesToMove = Math.abs(Integer.parseInt(moveStrings[1]) - Integer.parseInt(moveStrings[0]));
+
+        return spacesToMove;
     }
 }
