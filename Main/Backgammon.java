@@ -36,6 +36,7 @@ public class Backgammon {
         int spacesToMove;
         int[] dieToRemove;
         while (player_1.getCheckerCount() != 0 || player_2.getCheckerCount() != 0) {
+
             bothDie = Setup.setupDie();
             Dice.rollDie(bothDie);
             while(bothDie.length > 0){
