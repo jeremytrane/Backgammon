@@ -166,4 +166,10 @@ public class Backgammon {
         }
         return dieRemovedArray;
     }
+
+
+
+    public static void reset() {
+        main(null);
+    }
 }
