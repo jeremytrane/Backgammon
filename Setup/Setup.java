@@ -111,4 +111,19 @@ public class Setup {
         }
     }
 
+    public static int getGameLength(Scanner in) {
+        String tryThis = in.nextLine();
+        try { 
+            Integer.parseInt(tryThis); 
+        } catch(NumberFormatException e) { 
+            System.out.println("Game length invalid, exiting!");
+            System.exit(0);
+        } catch(NullPointerException e) {
+            System.out.println("Game length invalid, exiting!");
+            System.exit(0);
+        }
+        // only got here if we didn't return false
+        return Integer.parseInt(tryThis);
+    }
+
 }

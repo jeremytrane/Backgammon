@@ -8,13 +8,13 @@ import java.util.Arrays;
 
 public class Board {
 
-    public static void Draw(Points[] allPoints, Dice[] bothDie, Player player_1, Player player_2) {
+    public static void Draw(Points[] allPoints, Dice[] bothDie, Player player_1, Player player_2, int player1Wins, int player2Wins, int gameLength) {
         int lengthTop = lengthToPrintTop(allPoints);
         int lengthBottom = lengthToPrintBottom(allPoints);
         Player whatPlayer = whatPlayerTurn(player_1, player_2);
         pipDisplayTop(whatPlayer, allPoints);
         System.out.println("\n 12    11    10    9     8     7     \u001B[32m|   |\u001B[0m6     5     4     3     2     1           ");
-        System.out.println("\u001B[32m=====================================|===|=====================================\u001B[0m     ");
+        System.out.println("\u001B[32m=====================================|===|=====================================\u001B[0m     Score (in games): " + player_1 + ": " + player1Wins + " " + player_2 + ": " + player2Wins + " (First to " + gameLength + "!)");
 
         for (int i = 0; i < lengthTop; i++) {
             String point1 = whatToPrintTop(allPoints[0], i);

@@ -38,6 +38,8 @@ public class UserInput {
             Dice.setDie(bothDie, Integer.parseInt(userCommandSplit[1]), Integer.parseInt(userCommandSplit[2]));
         } else if (userCommand.equalsIgnoreCase("Pip")) {
             pipCount(player_1, player_2, allPoints);
+        } else if (userCommand.equalsIgnoreCase("reset")) {
+            Backgammon.reset();
         } else if (userCommand.equalsIgnoreCase("hint")) {
             System.out.println("\u001B[1mEnter pip to see player's pip count, roll to roll the die, quit to exit the game, Or enter a letter from the moves listed below:");
         } else if (userCommand.equalsIgnoreCase("test")) {
