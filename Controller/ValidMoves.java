@@ -1,7 +1,7 @@
 package Controller;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -210,12 +210,12 @@ public class ValidMoves {
         char[] listOrder = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
         if (!checkFinalQuarter(allPoints, player_1, player_2)) {
             removeDoubleMoves(possibleMoves);
-            parsePossibleMoves(possibleMoves, bothDie);
+            Collections.sort(possibleMoves);
             for (int i = 0; i < possibleMoves.size(); i++) {
                 System.out.println("[" + listOrder[i] + "]: " + possibleMoves.get(i).split(" ")[0] + "-" + possibleMoves.get(i).split(" ")[1]);            }
         } else if (checkFinalQuarter(allPoints, player_1, player_2)) {
             removeDoubleMoves(possibleMoves);
-            parsePossibleMovesLastQuarter(possibleMovesLastQuarter, bothDie);
+            Collections.sort(possibleMoves);
             for (int i = 0; i < possibleMovesLastQuarter.size(); i++) {
                 System.out.println("[" + listOrder[i] + "]: " + possibleMovesLastQuarter.get(i).split(" ")[0] + "-" + possibleMovesLastQuarter.get(i).split(" ")[1]);            }
         }
@@ -238,30 +238,6 @@ public class ValidMoves {
             }
         }
         return false;
-    }
-
-    public static void parsePossibleMoves(ArrayList<String> possibleMoves, Dice[] bothDie) {
-        String[] firstPoint = new String[possibleMoves.size()];
-        String[] secondPoint = new String[possibleMoves.size()];
-        for (int i = 0; i < possibleMoves.size(); i++) {
-            firstPoint[i] = possibleMoves.get(i).split(" ")[0];
-            secondPoint[i] = possibleMoves.get(i).split(" ")[1];
-        }
-    }
-
-    public static void parsePossibleMovesLastQuarter(ArrayList<String> possibleMoves, Dice[] bothDie) {
-        String[] firstPoint = new String[possibleMoves.size()];
-        String[] secondPoint = new String[possibleMoves.size()];
-        for (int i = 0; i < possibleMoves.size(); i++) {
-        firstPoint[i] = possibleMoves.get(i).split(" ")[0];
-        secondPoint[i] = possibleMoves.get(i).split(" ")[1];
-        }
-
-        for (int j = 0; j < possibleMoves.size()-1; j++) {
-            if (firstPoint[j] == firstPoint[j+1] && Integer.parseInt(firstPoint[j]) == bothDie[0].getDots() && Integer.parseInt(firstPoint[j+1]) == bothDie[1].getDots()) {
-                possibleMoves.remove(possibleMoves.get(j));
-            }
-        }
     }
 
     public static void makeMove(String userCommand, Dice[] bothDie, Points[] allPoints, Player player_1, Player player_2) {
@@ -326,13 +302,8 @@ public class ValidMoves {
             moveToMake = 0;
         }
         if (!checkFinalQuarter(allPoints, player_1, player_2)) {
-            System.out.print(possibleMoves.get(moveToMake));
-            System.out.print(Integer.parseInt(possibleMoves.get(moveToMake).split(" ")[0])-1);
-            System.out.print(Integer.parseInt(possibleMoves.get(moveToMake).split(" ")[1])-1);
-
             allPoints[0].moveChecker(allPoints[Integer.parseInt(possibleMoves.get(moveToMake).split(" ")[0])-1], allPoints[Integer.parseInt(possibleMoves.get(moveToMake).split(" ")[1])-1]);
         } else if (checkFinalQuarter(allPoints, player_1, player_2)) {
-            System.out.print(possibleMovesLastQuarter.get(moveToMake));
         }
     }
 }
