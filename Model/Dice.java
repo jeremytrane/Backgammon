@@ -31,4 +31,21 @@ public class Dice {
 		die[1].setDots(die_2);
 	}
 
+    public static Dice[] checkDouble(Dice[] bothDie) {
+		if (bothDie[0].getDots()==bothDie[1].getDots()) {
+			Dice[] fourDie = new Dice[4];
+			fourDie[0] = new Dice(bothDie[1].getDots());
+			fourDie[1] = new Dice(bothDie[1].getDots());
+			fourDie[2] = new Dice(bothDie[1].getDots());
+			fourDie[3] = new Dice(bothDie[1].getDots());
+
+			return fourDie;
+		}
+			Dice[] twoDie = new Dice[2];
+			twoDie[0] = new Dice(bothDie[0].getDots());
+			twoDie[1] = new Dice(bothDie[1].getDots());
+		
+		return twoDie;
+    }
+
 }

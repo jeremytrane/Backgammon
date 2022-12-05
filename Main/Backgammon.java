@@ -40,10 +40,12 @@ public class Backgammon {
             bothDie = Setup.setupDie();
             Dice.rollDie(bothDie);
             while(bothDie.length > 0){
-                System.out.print("=============================================================================================================================================\n");
+                bothDie = Dice.checkDouble(bothDie);
+                System.out.print("===========================================================================================================================================\n");
                 Board.Draw(allPoints, bothDie, player_1, player_2);
                 ArrayList<String> possibleMoves = ValidMoves.possibleMoves(bothDie, allPoints, player_1, player_2);
                 ArrayList<String> possibleMovesLastQuarter = ValidMoves.possibleMoves(bothDie, allPoints, player_1, player_2);
+                
                 ValidMoves.printPossibleCommands(possibleMoves, possibleMovesLastQuarter, allPoints, player_1, player_2, bothDie);
                 System.out.println("\nEnter your move:");
                 String move = in.nextLine();
