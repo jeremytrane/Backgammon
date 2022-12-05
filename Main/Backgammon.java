@@ -39,8 +39,9 @@ public class Backgammon {
 
             bothDie = Setup.setupDie();
             Dice.rollDie(bothDie);
+            bothDie = Dice.checkDouble(bothDie);
+
             while(bothDie.length > 0){
-                bothDie = Dice.checkDouble(bothDie);
                 System.out.print("===========================================================================================================================================\n");
                 Board.Draw(allPoints, bothDie, player_1, player_2);
                 ArrayList<String> possibleMoves = ValidMoves.possibleMoves(bothDie, allPoints, player_1, player_2);
