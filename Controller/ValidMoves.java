@@ -362,12 +362,12 @@ public class ValidMoves {
                     }
                     // If first die stack-off
                     if ((i + bothDie[0].getDots()) > 23) {
-                        possibleMovesLastQuarter.add(24 - (i) + " " + 28);
+                        possibleMovesLastQuarter.add(24 - i + " " + 28);
                     }
                     if (bothDie.length > 1) {
                         // If second die stack-off
                         if ((i + bothDie[1].getDots()) > 23) {
-                            possibleMovesLastQuarter.add(24 - (i) + " " + 28);
+                            possibleMovesLastQuarter.add(24 - i + " " + 28);
                         }
                         // If both die stack-off
                         if (i + bothDie[0].getDots() + bothDie[1].getDots() > 23) {
@@ -500,31 +500,31 @@ public class ValidMoves {
 
         } else if (player_2.getTurnToken() == 1) {
             if (allPoints[0].getLength() > 0
-                    && allPoints[0].getCheckerColour(allPoints[0].getCheckerIndex(0)) == Colour.W) {
+                    && allPoints[0].getCheckerColour(allPoints[0].getCheckerIndex(0)) == Colour.B) {
                 sum += allPoints[0].getHowManyCheckers();
             }
             if (allPoints[1].getLength() > 0
-                    && allPoints[1].getCheckerColour(allPoints[1].getCheckerIndex(0)) == Colour.W) {
+                    && allPoints[1].getCheckerColour(allPoints[1].getCheckerIndex(0)) == Colour.B) {
                 sum += allPoints[1].getHowManyCheckers();
             }
             if (allPoints[2].getLength() > 0
-                    && allPoints[2].getCheckerColour(allPoints[2].getCheckerIndex(0)) == Colour.W) {
+                    && allPoints[2].getCheckerColour(allPoints[2].getCheckerIndex(0)) == Colour.B) {
                 sum += allPoints[2].getHowManyCheckers();
             }
             if (allPoints[3].getLength() > 0
-                    && allPoints[3].getCheckerColour(allPoints[3].getCheckerIndex(0)) == Colour.W) {
+                    && allPoints[3].getCheckerColour(allPoints[3].getCheckerIndex(0)) == Colour.B) {
                 sum += allPoints[3].getHowManyCheckers();
             }
             if (allPoints[4].getLength() > 0
-                    && allPoints[4].getCheckerColour(allPoints[4].getCheckerIndex(0)) == Colour.W) {
+                    && allPoints[4].getCheckerColour(allPoints[4].getCheckerIndex(0)) == Colour.B) {
                 sum += allPoints[4].getHowManyCheckers();
             }
             if (allPoints[5].getLength() > 0
-                    && allPoints[5].getCheckerColour(allPoints[5].getCheckerIndex(0)) == Colour.W) {
+                    && allPoints[5].getCheckerColour(allPoints[5].getCheckerIndex(0)) == Colour.B) {
                 sum += allPoints[5].getHowManyCheckers();
             }
             if (allPoints[27].getLength() > 0
-                    && allPoints[27].getCheckerColour(allPoints[27].getCheckerIndex(0)) == Colour.W) {
+                    && allPoints[27].getCheckerColour(allPoints[27].getCheckerIndex(0)) == Colour.B) {
                 sum += allPoints[27].getHowManyCheckers();
             }
             if (sum == 15) {

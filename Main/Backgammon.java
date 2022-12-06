@@ -45,7 +45,7 @@ public class Backgammon {
             boolean moveMade = true;
             int spacesToMove;
             int[] dieToRemove;
-            while (player_1.getCheckerCount() != 0 || player_2.getCheckerCount() != 0) {
+            while (allPoints[26].getLength() != 15 || allPoints[27].getLength() != 15) {
 
                 if (moveMade) {
                     bothDie = Setup.setupDie();
@@ -59,7 +59,7 @@ public class Backgammon {
                             "===========================================================================================================================================\n");
                     Board.Draw(allPoints, bothDie, player_1, player_2, player1Wins, player2Wins, gameLength);
                     ArrayList<String> possibleMoves = ValidMoves.possibleMoves(bothDie, allPoints, player_1, player_2);
-                    ArrayList<String> possibleMovesLastQuarter = ValidMoves.possibleMoves(bothDie, allPoints, player_1,
+                    ArrayList<String> possibleMovesLastQuarter = ValidMoves.possibleMovesLastQuarter(bothDie, allPoints, player_1,
                             player_2);
                     moveMade = Controller.checkSize(possibleMoves, possibleMovesLastQuarter, allPoints, player_1,
                             player_2);
