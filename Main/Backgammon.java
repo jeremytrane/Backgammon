@@ -66,6 +66,8 @@ public class Backgammon {
                     if (moveMade) {
                         System.out.println("No valid moves!");
                         Controller.swapTurn(player_1, player_2);
+                        bothDie = Setup.setupDie();
+                        Dice.rollDie(bothDie);
                     } else {
                         ValidMoves.printPossibleCommands(possibleMoves, possibleMovesLastQuarter, allPoints, player_1,
                                 player_2, bothDie);
