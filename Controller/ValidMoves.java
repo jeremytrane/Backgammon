@@ -209,6 +209,10 @@ public class ValidMoves {
                         if ((i + bothDie[1].getDots()) > 23) {
                             possibleMovesLastQuarter.add((i + 1) + " " + ((i + 1) + bothDie[1].getDots()));
                         }
+                        //If both die stack-off
+                        if (i+bothDie[0].getDots() + bothDie[1].getDots() > 23) {
+                            possibleMovesLastQuarter.add((i + 1) + " " + ((i + 1) + bothDie[0].getDots() + bothDie[1].getDots()));
+                        }
                     }
                 }
             }
@@ -338,19 +342,23 @@ public class ValidMoves {
         }
         removeDoubleMoves(possibleMoves);
         Collections.sort(possibleMoves);
-        int moveToMake = 0;
-        String[] legalMoves = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
-        moveToMake = Arrays.asList(legalMoves).indexOf(userCommand.toUpperCase());
-        System.out.println(moveToMake);
-        System.out.println(possibleMoves.size());
-        if (moveToMake>=possibleMoves.size()) {
-            System.out.println("Please enter a valid move!");
+
+        if(possibleMoves.size()==0) {
+            System.out.println("No valid moves!");
         } else {
-            if (!checkFinalQuarter(allPoints, player_1, player_2)) {
-                allPoints[0].moveChecker(allPoints[Integer.parseInt(possibleMoves.get(moveToMake).split(" ")[0])-1], allPoints[Integer.parseInt(possibleMoves.get(moveToMake).split(" ")[1])-1], allPoints[24],allPoints[25]);
-            } 
-            else if (checkFinalQuarter(allPoints, player_1, player_2)) {
-                //Add to move out of final quarter
+            int moveToMake = 0;
+            String[] legalMoves = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+            moveToMake = Arrays.asList(legalMoves).indexOf(userCommand.toUpperCase());
+            if (moveToMake>=possibleMoves.size()) {
+                System.out.println("Please enter a valid move!");
+            } else {
+                if (!checkFinalQuarter(allPoints, player_1, player_2)) {
+                    allPoints[0].moveChecker(allPoints[Integer.parseInt(possibleMoves.get(moveToMake).split(" ")[0])-1], allPoints[Integer.parseInt(possibleMoves.get(moveToMake).split(" ")[1])-1], allPoints[24],allPoints[25]);
+                } 
+                else if (checkFinalQuarter(allPoints, player_1, player_2)) {
+                    System.out.println("We're in it");
+                    //Add to move out of final quarter
+                }
             }
         }
         
