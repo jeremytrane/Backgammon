@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import Main.Backgammon;
 import Model.Colour;
 import Model.Dice;
 import Model.Player;
