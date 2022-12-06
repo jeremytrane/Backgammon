@@ -10,7 +10,7 @@ public class PointsTest {
     Points point = new Points(Colour.B, 5, 1);
 
     @Test
-    // @DisplayName("Checks that ")
+    // Checks getLength functionality
     public void testPointLength() {
         int pointLength = 5;
         int gotLength = point.getLength();
@@ -18,7 +18,7 @@ public class PointsTest {
     }
 
     @Test
-    // @DisplayName("Checks that ")
+    // Checks getHowManyCheckers functionality
     public void testGetIndex() {
         int numCheckers = 5;
         int gotCheckers = point.getHowManyCheckers();
@@ -26,8 +26,8 @@ public class PointsTest {
     }
 
     @Test
-    // @DisplayName("Checks that ")
-    public void testAddPoint() {
+    // Checks addChecker functionality
+    public void testAddChecker() {
         int gotLength = point.getLength();
         point.addChecker(null);
         int newLength = point.getLength();
@@ -35,7 +35,7 @@ public class PointsTest {
     }
 
     @Test
-    // @DisplayName("Checks that ")
+    // Checks getCheckerColour functionality
     public void testColour() {
         Colour checkerColour = point.getCheckerIndex(0).getCheckerColour();
         Colour pointCheckerColour = point.getCheckerColour(point.getCheckerIndex(0));
@@ -43,7 +43,7 @@ public class PointsTest {
     }
 
     @Test
-    // @DisplayName("Checks that ")
+    // Checks getPointNumber functionality
     public void testPointNumber() {
         int pointNumber = 1;
         int gotNumber = point.getPointNumber();
@@ -51,7 +51,7 @@ public class PointsTest {
     }
 
     @Test
-    // @DisplayName("Checks that ")
+    // Checks moveChecker functionality
     public void testMoveChecker() {
         Points point1 = new Points(Colour.B, 5, 1);
         Points point2 = new Points(Colour.B, 5, 1);

@@ -10,7 +10,7 @@ public class PlayerTest {
     Player player = new Player("Player 1", 15);
 
     @Test
-    // @DisplayName("Checks that ")
+    // Checks getTurn/setTurn functionality
     public void testTurnSetGet() {
         int tokenToSet = 1;
         int gotToken;
@@ -19,7 +19,7 @@ public class PlayerTest {
         assertEquals(tokenToSet, gotToken);
     }
     @Test
-    // @DisplayName("Checks that ")
+    // Checks getName/setName functionality
     public void testNameSetGet() {
         String nameToSet = "Test";
         String gotName;
@@ -28,7 +28,7 @@ public class PlayerTest {
         assertEquals(nameToSet, gotName);
     }
     @Test
-    // @DisplayName("Checks that ")
+    // Checks getChecker/setChecker functionality
     public void testCheckerSetGet() {
         int checkerToSet = 1;
         int gotChecker;
@@ -37,7 +37,7 @@ public class PlayerTest {
         assertEquals(checkerToSet, gotChecker);
     }
     @Test
-    // @DisplayName("Checks that ")
+    // Checks getColour/setColour functionality
     public void testColourSetGet() {
         Colour colourToSet = Colour.B;
         Colour gotColour;
