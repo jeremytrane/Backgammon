@@ -294,6 +294,48 @@ public class ValidMoves {
                             }
                         }
                     }
+                    if (bothDie.length > 3) {
+                            if (i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots() <= 23
+                                    && allPoints[i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots()]
+                                            .getLength() < 2) {
+                                                possibleMovesLastQuarter.add((i + 1) + " " + ((i + 1) + bothDie[1].getDots() + bothDie[0].getDots()
+                                        + bothDie[2].getDots()));
+                            }
+                            if (i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots() <= 23) {
+                                if (allPoints[i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots()]
+                                        .getLength() > 0
+                                        && allPoints[i + bothDie[0].getDots() + bothDie[1].getDots()
+                                                + bothDie[2].getDots()]
+                                                        .getCheckerColour(allPoints[i + bothDie[0].getDots()
+                                                                + bothDie[1].getDots() + bothDie[2].getDots()]
+                                                                        .getCheckerIndex(0)) == Colour.W) {
+                                                                            possibleMovesLastQuarter.add((i + 1) + " " + ((i + 1) + bothDie[1].getDots()
+                                            + bothDie[0].getDots() + bothDie[2].getDots()));
+                                }
+                            }
+                        }
+                        if (bothDie.length == 4) {
+                            if (i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots()
+                                    + bothDie[3].getDots() <= 23
+                                    && allPoints[i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots()
+                                            + bothDie[3].getDots()].getLength() < 2) {
+                                                possibleMovesLastQuarter.add((i + 1) + " " + ((i + 1) + bothDie[1].getDots() + bothDie[0].getDots()
+                                        + bothDie[2].getDots() + bothDie[3].getDots()));
+                            }
+                            if (i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots()
+                                    + bothDie[3].getDots() <= 23) {
+                                if (allPoints[i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots()
+                                        + bothDie[3].getDots()].getLength() > 0
+                                        && allPoints[i + bothDie[0].getDots() + bothDie[1].getDots()
+                                                + bothDie[2].getDots() + bothDie[3].getDots()].getCheckerColour(
+                                                        allPoints[i + bothDie[0].getDots() + bothDie[1].getDots()
+                                                                + bothDie[2].getDots() + bothDie[3].getDots()]
+                                                                        .getCheckerIndex(0)) == Colour.W) {
+                                                                            possibleMovesLastQuarter.add((i + 1) + " " + ((i + 1) + bothDie[1].getDots()
+                                            + bothDie[0].getDots() + bothDie[2].getDots() + bothDie[3].getDots()));
+                                }
+                            }
+                        }
                     // If first die stack-off
                     if ((i + bothDie[0].getDots()) > 23) {
                         possibleMovesLastQuarter.add((i + 1) + " " + 27);
@@ -305,6 +347,16 @@ public class ValidMoves {
                         }
                         // If both die stack-off
                         if (i + bothDie[0].getDots() + bothDie[1].getDots() > 23) {
+                            possibleMovesLastQuarter.add((i + 1) + " " + 27);
+                        }
+                    }
+                    if (bothDie.length > 3) {
+                        if (i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots() > 23) {
+                            possibleMovesLastQuarter.add((i + 1) + " " + 27);
+                        }
+                    }
+                    if (bothDie.length == 4) {
+                        if (i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots() + bothDie[3].getDots() > 23) {
                             possibleMovesLastQuarter.add((i + 1) + " " + 27);
                         }
                     }
@@ -330,6 +382,48 @@ public class ValidMoves {
                                 && allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots()].getLength() < 2) {
                             possibleMovesLastQuarter
                                     .add(24 - (i) + " " + (24 - (i) - bothDie[1].getDots() - bothDie[0].getDots()));
+                        }
+                    }
+                    if (bothDie.length > 3) {
+                        if (i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots() <= 23
+                                && allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots()
+                                        - bothDie[2].getDots()].getLength() < 2) {
+                                            possibleMovesLastQuarter.add(24 - (i) + " " + (24 - (i) - bothDie[0].getDots()
+                                    - bothDie[1].getDots() - bothDie[2].getDots()));
+                        }
+                        if (i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots() <= 23) {
+                            if (allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots()
+                                    - bothDie[2].getDots()].getLength() > 0
+                                    && allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots()
+                                            - bothDie[2].getDots()]
+                                                    .getCheckerColour(allPoints[23 - i - bothDie[0].getDots()
+                                                            - bothDie[1].getDots() - bothDie[2].getDots()]
+                                                                    .getCheckerIndex(0)) == Colour.B) {
+                                                                        possibleMovesLastQuarter.add(24 - (i) + " " + (24 - (i) - bothDie[1].getDots()
+                                        - bothDie[0].getDots() - bothDie[2].getDots()));
+                            }
+                        }
+                    }
+                    if (bothDie.length == 4) {
+                        if (i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots()
+                                + bothDie[3].getDots() <= 23
+                                && allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots()
+                                        - bothDie[2].getDots() - bothDie[3].getDots()].getLength() < 2) {
+                                            possibleMovesLastQuarter.add(24 - (i) + " " + (24 - (i) - bothDie[1].getDots()
+                                    - bothDie[0].getDots() - bothDie[2].getDots() - bothDie[3].getDots()));
+                        }
+                        if (i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots()
+                                + bothDie[3].getDots() <= 23) {
+                            if (allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots()
+                                    - bothDie[2].getDots() - bothDie[3].getDots()].getLength() > 0
+                                    && allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots()
+                                            - bothDie[2].getDots() - bothDie[3].getDots()].getCheckerColour(
+                                                    allPoints[23 - i - bothDie[0].getDots() - bothDie[1].getDots()
+                                                            - bothDie[2].getDots() - bothDie[3].getDots()]
+                                                                    .getCheckerIndex(0)) == Colour.B) {
+                                                                        possibleMovesLastQuarter.add(24 - (i) + " " + (24 - (i) - bothDie[0].getDots()
+                                        - bothDie[1].getDots() - bothDie[2].getDots() - bothDie[3].getDots()));
+                            }
                         }
                     }
                     // First dice if point is same colour
@@ -371,6 +465,16 @@ public class ValidMoves {
                         }
                         // If both die stack-off
                         if (i + bothDie[0].getDots() + bothDie[1].getDots() > 23) {
+                            possibleMovesLastQuarter.add(24 - i + " " + 28);
+                        }
+                    }
+                    if (bothDie.length > 3) {
+                        if (i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots() > 23) {
+                            possibleMovesLastQuarter.add(24 - i + " " + 28);
+                        }
+                    }
+                    if (bothDie.length == 4) {
+                        if (i + bothDie[0].getDots() + bothDie[1].getDots() + bothDie[2].getDots() + bothDie[3].getDots() > 23) {
                             possibleMovesLastQuarter.add(24 - i + " " + 28);
                         }
                     }
