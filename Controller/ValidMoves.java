@@ -405,10 +405,10 @@ public class ValidMoves {
             if (allPoints[0].getLength() > 0 && allPoints[0].getCheckerColour(allPoints[0].getCheckerIndex(0))==Colour.W) {
                 sum += allPoints[0].getHowManyCheckers();
             }
-            if (allPoints[1].getLength() > 0 &&allPoints[1].getCheckerColour(allPoints[1].getCheckerIndex(0))==Colour.W) {
+            if (allPoints[1].getLength() > 0 && allPoints[1].getCheckerColour(allPoints[1].getCheckerIndex(0))==Colour.W) {
                 sum += allPoints[1].getHowManyCheckers();
             }
-            if (allPoints[2].getLength() > 0 &&allPoints[2].getCheckerColour(allPoints[3].getCheckerIndex(0))==Colour.W) {
+            if (allPoints[2].getLength() > 0 && allPoints[2].getCheckerColour(allPoints[2].getCheckerIndex(0))==Colour.W) {
                 sum += allPoints[2].getHowManyCheckers();
             }
             if (allPoints[3].getLength() > 0 &&allPoints[3].getCheckerColour(allPoints[3].getCheckerIndex(0))==Colour.W) {
