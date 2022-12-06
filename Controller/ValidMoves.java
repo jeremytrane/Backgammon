@@ -1,6 +1,7 @@
 package Controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -323,11 +324,19 @@ public class ValidMoves {
     }
 
     public static void makeMove(String userCommand, Dice[] bothDie, Points[] allPoints, Player player_1, Player player_2) {
-        ArrayList<String> possibleMoves = possibleMoves(bothDie, allPoints, player_1, player_2);
-        ArrayList<String> possibleMovesLastQuarter = ValidMoves.possibleMoves(bothDie, allPoints, player_1, player_2);
-        ValidMoves.printPossibleCommands(possibleMoves, possibleMovesLastQuarter, allPoints, player_1, player_2, bothDie);
+        ArrayList<String> possibleMoves;
+        if (checkFinalQuarter(allPoints, player_1, player_2)) {
+            possibleMoves = possibleMovesLastQuarter(bothDie, allPoints, player_1, player_2);
+        } else {
+            possibleMoves = possibleMoves(bothDie, allPoints, player_1, player_2);
+        }
+        removeDoubleMoves(possibleMoves);
+        Collections.sort(possibleMoves);
+        //System.out.println(userCommand + "*****");
         int moveToMake = 0;
-        switch (userCommand.toUpperCase()) {
+        String[] legalMoves = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+        moveToMake = Arrays.asList(legalMoves).indexOf(userCommand.toUpperCase());
+        /*switch (userCommand) {
             case "A":
             moveToMake = 0;
             case "B":
@@ -382,17 +391,28 @@ public class ValidMoves {
             moveToMake = 25;
             default:
             moveToMake = 0;
+        }*/
+        System.out.println(moveToMake);
+        System.out.println(possibleMoves.size());
+        if (moveToMake>=possibleMoves.size()) {
+            System.out.println("Please enter a valid move!");
+        } else {
+            if (!checkFinalQuarter(allPoints, player_1, player_2)) {
+                allPoints[0].moveChecker(allPoints[Integer.parseInt(possibleMoves.get(moveToMake).split(" ")[0])-1], allPoints[Integer.parseInt(possibleMoves.get(moveToMake).split(" ")[1])-1], allPoints[24],allPoints[25]);
+            } 
+            else if (checkFinalQuarter(allPoints, player_1, player_2)) {
+                //Add to move out of final quarter
+            }
         }
-        if (!checkFinalQuarter(allPoints, player_1, player_2)) {
-            allPoints[0].moveChecker(allPoints[Integer.parseInt(possibleMoves.get(moveToMake).split(" ")[0])-1], allPoints[Integer.parseInt(possibleMoves.get(moveToMake).split(" ")[1])-1], allPoints[24],allPoints[25]);
-        } else if (checkFinalQuarter(allPoints, player_1, player_2)) {
-        }
+        
     }
 
     public static int getMoveSpaces(String userCommand, ArrayList<String> possibleMoves) { 
         int moveToMake;
-        int spacesToMove;
-        switch (userCommand.toUpperCase()) {
+        int spacesToMove = 0;
+        String[] legalMoves = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+        moveToMake = Arrays.asList(legalMoves).indexOf(userCommand.toUpperCase());
+        /*switch (userCommand.toUpperCase()) {
             case "A":
             moveToMake = 0;
             case "B":
@@ -447,9 +467,11 @@ public class ValidMoves {
             moveToMake = 25;
             default:
             moveToMake = 0;
+        }*/
+        if (moveToMake<possibleMoves.size()) {
+            String[] moveStrings = possibleMoves.get(moveToMake).split(" ");
+            spacesToMove = Math.abs(Integer.parseInt(moveStrings[1]) - Integer.parseInt(moveStrings[0]));
         }
-        String[] moveStrings = possibleMoves.get(moveToMake).split(" ");
-        spacesToMove = Math.abs(Integer.parseInt(moveStrings[1]) - Integer.parseInt(moveStrings[0]));
 
         return spacesToMove;
     }
