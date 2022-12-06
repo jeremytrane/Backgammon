@@ -18,10 +18,10 @@ public class ValidMoves {
         ArrayList<String> possibleMoves = new ArrayList<String>();
         int checkOneDiePlayable1 = 0;
         int checkOneDiePlayable2 = 0;
-        if(allPoints[24].getHowManyCheckers()>0){
+        if(allPoints[24].getHowManyCheckers()>0 && player_1.getTurnToken() == 1){
             possibleMoves = possibleMovesWhiteBar(bothDie, allPoints);
         }
-        else if(allPoints[25].getHowManyCheckers()>0){
+        else if(allPoints[25].getHowManyCheckers()>0 && player_2.getTurnToken() == 1){
             possibleMoves = possibleMovesBlackBar(bothDie, allPoints);
         }
         else{
@@ -269,7 +269,10 @@ public class ValidMoves {
         ArrayList<String> possibleMoves = new ArrayList<String>();
 
         for(Dice die : bothDie){
-            if(allPoints[die.getDots()-1].getCheckerIndex(0).getCheckerColour()==Colour.W || allPoints[die.getDots()-1].getHowManyCheckers()<=1){
+            if(allPoints[die.getDots()-1].getHowManyCheckers()<=1){
+                possibleMoves.add(25 + " " + die.getDots());
+            }
+            else if(allPoints[die.getDots()-1].getCheckerIndex(0).getCheckerColour()==Colour.W){
                 possibleMoves.add(25 + " " + die.getDots());
             }
         } 
@@ -280,7 +283,10 @@ public class ValidMoves {
         ArrayList<String> possibleMoves = new ArrayList<String>();
 
         for(Dice die : bothDie){
-            if(allPoints[24-die.getDots()].getCheckerIndex(0).getCheckerColour()==Colour.B || allPoints[24-die.getDots()].getHowManyCheckers()<=1){
+            if(allPoints[24-die.getDots()].getHowManyCheckers()<=1){
+                possibleMoves.add(26 + " " + (25-die.getDots()));
+            }
+            else if(allPoints[24-die.getDots()].getCheckerIndex(0).getCheckerColour()==Colour.B){
                 possibleMoves.add(26 + " " + (25-die.getDots()));
             }
         } 
