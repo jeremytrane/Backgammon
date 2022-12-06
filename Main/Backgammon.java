@@ -55,7 +55,11 @@ public class Backgammon {
                     Board.Draw(allPoints, bothDie, player_1, player_2, player1Wins, player2Wins, gameLength);
                     ArrayList<String> possibleMoves = ValidMoves.possibleMoves(bothDie, allPoints, player_1, player_2);
                     ArrayList<String> possibleMovesLastQuarter = ValidMoves.possibleMoves(bothDie, allPoints, player_1, player_2);
-                    
+                    moveMade = checkSize(possibleMoves, possibleMovesLastQuarter, allPoints, player_1, player_2);
+                    if (moveMade){
+                        System.out.println("No valid moves!");
+                        swapTurn(player_1, player_2);
+                    }else {
                     ValidMoves.printPossibleCommands(possibleMoves, possibleMovesLastQuarter, allPoints, player_1, player_2, bothDie);
                     System.out.println("\nEnter your move:");
                     String move = in.nextLine();
@@ -68,6 +72,7 @@ public class Backgammon {
                     else{
                         break;
                     }
+                }
                 }
                 if(moveMade){
                     swapTurn(player_1, player_2);
@@ -90,6 +95,15 @@ public class Backgammon {
     }
 
 
+
+    private static boolean checkSize(ArrayList<String> possibleMoves, ArrayList<String> possibleMovesLastQuarter, Points[] allPoints, Player player_1, Player player_2) {
+        if (ValidMoves.checkFinalQuarter(allPoints, player_1, player_2) && possibleMovesLastQuarter.size()==0) {
+            return true;
+        } else if (!ValidMoves.checkFinalQuarter(allPoints, player_1, player_2) && possibleMoves.size()==0) {
+            return true;
+        }
+        return false;
+    }
 
     public static void swapTurn(Player player1, Player player2) {
         player1.setTurn(-player1.getTurn());
