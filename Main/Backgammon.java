@@ -96,6 +96,11 @@ public class Backgammon {
                 System.out.println("Game over!");
             }
         }
+        if (player1Wins==gameLength) {
+            System.out.println("Match over, player 1 has won!");
+        } else if (player2Wins==gameLength) {
+            System.out.println("Match over, player 2 has won!");
+        }
     }
 
 
