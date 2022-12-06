@@ -308,13 +308,11 @@ public class ValidMoves {
         if (!checkFinalQuarter(allPoints, player_1, player_2)) {
             removeDoubleMoves(possibleMoves);
             Collections.sort(possibleMoves);
-            System.out.println("Not in");
             for (int i = 0; i < possibleMoves.size(); i++) {
                 System.out.println("[" + listOrder[i] + "]: " + possibleMoves.get(i).split(" ")[0] + "-" + possibleMoves.get(i).split(" ")[1]);            }
         } else if (checkFinalQuarter(allPoints, player_1, player_2)) {
             removeDoubleMoves(possibleMovesLastQuarter);
             Collections.sort(possibleMovesLastQuarter);
-            System.out.println("We're in");
             for (int i = 0; i < possibleMovesLastQuarter.size(); i++) {
                 System.out.println("[" + listOrder[i] + "]: " + possibleMovesLastQuarter.get(i).split(" ")[0] + "-" + possibleMovesLastQuarter.get(i).split(" ")[1]);
             }
@@ -389,7 +387,6 @@ public class ValidMoves {
         if (checkFinalQuarter(allPoints, player_1, player_2)) {
             possibleMoves = possibleMovesLastQuarter(bothDie, allPoints, player_1, player_2);
         } else {
-            System.out.println(allPoints[18].getHowManyCheckers() + allPoints[19].getHowManyCheckers() + allPoints[20].getHowManyCheckers() + allPoints[21].getHowManyCheckers() + allPoints[22].getHowManyCheckers() + allPoints[23].getHowManyCheckers() + allPoints[26].getHowManyCheckers());
             possibleMoves = possibleMoves(bothDie, allPoints, player_1, player_2);
         }
         removeDoubleMoves(possibleMoves);
