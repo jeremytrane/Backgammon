@@ -41,7 +41,7 @@ public class UserInput {
         } else if (userCommand.equalsIgnoreCase("reset")) {
             Backgammon.reset();
         } else if (userCommand.equalsIgnoreCase("hint")) {
-            System.out.println("\u001B[1mEnter pip to see player's pip count, roll to roll the die, quit to exit the game, Or enter a letter from the moves listed below:");
+            System.out.println("\u001B[1mEnter pip to see player's pip count, roll to roll the die, quit to exit the game, to restart the game type reset, to swap the turn type swap, to change your dice enter dice num1 num2, to enter a file type test, or enter a letter from the moves listed below:");
         } else if (userCommand.equalsIgnoreCase("test")) {
             try {
                 testFromTxtFile(player_1, player_2, bothDie, allPoints);
