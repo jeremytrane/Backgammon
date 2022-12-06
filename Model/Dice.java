@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Dice {
@@ -69,6 +70,91 @@ public class Dice {
 			twoDie[1] = new Dice(bothDie[1].getDots());
 		
 		return twoDie;
+    }
+
+
+	/** 
+     * @param bothDie
+     * @param spacesToMove
+     * @return int[]
+     */
+    public static int[] removeDieIndex(Dice[] bothDie, int spacesToMove) {
+        ArrayList<Integer> dieToRemove = new ArrayList<Integer>();
+        boolean oneDie = false;
+        for(int i=0; i<bothDie.length; i++){
+            if(bothDie[i].getDots() == spacesToMove){
+                dieToRemove.add(i);
+                oneDie = true;
+                break;
+            }
+        }
+        if(!oneDie){
+            if(bothDie.length == 2){
+                dieToRemove.add(0);
+                dieToRemove.add(1);
+            }
+            else if(bothDie.length > 2){
+                for(int i=0;i<spacesToMove/bothDie[0].getDots();i++){
+                    dieToRemove.add(i);
+                }
+            }
+        }
+
+        int[] dieAsArray = new int[dieToRemove.size()];
+        for(int i=0;i<dieToRemove.size();i++){
+            dieAsArray[i] = dieToRemove.get(i);
+        }
+        
+        return dieAsArray;
+    }
+
+
+
+	/** 
+     * @param bothDie
+     * @param indicesToRemove
+     * @return Dice[]
+     */
+    public static Dice[] removeDie(Dice[] bothDie, int[] indicesToRemove) {
+        ArrayList<Dice> dieRemoved = new ArrayList<Dice>();
+
+        for(int i=0; i<bothDie.length; i++){
+            dieRemoved.add(bothDie[i]);
+        }
+        for(int i : indicesToRemove){
+            bothDie[i].setDots(7);
+        }
+
+        if(bothDie.length <= 2){
+            if(indicesToRemove.length == 1){
+                dieRemoved.remove(indicesToRemove[0]);
+            }
+            else if(indicesToRemove.length == 2){
+                for(int i=0; i<dieRemoved.size();i++){
+                    if(bothDie[i].getDots() == 7){
+                        dieRemoved.remove(i);
+                        break;
+                    }
+                }
+                for(int i=0; i<dieRemoved.size();i++){
+                    if(bothDie[i].getDots() == 7){
+                        dieRemoved.remove(i);
+                        break;
+                    }
+                }
+            }
+        }
+        else if(bothDie.length >= 3){
+            for(int i=0; i<indicesToRemove.length;i++){
+                dieRemoved.remove(0);
+            }
+        }
+
+        Dice[] dieRemovedArray = new Dice[dieRemoved.size()];
+        for(int i=0; i<dieRemoved.size(); i++){
+            dieRemovedArray[i] = dieRemoved.get(i);
+        }
+        return dieRemovedArray;
     }
 
 }
