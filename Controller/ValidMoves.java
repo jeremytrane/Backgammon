@@ -364,7 +364,17 @@ public class ValidMoves {
         
         if (moveToMake<possibleMoves.size()) {
             String[] moveStrings = possibleMoves.get(moveToMake).split(" ");
-            spacesToMove = Math.abs(Integer.parseInt(moveStrings[1]) - Integer.parseInt(moveStrings[0]));
+            // Moving from white bar
+            if(Integer.parseInt(moveStrings[0]) == 25){
+                spacesToMove = Integer.parseInt(moveStrings[1]);
+            }
+            // Moving from black bar
+            else if(Integer.parseInt(moveStrings[0]) == 26){
+                spacesToMove = 25 - Integer.parseInt(moveStrings[1]);
+            }
+            else{
+                spacesToMove = Math.abs(Integer.parseInt(moveStrings[1]) - Integer.parseInt(moveStrings[0]));
+            }
         }
 
         return spacesToMove;

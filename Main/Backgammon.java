@@ -127,7 +127,7 @@ public class Backgammon {
     }
 
     public static Dice[] removeDie(Dice[] bothDie, int[] indicesToRemove) {
-        ArrayList<Dice> dieRemoved = new ArrayList<Dice>();//Arrays.asList(bothDie);
+        ArrayList<Dice> dieRemoved = new ArrayList<Dice>();
         for(int i=0; i<bothDie.length; i++){
             dieRemoved.add(bothDie[i]);
         }
