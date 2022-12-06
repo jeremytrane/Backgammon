@@ -13,6 +13,14 @@ import Model.Points;
 
 public class ValidMoves {
     
+    
+    /** 
+     * @param bothDie
+     * @param allPoints
+     * @param player_1
+     * @param player_2
+     * @return ArrayList<String>
+     */
     public static ArrayList<String> possibleMoves(Dice[] bothDie, Points[] allPoints, Player player_1,
             Player player_2) {
         // Count how many white points there are
@@ -159,6 +167,14 @@ public class ValidMoves {
         return possibleMoves;
     }
 
+    
+    /** 
+     * @param bothDie
+     * @param allPoints
+     * @param player_1
+     * @param player_2
+     * @return ArrayList<String>
+     */
     public static ArrayList<String> possibleMovesLastQuarter(Dice[] bothDie, Points[] allPoints, Player player_1,
             Player player_2) {
         // Count how many white points there are
@@ -274,6 +290,12 @@ public class ValidMoves {
         return possibleMovesLastQuarter;
     }
 
+    
+    /** 
+     * @param bothDie
+     * @param allPoints
+     * @return ArrayList<String>
+     */
     public static ArrayList<String> possibleMovesWhiteBar(Dice[] bothDie, Points[] allPoints){
         ArrayList<String> possibleMoves = new ArrayList<String>();
 
@@ -288,6 +310,12 @@ public class ValidMoves {
 
         return possibleMoves;
     }
+    
+    /** 
+     * @param bothDie
+     * @param allPoints
+     * @return ArrayList<String>
+     */
     public static ArrayList<String> possibleMovesBlackBar(Dice[] bothDie, Points[] allPoints){
         ArrayList<String> possibleMoves = new ArrayList<String>();
 
@@ -303,6 +331,15 @@ public class ValidMoves {
         return possibleMoves;
     }
 
+    
+    /** 
+     * @param possibleMoves
+     * @param possibleMovesLastQuarter
+     * @param allPoints
+     * @param player_1
+     * @param player_2
+     * @param bothDie
+     */
     public static void printPossibleCommands(ArrayList<String> possibleMoves, ArrayList<String> possibleMovesLastQuarter, Points[] allPoints, Player player_1, Player player_2, Dice[] bothDie) {
         char[] listOrder = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
         if (!checkFinalQuarter(allPoints, player_1, player_2)) {
@@ -319,12 +356,23 @@ public class ValidMoves {
         }
     }
     
+    
+    /** 
+     * @param possibleMoves
+     */
     private static void removeDoubleMoves(ArrayList<String> possibleMoves) {
         Set<String> set = new HashSet<>(possibleMoves);
         possibleMoves.clear();
         possibleMoves.addAll(set);
     }
 
+    
+    /** 
+     * @param allPoints
+     * @param player_1
+     * @param player_2
+     * @return boolean
+     */
     public static boolean checkFinalQuarter(Points[] allPoints, Player player_1, Player player_2) {
         int sum = 0;
         if (player_1.getTurnToken() == 1) {
@@ -382,6 +430,14 @@ public class ValidMoves {
         return false;
     }
 
+    
+    /** 
+     * @param userCommand
+     * @param bothDie
+     * @param allPoints
+     * @param player_1
+     * @param player_2
+     */
     public static void makeMove(String userCommand, Dice[] bothDie, Points[] allPoints, Player player_1, Player player_2) {
         ArrayList<String> possibleMoves;
         if (checkFinalQuarter(allPoints, player_1, player_2)) {
@@ -413,6 +469,12 @@ public class ValidMoves {
         
     }
 
+    
+    /** 
+     * @param userCommand
+     * @param possibleMoves
+     * @return int
+     */
     public static int getMoveSpaces(String userCommand, ArrayList<String> possibleMoves) { 
         int moveToMake;
         int spacesToMove = 0;

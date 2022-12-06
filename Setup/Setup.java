@@ -21,6 +21,10 @@ public class Setup {
 
     }
 
+    
+    /** 
+     * @return Dice[]
+     */
     public static Dice[] setupDie() {
 
         Dice[] bothDie = new Dice[2];
@@ -31,6 +35,11 @@ public class Setup {
 
     }
 
+    
+    /** 
+     * @param in
+     * @return Player
+     */
     public static Player setupPlayer(Scanner in) {
         String name;
         final int INITIAL_CHECKERS = 15;
@@ -41,6 +50,10 @@ public class Setup {
         return player;
     }
 
+    
+    /** 
+     * @return Points[]
+     */
     public static Points[] defaultBoard() {
 
         Points[] allPoints = new Points[28];
@@ -84,6 +97,12 @@ public class Setup {
 
     }
 
+    
+    /** 
+     * @param die
+     * @param player1
+     * @param player2
+     */
     public static void getFirstTurn(Dice[] die, Player player1, Player player2) {
         int sum1, sum2;
         boolean equal = true;
@@ -111,6 +130,11 @@ public class Setup {
         }
     }
 
+    
+    /** 
+     * @param in
+     * @return int
+     */
     public static int getGameLength(Scanner in) {
         String tryThis = in.nextLine();
         try { 

@@ -14,6 +14,10 @@ import Controller.ValidMoves;
 
 public class Backgammon {
 
+    
+    /** 
+     * @param args
+     */
     public static void main(String[] args) {
 
         Setup.setupMessage();
@@ -96,6 +100,15 @@ public class Backgammon {
 
 
 
+    
+    /** 
+     * @param possibleMoves
+     * @param possibleMovesLastQuarter
+     * @param allPoints
+     * @param player_1
+     * @param player_2
+     * @return boolean
+     */
     private static boolean checkSize(ArrayList<String> possibleMoves, ArrayList<String> possibleMovesLastQuarter, Points[] allPoints, Player player_1, Player player_2) {
         if (ValidMoves.checkFinalQuarter(allPoints, player_1, player_2) && possibleMovesLastQuarter.size()==0) {
             return true;
@@ -105,11 +118,22 @@ public class Backgammon {
         return false;
     }
 
+    
+    /** 
+     * @param player1
+     * @param player2
+     */
     public static void swapTurn(Player player1, Player player2) {
         player1.setTurn(-player1.getTurn());
         player2.setTurn(-player2.getTurn());
     }
 
+    
+    /** 
+     * @param bothDie
+     * @param spacesToMove
+     * @return int[]
+     */
     public static int[] removeDieIndex(Dice[] bothDie, int spacesToMove) {
         ArrayList<Integer> dieToRemove = new ArrayList<Integer>();
         boolean oneDie = false;
@@ -140,6 +164,12 @@ public class Backgammon {
         return dieAsArray;
     }
 
+    
+    /** 
+     * @param bothDie
+     * @param indicesToRemove
+     * @return Dice[]
+     */
     public static Dice[] removeDie(Dice[] bothDie, int[] indicesToRemove) {
         ArrayList<Dice> dieRemoved = new ArrayList<Dice>();
 

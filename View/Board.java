@@ -8,6 +8,16 @@ import java.util.Arrays;
 
 public class Board {
 
+    
+    /** 
+     * @param allPoints
+     * @param bothDie
+     * @param player_1
+     * @param player_2
+     * @param player1Wins
+     * @param player2Wins
+     * @param gameLength
+     */
     public static void Draw(Points[] allPoints, Dice[] bothDie, Player player_1, Player player_2, int player1Wins, int player2Wins, int gameLength) {
         int lengthTop = lengthToPrintTop(allPoints);
         int lengthBottom = lengthToPrintBottom(allPoints);
@@ -69,6 +79,11 @@ public class Board {
         System.out.print("\n");
     }
 
+    
+    /** 
+     * @param whatPlayer
+     * @param allPoints
+     */
     private static void pipDisplayBottom(Player whatPlayer, Points[] allPoints) {
         for (int i = 12; i < 24; i++) {
             if (i == 18){
@@ -90,6 +105,11 @@ public class Board {
         }
     }
 
+    
+    /** 
+     * @param whatPlayer
+     * @param allPoints
+     */
     private static void pipDisplayTop(Player whatPlayer, Points[] allPoints) {
         System.out.print(" ");
         for (int i = 11; i > -1; i--) {
@@ -112,6 +132,10 @@ public class Board {
         }
     }
 
+    
+    /** 
+     * @param currentPoint
+     */
     public static void pipCount(Points currentPoint) {
         if (currentPoint.getLength() > 0 && currentPoint.getCheckerColour(currentPoint.getCheckerIndex(0))==Colour.W) {
             if (currentPoint.getPointNumber()*currentPoint.getHowManyCheckers() > 100) {
@@ -132,6 +156,11 @@ public class Board {
         }
     } 
 
+    
+    /** 
+     * @param allPoints
+     * @return int
+     */
     public static int lengthToPrintTop(Points[] allPoints) {
         int maxLengthTop = 0;
         Points[] firstHalf = Arrays.copyOfRange(allPoints, 0, allPoints.length / 2);
@@ -149,6 +178,11 @@ public class Board {
         return maxLengthTop;
     }
 
+    
+    /** 
+     * @param allPoints
+     * @return int
+     */
     public static int lengthToPrintBottom(Points[] allPoints) {
         int maxLengthBottom = 0;
         Points[] secondHalf = Arrays.copyOfRange(allPoints, allPoints.length / 2, allPoints.length);
@@ -166,6 +200,12 @@ public class Board {
         return maxLengthBottom;
     }
 
+    
+    /** 
+     * @param point
+     * @param length
+     * @return String
+     */
     public static String whatIsBar(Points point, int length) {
         if (point.getHowManyCheckers() > 0) {
             Colour checkerColour = point.getCheckerColour(point.getCheckerIndex(0));
@@ -179,6 +219,12 @@ public class Board {
         return "   ";
     }
 
+    
+    /** 
+     * @param point
+     * @param length
+     * @return String
+     */
     public static String whatToPrintTop(Points point, int length) {
         if (point.getHowManyCheckers() > 0) {
             Colour checkerColour = point.getCheckerColour(point.getCheckerIndex(0));
@@ -192,6 +238,12 @@ public class Board {
         return "      ";
     }
 
+    
+    /** 
+     * @param point
+     * @param length
+     * @return String
+     */
     public static String whatToPrintBottom(Points point, int length) {
         if (point.getHowManyCheckers() > 0) {
             Colour checkerColour = point.getCheckerColour(point.getCheckerIndex(0));
@@ -205,6 +257,12 @@ public class Board {
         return "      ";
     }
 
+    
+    /** 
+     * @param player_1
+     * @param player_2
+     * @return Player
+     */
     public static Player whatPlayerTurn(Player player_1, Player player_2) {
         if (player_1.getTurnToken() == 1) {
             return player_1;

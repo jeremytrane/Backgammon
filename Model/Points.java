@@ -17,30 +17,63 @@ public class Points {
         }
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getLength() {
         return checkers.size();
     }
 
+    
+    /** 
+     * @param checker
+     */
     public void addChecker(Checkers checker) {
         this.checkers.add(checker);
     }
 
+    
+    /** 
+     * @param checker
+     * @return Colour
+     */
     public Colour getCheckerColour(Checkers checker) {
         return checker.getCheckerColour();
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getHowManyCheckers() {
         return howManyCheckers;
     }
 
+    
+    /** 
+     * @param i
+     * @return Checkers
+     */
     public Checkers getCheckerIndex(int i) {
         return checkers.get(i);
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getPointNumber() {
         return pointNumber;
     }
 
+    
+    /** 
+     * @param pointToMoveFrom
+     * @param pointToMoveTo
+     * @param whiteBar
+     * @param blackBar
+     */
     public void moveChecker(Points pointToMoveFrom, Points pointToMoveTo, Points whiteBar, Points blackBar) {
         boolean bothNotEmpty = false;
         if(pointToMoveFrom.howManyCheckers>0 && pointToMoveTo.howManyCheckers>0){

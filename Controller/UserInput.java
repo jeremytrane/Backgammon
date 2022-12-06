@@ -57,6 +57,12 @@ public class UserInput {
         return moveMade;
     }
 
+    
+    /** 
+     * @param player_1
+     * @param player_2
+     * @param allPoints
+     */
     public void pipCount(Player player_1, Player player_2, Points[] allPoints) { 
         int whitePips = 0;
         int blackPips = 0;
@@ -71,6 +77,14 @@ public class UserInput {
         System.out.println(player_2 + " pip count: " + blackPips);
     }
 
+    
+    /** 
+     * @param player_1
+     * @param player_2
+     * @param bothDie
+     * @param allPoints
+     * @throws FileNotFoundException
+     */
     public void testFromTxtFile(Player player_1, Player player_2, Dice[] bothDie, Points[] allPoints) throws FileNotFoundException{
         File file = new File("Controller/test.txt");
         Scanner sc = new Scanner(file);
