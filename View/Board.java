@@ -8,8 +8,7 @@ import java.util.Arrays;
 
 public class Board {
 
-    
-    /** 
+    /**
      * @param allPoints
      * @param bothDie
      * @param player_1
@@ -18,13 +17,18 @@ public class Board {
      * @param player2Wins
      * @param gameLength
      */
-    public static void Draw(Points[] allPoints, Dice[] bothDie, Player player_1, Player player_2, int player1Wins, int player2Wins, int gameLength) {
+    public static void Draw(Points[] allPoints, Dice[] bothDie, Player player_1, Player player_2, int player1Wins,
+            int player2Wins, int gameLength) {
         int lengthTop = lengthToPrintTop(allPoints);
         int lengthBottom = lengthToPrintBottom(allPoints);
         Player whatPlayer = whatPlayerTurn(player_1, player_2);
         pipDisplayTop(whatPlayer, allPoints);
-        System.out.println("\n 12    11    10    9     8     7     \u001B[32m|   |\u001B[0m6     5     4     3     2     1      \u001B[31mRED\u001B[0m        ");
-        System.out.println("\u001B[32m=====================================|===|=========================================\u001B[0m     Score (in games): " + player_1 + ": " + player1Wins + " " + player_2 + ": " + player2Wins + " (First to " + gameLength + "!)");
+        System.out.println(
+                "\n 12    11    10    9     8     7     \u001B[32m|   |\u001B[0m6     5     4     3     2     1      \u001B[31mRED\u001B[0m        ");
+        System.out.println(
+                "\u001B[32m=====================================|===|=========================================\u001B[0m     Score (in games): "
+                        + player_1 + ": " + player1Wins + " " + player_2 + ": " + player2Wins + " (First to "
+                        + gameLength + "!)");
 
         for (int i = 0; i < lengthTop; i++) {
             String point1 = whatToPrintTop(allPoints[0], i);
@@ -39,13 +43,15 @@ public class Board {
             String point10 = whatToPrintTop(allPoints[9], i);
             String point11 = whatToPrintTop(allPoints[10], i);
             String point12 = whatToPrintTop(allPoints[11], i);
-            String whiteStackOdd = whatIsBar(allPoints[27] ,i);
+            String whiteStackOdd = whatIsBar(allPoints[27], i);
             String point24 = whatIsBar(allPoints[24], i);
 
-            System.out.print("\u001B[32m|\u001B[0m" + point12 + point11 + point10 + point9 + point8 + point7 + "\u001B[32m|" + point24 + "|\u001B[0m" + point6 + point5 + point4
+            System.out.print("\u001B[32m|\u001B[0m" + point12 + point11 + point10 + point9 + point8 + point7
+                    + "\u001B[32m|" + point24 + "|\u001B[0m" + point6 + point5 + point4
                     + point3 + point2 + point1 + "\u001B[32m|" + whiteStackOdd + "\u001B[32m|\u001B[0m\n");
         }
-        System.out.println("\u001B[32m=====================================|BAR|=========================================\u001B[0m");
+        System.out.println(
+                "\u001B[32m=====================================|BAR|=========================================\u001B[0m");
 
         for (int i = lengthBottom; i > -1; i--) {
             String point13 = whatToPrintBottom(allPoints[12], i);
@@ -61,103 +67,112 @@ public class Board {
             String point23 = whatToPrintBottom(allPoints[22], i);
             String point24 = whatToPrintBottom(allPoints[23], i);
             String point25 = whatIsBar(allPoints[25], i);
-            String blackStackOdd = whatIsBar(allPoints[26] ,i);
+            String blackStackOdd = whatIsBar(allPoints[26], i);
 
-
-            System.out.print("\u001B[32m|\u001B[0m" + point13 + point14 + point15 + point16 + point17 + point18 + "\u001B[32m|" + point25 + "|\u001B[0m" + point19 + point20
-                    + point21 + point22 + point23 + point24 + "\u001B[32m|"+ blackStackOdd +"\u001B[32m|\u001B[0m\n");
+            System.out.print("\u001B[32m|\u001B[0m" + point13 + point14 + point15 + point16 + point17 + point18
+                    + "\u001B[32m|" + point25 + "|\u001B[0m" + point19 + point20
+                    + point21 + point22 + point23 + point24 + "\u001B[32m|" + blackStackOdd + "\u001B[32m|\u001B[0m\n");
 
         }
-        System.out.println("\u001B[32m=====================================|===|=========================================\u001B[0m");
-        System.out.println("13    14    15    16    17    18     \u001B[32m|   |\u001B[0m19    20    21    22    23    24    WHITE");
+        System.out.println(
+                "\u001B[32m=====================================|===|=========================================\u001B[0m");
+        System.out.println(
+                "13    14    15    16    17    18     \u001B[32m|   |\u001B[0m19    20    21    22    23    24    WHITE");
         pipDisplayBottom(whatPlayer, allPoints);
         System.out.print("\nIt's your turn " + whatPlayer + "\n");
         System.out.print("Dice roll: ");
-        for(int i=0;i<bothDie.length;i++){
+        for (int i = 0; i < bothDie.length; i++) {
             System.out.print(bothDie[i].getDots() + " ");
         }
         System.out.print("\n");
     }
 
-    
-    /** 
+    /**
      * @param whatPlayer
      * @param allPoints
      */
     private static void pipDisplayBottom(Player whatPlayer, Points[] allPoints) {
         for (int i = 12; i < 24; i++) {
-            if (i == 18){
+            if (i == 18) {
                 System.out.print("      ");
             }
-            if (whatPlayer.getColour()==Colour.W) {
-                if (allPoints[i].getLength()>0 && allPoints[i].getCheckerColour(allPoints[i].getCheckerIndex(0))==Colour.W) {
+            if (whatPlayer.getColour() == Colour.W) {
+                if (allPoints[i].getLength() > 0
+                        && allPoints[i].getCheckerColour(allPoints[i].getCheckerIndex(0)) == Colour.W) {
                     pipCount(allPoints[i]);
                 } else {
                     System.out.print("      ");
                 }
-            } else if (whatPlayer.getColour()==Colour.B) {
-                if (allPoints[i].getLength()>0 && allPoints[i].getCheckerColour(allPoints[i].getCheckerIndex(0))==Colour.B) {
+            } else if (whatPlayer.getColour() == Colour.B) {
+                if (allPoints[i].getLength() > 0
+                        && allPoints[i].getCheckerColour(allPoints[i].getCheckerIndex(0)) == Colour.B) {
                     pipCount(allPoints[i]);
                 } else {
                     System.out.print("      ");
-                } 
+                }
             }
         }
     }
 
-    
-    /** 
+    /**
      * @param whatPlayer
      * @param allPoints
      */
     private static void pipDisplayTop(Player whatPlayer, Points[] allPoints) {
         System.out.print(" ");
         for (int i = 11; i > -1; i--) {
-            if (i == 5){
+            if (i == 5) {
                 System.out.print("     ");
             }
-            if (whatPlayer.getColour()==Colour.W) {
-                if (allPoints[i].getLength()>0 && allPoints[i].getCheckerColour(allPoints[i].getCheckerIndex(0))==Colour.W) {
+            if (whatPlayer.getColour() == Colour.W) {
+                if (allPoints[i].getLength() > 0
+                        && allPoints[i].getCheckerColour(allPoints[i].getCheckerIndex(0)) == Colour.W) {
                     pipCount(allPoints[i]);
                 } else {
                     System.out.print("      ");
                 }
-            } else if (whatPlayer.getColour()==Colour.B) {
-                if (allPoints[i].getLength()>0 && allPoints[i].getCheckerColour(allPoints[i].getCheckerIndex(0))==Colour.B) {
+            } else if (whatPlayer.getColour() == Colour.B) {
+                if (allPoints[i].getLength() > 0
+                        && allPoints[i].getCheckerColour(allPoints[i].getCheckerIndex(0)) == Colour.B) {
                     pipCount(allPoints[i]);
                 } else {
                     System.out.print("      ");
-                } 
+                }
             }
         }
     }
 
-    
-    /** 
+    /**
      * @param currentPoint
      */
     public static void pipCount(Points currentPoint) {
-        if (currentPoint.getLength() > 0 && currentPoint.getCheckerColour(currentPoint.getCheckerIndex(0))==Colour.W) {
-            if (currentPoint.getPointNumber()*currentPoint.getHowManyCheckers() > 100) {
-                System.out.print((25-currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() + "   ");
-            } else if (currentPoint.getPointNumber()*currentPoint.getHowManyCheckers() < 100 && currentPoint.getPointNumber()*currentPoint.getHowManyCheckers() > 9) {
-                System.out.print((25-currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() + "    ");
-            }  else {
-            System.out.print((25-currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() + "     ");
-            }   
-        } else if (currentPoint.getLength() > 0 && currentPoint.getCheckerColour(currentPoint.getCheckerIndex(0))==Colour.B) {
-            if ((currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() > 100) {
-                System.out.print("\u001B[31m" + (currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() + "   \u001B[0m");
-            } else if ((currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() < 100 && (25-currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() > 9) {
-                System.out.print("\u001B[31m" + (currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() + "    \u001B[0m");
-            }  else {
-            System.out.print("\u001B[31m" + (currentPoint.getPointNumber())*currentPoint.getHowManyCheckers() + "     \u001B[0m");
+        if (currentPoint.getLength() > 0
+                && currentPoint.getCheckerColour(currentPoint.getCheckerIndex(0)) == Colour.W) {
+            if (currentPoint.getPointNumber() * currentPoint.getHowManyCheckers() > 100) {
+                System.out.print((25 - currentPoint.getPointNumber()) * currentPoint.getHowManyCheckers() + "   ");
+            } else if (currentPoint.getPointNumber() * currentPoint.getHowManyCheckers() < 100
+                    && currentPoint.getPointNumber() * currentPoint.getHowManyCheckers() > 9) {
+                System.out.print((25 - currentPoint.getPointNumber()) * currentPoint.getHowManyCheckers() + "    ");
+            } else {
+                System.out.print((25 - currentPoint.getPointNumber()) * currentPoint.getHowManyCheckers() + "     ");
+            }
+        } else if (currentPoint.getLength() > 0
+                && currentPoint.getCheckerColour(currentPoint.getCheckerIndex(0)) == Colour.B) {
+            if ((currentPoint.getPointNumber()) * currentPoint.getHowManyCheckers() > 100) {
+                System.out.print("\u001B[31m" + (currentPoint.getPointNumber()) * currentPoint.getHowManyCheckers()
+                        + "   \u001B[0m");
+            } else if ((currentPoint.getPointNumber()) * currentPoint.getHowManyCheckers() < 100
+                    && (25 - currentPoint.getPointNumber()) * currentPoint.getHowManyCheckers() > 9) {
+                System.out.print("\u001B[31m" + (currentPoint.getPointNumber()) * currentPoint.getHowManyCheckers()
+                        + "    \u001B[0m");
+            } else {
+                System.out.print("\u001B[31m" + (currentPoint.getPointNumber()) * currentPoint.getHowManyCheckers()
+                        + "     \u001B[0m");
             }
         }
-    } 
+    }
 
-    
-    /** 
+    /**
      * @param allPoints
      * @return int
      */
@@ -178,8 +193,7 @@ public class Board {
         return maxLengthTop;
     }
 
-    
-    /** 
+    /**
      * @param allPoints
      * @return int
      */
@@ -200,8 +214,7 @@ public class Board {
         return maxLengthBottom;
     }
 
-    
-    /** 
+    /**
      * @param point
      * @param length
      * @return String
@@ -219,8 +232,7 @@ public class Board {
         return "   ";
     }
 
-    
-    /** 
+    /**
      * @param point
      * @param length
      * @return String
@@ -238,8 +250,7 @@ public class Board {
         return "      ";
     }
 
-    
-    /** 
+    /**
      * @param point
      * @param length
      * @return String
@@ -257,8 +268,7 @@ public class Board {
         return "      ";
     }
 
-    
-    /** 
+    /**
      * @param player_1
      * @param player_2
      * @return Player
