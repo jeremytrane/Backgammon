@@ -387,10 +387,8 @@ public class ValidMoves {
     public static void makeMove(String userCommand, Dice[] bothDie, Points[] allPoints, Player player_1, Player player_2) {
         ArrayList<String> possibleMoves;
         if (checkFinalQuarter(allPoints, player_1, player_2)) {
-            System.out.println("Check 1");
             possibleMoves = possibleMovesLastQuarter(bothDie, allPoints, player_1, player_2);
         } else {
-            System.out.println("Check 2");
             System.out.println(allPoints[18].getHowManyCheckers() + allPoints[19].getHowManyCheckers() + allPoints[20].getHowManyCheckers() + allPoints[21].getHowManyCheckers() + allPoints[22].getHowManyCheckers() + allPoints[23].getHowManyCheckers() + allPoints[26].getHowManyCheckers());
             possibleMoves = possibleMoves(bothDie, allPoints, player_1, player_2);
         }
