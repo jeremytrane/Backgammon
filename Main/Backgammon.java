@@ -9,13 +9,13 @@ import Model.Player;
 import Model.Points;
 import Setup.Setup;
 import View.Board;
+import Controller.Controller;
 import Controller.UserInput;
 import Controller.ValidMoves;
 
 public class Backgammon {
 
-    
-    /** 
+    /**
      * @param args
      */
     public static void main(String[] args) {
@@ -47,41 +47,44 @@ public class Backgammon {
             int[] dieToRemove;
             while (player_1.getCheckerCount() != 0 || player_2.getCheckerCount() != 0) {
 
-                if(moveMade){
+                if (moveMade) {
                     bothDie = Setup.setupDie();
                     Dice.rollDie(bothDie);
                 }
                 bothDie = Dice.checkDouble(bothDie);
 
-                while(bothDie.length > 0){
-                    
-                    System.out.print("===========================================================================================================================================\n");
+                while (bothDie.length > 0) {
+
+                    System.out.print(
+                            "===========================================================================================================================================\n");
                     Board.Draw(allPoints, bothDie, player_1, player_2, player1Wins, player2Wins, gameLength);
                     ArrayList<String> possibleMoves = ValidMoves.possibleMoves(bothDie, allPoints, player_1, player_2);
-                    ArrayList<String> possibleMovesLastQuarter = ValidMoves.possibleMoves(bothDie, allPoints, player_1, player_2);
-                    moveMade = checkSize(possibleMoves, possibleMovesLastQuarter, allPoints, player_1, player_2);
-                    if (moveMade){
+                    ArrayList<String> possibleMovesLastQuarter = ValidMoves.possibleMoves(bothDie, allPoints, player_1,
+                            player_2);
+                    moveMade = Controller.checkSize(possibleMoves, possibleMovesLastQuarter, allPoints, player_1,
+                            player_2);
+                    if (moveMade) {
                         System.out.println("No valid moves!");
-                        swapTurn(player_1, player_2);
-                    }else {
-                    ValidMoves.printPossibleCommands(possibleMoves, possibleMovesLastQuarter, allPoints, player_1, player_2, bothDie);
-                    System.out.println("\nEnter your move:");
-                    String move = in.nextLine();
-                    moveMade = userInput.parseCommand(move, player_1, player_2, bothDie, allPoints);
-                    if(moveMade) {
-                        spacesToMove = ValidMoves.getMoveSpaces(move,possibleMoves);
-                        dieToRemove = Dice.removeDieIndex(bothDie,spacesToMove);
-                        bothDie = Dice.removeDie(bothDie, dieToRemove);
+                        Controller.swapTurn(player_1, player_2);
+                    } else {
+                        ValidMoves.printPossibleCommands(possibleMoves, possibleMovesLastQuarter, allPoints, player_1,
+                                player_2, bothDie);
+                        System.out.println("\nEnter your move:");
+                        String move = in.nextLine();
+                        moveMade = userInput.parseCommand(move, player_1, player_2, bothDie, allPoints);
+                        if (moveMade) {
+                            spacesToMove = ValidMoves.getMoveSpaces(move, possibleMoves);
+                            dieToRemove = Dice.removeDieIndex(bothDie, spacesToMove);
+                            bothDie = Dice.removeDie(bothDie, dieToRemove);
+                        } else {
+                            break;
+                        }
                     }
-                    else{
-                        break;
-                    }
                 }
+                if (moveMade) {
+                    Controller.swapTurn(player_1, player_2);
                 }
-                if(moveMade){
-                    swapTurn(player_1, player_2);
-                }
-                
+
             }
 
             in.close();
@@ -96,47 +99,12 @@ public class Backgammon {
                 System.out.println("Game over!");
             }
         }
-        if (player1Wins==gameLength) {
+        if (player1Wins == gameLength) {
             System.out.println("Match over, player 1 has won!");
-        } else if (player2Wins==gameLength) {
+        } else if (player2Wins == gameLength) {
             System.out.println("Match over, player 2 has won!");
         }
 
     }
 
-
-
-    
-    /** 
-     * @param possibleMoves
-     * @param possibleMovesLastQuarter
-     * @param allPoints
-     * @param player_1
-     * @param player_2
-     * @return boolean
-     */
-    private static boolean checkSize(ArrayList<String> possibleMoves, ArrayList<String> possibleMovesLastQuarter, Points[] allPoints, Player player_1, Player player_2) {
-        if (ValidMoves.checkFinalQuarter(allPoints, player_1, player_2) && possibleMovesLastQuarter.size()==0) {
-            return true;
-        } else if (!ValidMoves.checkFinalQuarter(allPoints, player_1, player_2) && possibleMoves.size()==0) {
-            return true;
-        }
-        return false;
-    }
-
-    
-    /** 
-     * @param player1
-     * @param player2
-     */
-    public static void swapTurn(Player player1, Player player2) {
-        player1.setTurn(-player1.getTurn());
-        player2.setTurn(-player2.getTurn());
-    }
-
-    
-    
-    public static void reset() {
-        main(null);
-    }
 }

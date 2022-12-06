@@ -8,16 +8,14 @@ public class Checkers {
     this.checkerColour = checkerColour;
   }
 
-  
-  /** 
+  /**
    * @return Colour
    */
   public Colour getCheckerColour() {
     return checkerColour;
   }
 
-  
-  /** 
+  /**
    * @param checkerColour
    */
   public void setCheckerColour(Colour checkerColour) {

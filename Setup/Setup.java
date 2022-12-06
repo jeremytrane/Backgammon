@@ -21,8 +21,7 @@ public class Setup {
 
     }
 
-    
-    /** 
+    /**
      * @return Dice[]
      */
     public static Dice[] setupDie() {
@@ -35,8 +34,7 @@ public class Setup {
 
     }
 
-    
-    /** 
+    /**
      * @param in
      * @return Player
      */
@@ -50,8 +48,7 @@ public class Setup {
         return player;
     }
 
-    
-    /** 
+    /**
      * @return Points[]
      */
     public static Points[] defaultBoard() {
@@ -65,15 +62,15 @@ public class Setup {
         allPoints[5] = new Points(Colour.B, 5, 6);
         allPoints[6] = new Points(null, 0, 7);
         allPoints[7] = new Points(Colour.B, 3, 8);
-        allPoints[8] = new Points(null, 0,9);
+        allPoints[8] = new Points(null, 0, 9);
         allPoints[9] = new Points(null, 0, 10);
         allPoints[10] = new Points(null, 0, 11);
         allPoints[11] = new Points(Colour.W, 5, 12);
-        allPoints[12] = new Points(Colour.B, 5,13 );
+        allPoints[12] = new Points(Colour.B, 5, 13);
         allPoints[13] = new Points(null, 0, 14);
         allPoints[14] = new Points(null, 0, 15);
         allPoints[15] = new Points(null, 0, 16);
-        allPoints[16] = new Points(Colour.W , 3, 17);
+        allPoints[16] = new Points(Colour.W, 3, 17);
         allPoints[17] = new Points(null, 0, 18);
         allPoints[18] = new Points(Colour.W, 5, 19);
         allPoints[19] = new Points(null, 0, 20);
@@ -82,23 +79,21 @@ public class Setup {
         allPoints[22] = new Points(null, 0, 23);
         allPoints[23] = new Points(Colour.B, 2, 24);
 
-        //This is the point for the white bar
+        // This is the point for the white bar
         allPoints[24] = new Points(Colour.W, 0, 25);
-        //This is the point for the black bar
+        // This is the point for the black bar
         allPoints[25] = new Points(Colour.B, 0, 26);
 
-        //This is the point for white stack-off
+        // This is the point for white stack-off
         allPoints[26] = new Points(Colour.W, 0, 27);
-        //This is the point for black stack-off
+        // This is the point for black stack-off
         allPoints[27] = new Points(Colour.B, 0, 28);
-
 
         return allPoints;
 
     }
 
-    
-    /** 
+    /**
      * @param die
      * @param player1
      * @param player2
@@ -130,19 +125,18 @@ public class Setup {
         }
     }
 
-    
-    /** 
+    /**
      * @param in
      * @return int
      */
     public static int getGameLength(Scanner in) {
         String tryThis = in.nextLine();
-        try { 
-            Integer.parseInt(tryThis); 
-        } catch(NumberFormatException e) { 
+        try {
+            Integer.parseInt(tryThis);
+        } catch (NumberFormatException e) {
             System.out.println("Game length invalid, exiting!");
             System.exit(0);
-        } catch(NullPointerException e) {
+        } catch (NullPointerException e) {
             System.out.println("Game length invalid, exiting!");
             System.exit(0);
         }
