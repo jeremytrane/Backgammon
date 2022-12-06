@@ -13,8 +13,8 @@ public class Board {
         int lengthBottom = lengthToPrintBottom(allPoints);
         Player whatPlayer = whatPlayerTurn(player_1, player_2);
         pipDisplayTop(whatPlayer, allPoints);
-        System.out.println("\n 12    11    10    9     8     7     \u001B[32m|   |\u001B[0m6     5     4     3     2     1           ");
-        System.out.println("\u001B[32m=====================================|===|=====================================\u001B[0m     Score (in games): " + player_1 + ": " + player1Wins + " " + player_2 + ": " + player2Wins + " (First to " + gameLength + "!)");
+        System.out.println("\n 12    11    10    9     8     7     \u001B[32m|   |\u001B[0m6     5     4     3     2     1      \u001B[31mRED\u001B[0m        ");
+        System.out.println("\u001B[32m=====================================|===|=========================================\u001B[0m     Score (in games): " + player_1 + ": " + player1Wins + " " + player_2 + ": " + player2Wins + " (First to " + gameLength + "!)");
 
         for (int i = 0; i < lengthTop; i++) {
             String point1 = whatToPrintTop(allPoints[0], i);
@@ -29,12 +29,13 @@ public class Board {
             String point10 = whatToPrintTop(allPoints[9], i);
             String point11 = whatToPrintTop(allPoints[10], i);
             String point12 = whatToPrintTop(allPoints[11], i);
+            String whiteStackOdd = whatIsBar(allPoints[27] ,i);
             String point24 = whatIsBar(allPoints[24], i);
 
             System.out.print("\u001B[32m|\u001B[0m" + point12 + point11 + point10 + point9 + point8 + point7 + "\u001B[32m|" + point24 + "|\u001B[0m" + point6 + point5 + point4
-                    + point3 + point2 + point1 + "\u001B[32m|\u001B[0m\n");
+                    + point3 + point2 + point1 + "\u001B[32m|" + whiteStackOdd + "\u001B[32m|\u001B[0m\n");
         }
-        System.out.println("\u001B[32m=====================================|BAR|=====================================\u001B[0m");
+        System.out.println("\u001B[32m=====================================|BAR|=========================================\u001B[0m");
 
         for (int i = lengthBottom; i > -1; i--) {
             String point13 = whatToPrintBottom(allPoints[12], i);
@@ -50,14 +51,15 @@ public class Board {
             String point23 = whatToPrintBottom(allPoints[22], i);
             String point24 = whatToPrintBottom(allPoints[23], i);
             String point25 = whatIsBar(allPoints[25], i);
+            String blackStackOdd = whatIsBar(allPoints[26] ,i);
 
 
             System.out.print("\u001B[32m|\u001B[0m" + point13 + point14 + point15 + point16 + point17 + point18 + "\u001B[32m|" + point25 + "|\u001B[0m" + point19 + point20
-                    + point21 + point22 + point23 + point24 + "\u001B[32m|\u001B[0m\n");
+                    + point21 + point22 + point23 + point24 + "\u001B[32m|"+ blackStackOdd +"\u001B[32m|\u001B[0m\n");
 
         }
-        System.out.println("\u001B[32m=====================================|===|=====================================\u001B[0m");
-        System.out.println("13    14    15    16    17    18     \u001B[32m|   |\u001B[0m19    20    21    22    23    24");
+        System.out.println("\u001B[32m=====================================|===|=========================================\u001B[0m");
+        System.out.println("13    14    15    16    17    18     \u001B[32m|   |\u001B[0m19    20    21    22    23    24    WHITE");
         pipDisplayBottom(whatPlayer, allPoints);
         System.out.print("\nIt's your turn " + whatPlayer + "\n");
         System.out.print("Dice roll: ");
@@ -141,6 +143,9 @@ public class Board {
         if (allPoints[24].getLength() > maxLengthTop) {
             maxLengthTop = allPoints[24].getLength();
         }
+        if (allPoints[26].getLength() > maxLengthTop) {
+            maxLengthTop = allPoints[26].getLength();
+        }
         return maxLengthTop;
     }
 
@@ -153,7 +158,10 @@ public class Board {
             }
         }
         if (allPoints[25].getLength() > maxLengthBottom) {
-            maxLengthBottom = allPoints[24].getLength();
+            maxLengthBottom = allPoints[25].getLength();
+        }
+        if (allPoints[27].getLength() > maxLengthBottom) {
+            maxLengthBottom = allPoints[27].getLength();
         }
         return maxLengthBottom;
     }
