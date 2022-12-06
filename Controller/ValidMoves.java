@@ -202,16 +202,16 @@ public class ValidMoves {
                     }
                     // If first die stack-off
                     if ((i + bothDie[0].getDots()) > 23) {
-                        possibleMovesLastQuarter.add((i + 1) + " " + ((i + 1) + bothDie[0].getDots()));
+                        possibleMovesLastQuarter.add((i + 1) + " " + 27);
                     }
                     if(bothDie.length > 1){
                         // If second die stack-off
                         if ((i + bothDie[1].getDots()) > 23) {
-                            possibleMovesLastQuarter.add((i + 1) + " " + ((i + 1) + bothDie[1].getDots()));
+                            possibleMovesLastQuarter.add((i + 1) + " " + 27);
                         }
                         //If both die stack-off
                         if (i+bothDie[0].getDots() + bothDie[1].getDots() > 23) {
-                            possibleMovesLastQuarter.add((i + 1) + " " + ((i + 1) + bothDie[0].getDots() + bothDie[1].getDots()));
+                            possibleMovesLastQuarter.add((i + 1) + " " + 27);
                         }
                     }
                 }
@@ -219,7 +219,7 @@ public class ValidMoves {
         } else {
             // Count how many black points there are
             for (int i = 0; i < 24; i++) {
-                if (allPoints[i].getLength() > 0 && allPoints[i].getCheckerColour(allPoints[23 - i].getCheckerIndex(0)) == Colour.B) {
+                if (allPoints[23-i].getLength() > 0 && allPoints[i].getCheckerColour(allPoints[23 - i].getCheckerIndex(0)) == Colour.B) {
                     // First dice if point is smaller then 2
                     if ((i + bothDie[0].getDots()) <= 23 && allPoints[23 - i - bothDie[0].getDots()].getLength() < 2) {
                         possibleMovesLastQuarter.add(24 - (i ) + " " + (24 - (i ) - bothDie[0].getDots()));
@@ -256,12 +256,16 @@ public class ValidMoves {
                     }
                     // If first die stack-off
                     if ((i + bothDie[0].getDots()) > 23) {
-                        possibleMovesLastQuarter.add(24 - (i ) + " " + (24 - (i ) - bothDie[0].getDots()));
+                        possibleMovesLastQuarter.add(24 - (i ) + " " + 28);
                     }
                     if(bothDie.length > 1){
                         // If second die stack-off
                         if ((i + bothDie[1].getDots()) > 23) {
-                            possibleMovesLastQuarter.add(24 - (i ) + " " + (24 - (i ) - bothDie[1].getDots()));
+                            possibleMovesLastQuarter.add(24 - (i ) + " " + 28);
+                        }
+                        //If both die stack-off
+                        if (i+bothDie[0].getDots() + bothDie[1].getDots() > 23) {
+                            possibleMovesLastQuarter.add(24 - i + " " + 28);
                         }
                     }
                 }
@@ -304,13 +308,16 @@ public class ValidMoves {
         if (!checkFinalQuarter(allPoints, player_1, player_2)) {
             removeDoubleMoves(possibleMoves);
             Collections.sort(possibleMoves);
+            System.out.println("Not in");
             for (int i = 0; i < possibleMoves.size(); i++) {
                 System.out.println("[" + listOrder[i] + "]: " + possibleMoves.get(i).split(" ")[0] + "-" + possibleMoves.get(i).split(" ")[1]);            }
         } else if (checkFinalQuarter(allPoints, player_1, player_2)) {
-            removeDoubleMoves(possibleMoves);
-            Collections.sort(possibleMoves);
+            removeDoubleMoves(possibleMovesLastQuarter);
+            Collections.sort(possibleMovesLastQuarter);
+            System.out.println("We're in");
             for (int i = 0; i < possibleMovesLastQuarter.size(); i++) {
-                System.out.println("[" + listOrder[i] + "]: " + possibleMovesLastQuarter.get(i).split(" ")[0] + "-" + possibleMovesLastQuarter.get(i).split(" ")[1]);            }
+                System.out.println("[" + listOrder[i] + "]: " + possibleMovesLastQuarter.get(i).split(" ")[0] + "-" + possibleMovesLastQuarter.get(i).split(" ")[1]);
+            }
         }
     }
     
@@ -321,14 +328,58 @@ public class ValidMoves {
     }
 
     public static boolean checkFinalQuarter(Points[] allPoints, Player player_1, Player player_2) {
+        int sum = 0;
         if (player_1.getTurnToken() == 1) {
-            if (allPoints[18].getHowManyCheckers() + allPoints[19].getHowManyCheckers() + allPoints[20].getHowManyCheckers() + allPoints[21].getHowManyCheckers() + allPoints[22].getHowManyCheckers() + allPoints[23].getHowManyCheckers() + allPoints[26].getHowManyCheckers() == 15) {
+            if (allPoints[18].getLength() > 0 && allPoints[18].getCheckerColour(allPoints[18].getCheckerIndex(0))==Colour.W) {
+                sum += allPoints[18].getHowManyCheckers();
+            }
+            if (allPoints[19].getLength() > 0 && allPoints[19].getCheckerColour(allPoints[19].getCheckerIndex(0))==Colour.W) {
+                sum += allPoints[19].getHowManyCheckers();
+            }
+            if (allPoints[20].getLength() > 0 && allPoints[20].getCheckerColour(allPoints[20].getCheckerIndex(0))==Colour.W) {
+                sum += allPoints[20].getHowManyCheckers();
+            }
+            if (allPoints[21].getLength() > 0 && allPoints[21].getCheckerColour(allPoints[21].getCheckerIndex(0))==Colour.W) {
+                sum += allPoints[21].getHowManyCheckers();
+            }
+            if (allPoints[22].getLength() > 0 && allPoints[22].getCheckerColour(allPoints[22].getCheckerIndex(0))==Colour.W) {
+                sum += allPoints[22].getHowManyCheckers();
+            }
+            if (allPoints[23].getLength() > 0 && allPoints[23].getCheckerColour(allPoints[23].getCheckerIndex(0))==Colour.W) {
+                sum += allPoints[23].getHowManyCheckers();
+            }
+            if (allPoints[26].getLength() > 0 && allPoints[26].getCheckerColour(allPoints[26].getCheckerIndex(0))==Colour.W) {
+                sum += allPoints[26].getHowManyCheckers();
+            }
+            if (sum == 15) {
                 return true;
             } 
+
         } else if (player_2.getTurnToken() == 1) {
-            if (allPoints[0].getHowManyCheckers() + allPoints[1].getHowManyCheckers() + allPoints[2].getHowManyCheckers() + allPoints[3].getHowManyCheckers() + allPoints[4].getHowManyCheckers() + allPoints[5].getHowManyCheckers() + allPoints[27].getHowManyCheckers() == 15) {
-                return true;
+            if (allPoints[0].getLength() > 0 && allPoints[0].getCheckerColour(allPoints[0].getCheckerIndex(0))==Colour.W) {
+                sum += allPoints[0].getHowManyCheckers();
             }
+            if (allPoints[1].getLength() > 0 &&allPoints[1].getCheckerColour(allPoints[1].getCheckerIndex(0))==Colour.W) {
+                sum += allPoints[1].getHowManyCheckers();
+            }
+            if (allPoints[2].getLength() > 0 &&allPoints[2].getCheckerColour(allPoints[3].getCheckerIndex(0))==Colour.W) {
+                sum += allPoints[2].getHowManyCheckers();
+            }
+            if (allPoints[3].getLength() > 0 &&allPoints[3].getCheckerColour(allPoints[3].getCheckerIndex(0))==Colour.W) {
+                sum += allPoints[3].getHowManyCheckers();
+            }
+            if (allPoints[4].getLength() > 0 &&allPoints[4].getCheckerColour(allPoints[4].getCheckerIndex(0))==Colour.W) {
+                sum += allPoints[4].getHowManyCheckers();
+            }
+            if (allPoints[5].getLength() > 0 &&allPoints[5].getCheckerColour(allPoints[5].getCheckerIndex(0))==Colour.W) {
+                sum += allPoints[5].getHowManyCheckers();
+            }
+            if (allPoints[27].getLength() > 0 &&allPoints[27].getCheckerColour(allPoints[27].getCheckerIndex(0))==Colour.W) {
+                sum += allPoints[27].getHowManyCheckers();
+            }
+            if (sum == 15) {
+                return true;
+            } 
         }
         return false;
     }
@@ -336,8 +387,11 @@ public class ValidMoves {
     public static void makeMove(String userCommand, Dice[] bothDie, Points[] allPoints, Player player_1, Player player_2) {
         ArrayList<String> possibleMoves;
         if (checkFinalQuarter(allPoints, player_1, player_2)) {
+            System.out.println("Check 1");
             possibleMoves = possibleMovesLastQuarter(bothDie, allPoints, player_1, player_2);
         } else {
+            System.out.println("Check 2");
+            System.out.println(allPoints[18].getHowManyCheckers() + allPoints[19].getHowManyCheckers() + allPoints[20].getHowManyCheckers() + allPoints[21].getHowManyCheckers() + allPoints[22].getHowManyCheckers() + allPoints[23].getHowManyCheckers() + allPoints[26].getHowManyCheckers());
             possibleMoves = possibleMoves(bothDie, allPoints, player_1, player_2);
         }
         removeDoubleMoves(possibleMoves);
@@ -356,8 +410,8 @@ public class ValidMoves {
                     allPoints[0].moveChecker(allPoints[Integer.parseInt(possibleMoves.get(moveToMake).split(" ")[0])-1], allPoints[Integer.parseInt(possibleMoves.get(moveToMake).split(" ")[1])-1], allPoints[24],allPoints[25]);
                 } 
                 else if (checkFinalQuarter(allPoints, player_1, player_2)) {
-                    System.out.println("We're in it");
                     //Add to move out of final quarter
+                    allPoints[0].moveChecker(allPoints[Integer.parseInt(possibleMoves.get(moveToMake).split(" ")[0])-1], allPoints[Integer.parseInt(possibleMoves.get(moveToMake).split(" ")[1])-1], allPoints[24],allPoints[25]);
                 }
             }
         }
