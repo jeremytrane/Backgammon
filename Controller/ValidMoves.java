@@ -332,66 +332,9 @@ public class ValidMoves {
         }
         removeDoubleMoves(possibleMoves);
         Collections.sort(possibleMoves);
-        //System.out.println(userCommand + "*****");
         int moveToMake = 0;
         String[] legalMoves = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
         moveToMake = Arrays.asList(legalMoves).indexOf(userCommand.toUpperCase());
-        /*switch (userCommand) {
-            case "A":
-            moveToMake = 0;
-            case "B":
-            moveToMake = 1;
-            case "C":
-            moveToMake = 2;
-            case "D":
-            moveToMake = 3;
-            case "E":
-            moveToMake = 4;
-            case "F":
-            moveToMake = 5;
-            case "G":
-            moveToMake = 6;
-            case "H":
-            moveToMake = 7;
-            case "I":
-            moveToMake = 8;
-            case "J":
-            moveToMake = 9;
-            case "K":
-            moveToMake = 10;
-            case "L":
-            moveToMake = 11;
-            case "M":
-            moveToMake = 12;
-            case "N":
-            moveToMake = 13;
-            case "O":
-            moveToMake = 14;
-            case "P":
-            moveToMake = 15;
-            case "Q":
-            moveToMake = 16;
-            case "R":
-            moveToMake = 17;
-            case "S":
-            moveToMake = 18;
-            case "T":
-            moveToMake = 19;
-            case "U":
-            moveToMake = 20;
-            case "V":
-            moveToMake = 21;
-            case "W":
-            moveToMake = 22;
-            case "X":
-            moveToMake = 23;
-            case "Y":
-            moveToMake =24;
-            case "Z":
-            moveToMake = 25;
-            default:
-            moveToMake = 0;
-        }*/
         System.out.println(moveToMake);
         System.out.println(possibleMoves.size());
         if (moveToMake>=possibleMoves.size()) {
@@ -412,62 +355,7 @@ public class ValidMoves {
         int spacesToMove = 0;
         String[] legalMoves = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
         moveToMake = Arrays.asList(legalMoves).indexOf(userCommand.toUpperCase());
-        /*switch (userCommand.toUpperCase()) {
-            case "A":
-            moveToMake = 0;
-            case "B":
-            moveToMake = 1;
-            case "C":
-            moveToMake = 2;
-            case "D":
-            moveToMake = 3;
-            case "E":
-            moveToMake = 4;
-            case "F":
-            moveToMake = 5;
-            case "G":
-            moveToMake = 6;
-            case "H":
-            moveToMake = 7;
-            case "I":
-            moveToMake = 8;
-            case "J":
-            moveToMake = 9;
-            case "K":
-            moveToMake = 10;
-            case "L":
-            moveToMake = 11;
-            case "M":
-            moveToMake = 12;
-            case "N":
-            moveToMake = 13;
-            case "O":
-            moveToMake = 14;
-            case "P":
-            moveToMake = 15;
-            case "Q":
-            moveToMake = 16;
-            case "R":
-            moveToMake = 17;
-            case "S":
-            moveToMake = 18;
-            case "T":
-            moveToMake = 19;
-            case "U":
-            moveToMake = 20;
-            case "V":
-            moveToMake = 21;
-            case "W":
-            moveToMake = 22;
-            case "X":
-            moveToMake = 23;
-            case "Y":
-            moveToMake = 24;
-            case "Z":
-            moveToMake = 25;
-            default:
-            moveToMake = 0;
-        }*/
+        
         if (moveToMake<possibleMoves.size()) {
             String[] moveStrings = possibleMoves.get(moveToMake).split(" ");
             spacesToMove = Math.abs(Integer.parseInt(moveStrings[1]) - Integer.parseInt(moveStrings[0]));
