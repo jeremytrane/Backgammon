@@ -54,7 +54,7 @@ public class Backgammon {
                     System.out.print("===========================================================================================================================================\n");
                     Board.Draw(allPoints, bothDie, player_1, player_2, player1Wins, player2Wins, gameLength);
                     ArrayList<String> possibleMoves = ValidMoves.possibleMoves(bothDie, allPoints, player_1, player_2);
-                    ArrayList<String> possibleMovesLastQuarter = ValidMoves.possibleMovesLastQuarter(bothDie, allPoints, player_1, player_2);
+                    ArrayList<String> possibleMovesLastQuarter = ValidMoves.possibleMoves(bothDie, allPoints, player_1, player_2);
                     
                     ValidMoves.printPossibleCommands(possibleMoves, possibleMovesLastQuarter, allPoints, player_1, player_2, bothDie);
                     System.out.println("\nEnter your move:");
@@ -128,6 +128,7 @@ public class Backgammon {
 
     public static Dice[] removeDie(Dice[] bothDie, int[] indicesToRemove) {
         ArrayList<Dice> dieRemoved = new ArrayList<Dice>();
+
         for(int i=0; i<bothDie.length; i++){
             dieRemoved.add(bothDie[i]);
         }
