@@ -688,7 +688,8 @@ public class ValidMoves {
      * @param possibleMoves
      * @return int
      */
-    public static int getMoveSpaces(String userCommand, ArrayList<String> possibleMoves) {
+    public static int getMoveSpaces(String userCommand, ArrayList<String> possibleMoves, Points[] allPoints,
+    Player player1, Player player2, Dice[] bothDie) {
         int moveToMake;
         int spacesToMove = 0;
         String[] legalMoves = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q",
@@ -697,18 +698,49 @@ public class ValidMoves {
 
         if (moveToMake < possibleMoves.size()) {
             String[] moveStrings = possibleMoves.get(moveToMake).split(" ");
-            // Moving from white bar
-            if (Integer.parseInt(moveStrings[0]) == 25) {
-                spacesToMove = Integer.parseInt(moveStrings[1]);
+            if(checkFinalQuarter(allPoints, player1, player2)){
+                if(player1.getTurnToken() == 1){
+                    if(Integer.parseInt(moveStrings[1]) == 27){
+                        spacesToMove = 7;
+                        for(Dice die : bothDie){
+                            if(Integer.parseInt(moveStrings[0])+die.getDots()>24 && die.getDots()<spacesToMove){
+                                spacesToMove = die.getDots();
+                                System.out.print("\nmove: " + spacesToMove);
+                            }
+                        }
+                    }
+                    else{
+                        spacesToMove = Math.abs(Integer.parseInt(moveStrings[1]) - Integer.parseInt(moveStrings[0]));
+                    }
+                }
+                else{
+                    if(Integer.parseInt(moveStrings[1]) == 28){
+                        spacesToMove = 7;
+                        for(Dice die : bothDie){
+                            if(Integer.parseInt(moveStrings[0])-die.getDots()<1 && die.getDots()<spacesToMove){
+                                spacesToMove = die.getDots();
+                            }
+                        }
+                    }
+                    else{
+                        spacesToMove = Math.abs(Integer.parseInt(moveStrings[1]) - Integer.parseInt(moveStrings[0]));
+                    }
+                }
             }
-            // Moving from black bar
-            else if (Integer.parseInt(moveStrings[0]) == 26) {
-                spacesToMove = 25 - Integer.parseInt(moveStrings[1]);
-            } else {
-                spacesToMove = Math.abs(Integer.parseInt(moveStrings[1]) - Integer.parseInt(moveStrings[0]));
+            else{
+                // Moving from white bar
+                if (Integer.parseInt(moveStrings[0]) == 25) {
+                    spacesToMove = Integer.parseInt(moveStrings[1]);
+                }
+                // Moving from black bar
+                else if (Integer.parseInt(moveStrings[0]) == 26) {
+                    spacesToMove = 25 - Integer.parseInt(moveStrings[1]);
+                } else {
+                    spacesToMove = Math.abs(Integer.parseInt(moveStrings[1]) - Integer.parseInt(moveStrings[0]));
+                }
             }
+            
         }
-
         return spacesToMove;
     }
 }

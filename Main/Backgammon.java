@@ -75,7 +75,7 @@ public class Backgammon {
                         String move = in.nextLine();
                         moveMade = userInput.parseCommand(move, player_1, player_2, bothDie, allPoints);
                         if (moveMade) {
-                            spacesToMove = ValidMoves.getMoveSpaces(move, possibleMoves);
+                            spacesToMove = ValidMoves.getMoveSpaces(move, possibleMoves, allPoints, player_1, player_2, bothDie);
                             dieToRemove = Dice.removeDieIndex(bothDie, spacesToMove);
                             bothDie = Dice.removeDie(bothDie, dieToRemove);
                         } else {
