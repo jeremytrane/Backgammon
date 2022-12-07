@@ -546,8 +546,12 @@ public class ValidMoves {
             removeDoubleMoves(possibleMovesLastQuarter);
             Collections.sort(possibleMovesLastQuarter);
             for (int i = 0; i < possibleMovesLastQuarter.size(); i++) {
+                if (Integer.parseInt(possibleMovesLastQuarter.get(i).split(" ")[1])>24) {
+                    System.out.println("[" + listOrder[i] + "]: " + possibleMovesLastQuarter.get(i).split(" ")[0] + "-Stackoff");
+                } else {
                 System.out.println("[" + listOrder[i] + "]: " + possibleMovesLastQuarter.get(i).split(" ")[0] + "-"
                         + possibleMovesLastQuarter.get(i).split(" ")[1]);
+                }
             }
         }
     }
@@ -644,8 +648,9 @@ public class ValidMoves {
      * @param allPoints
      * @param player_1
      * @param player_2
+     * @return 
      */
-    public static void makeMove(String userCommand, Dice[] bothDie, Points[] allPoints, Player player_1,
+    public static int makeMove(String userCommand, Dice[] bothDie, Points[] allPoints, Player player_1,
             Player player_2) {
         ArrayList<String> possibleMoves;
         if (checkFinalQuarter(allPoints, player_1, player_2)) {
@@ -665,6 +670,7 @@ public class ValidMoves {
             moveToMake = Arrays.asList(legalMoves).indexOf(userCommand.toUpperCase());
             if (moveToMake >= possibleMoves.size()) {
                 System.out.println("Please enter a valid move!");
+                return 0;
             } else {
                 if (!checkFinalQuarter(allPoints, player_1, player_2)) {
                     allPoints[0].moveChecker(
@@ -680,6 +686,7 @@ public class ValidMoves {
                 }
             }
         }
+        return 1;
 
     }
 

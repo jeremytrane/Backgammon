@@ -54,8 +54,13 @@ public class UserInput {
                 e.printStackTrace();
             }
         } else if (contains) {
-            ValidMoves.makeMove(userCommand, bothDie, allPoints, player_1, player_2);
-            moveMade = true;
+            int check = ValidMoves.makeMove(userCommand, bothDie, allPoints, player_1, player_2);
+            if (check == 1) {
+                moveMade = true;
+            } else {
+                moveMade = false;
+            }
+
         } else {
             System.out.println("Invalid command!");
         }

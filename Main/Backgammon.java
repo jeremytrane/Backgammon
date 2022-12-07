@@ -28,25 +28,23 @@ public class Backgammon {
         int gameLength = Setup.getGameLength(in);
         int player1Wins = 0;
         int player2Wins = 0;
+        System.out.println("Please enter name of player 1:");
+        Player player_1 = Setup.setupPlayer(in);
+        System.out.println("Please enter name of player 2:");
+        Player player_2 = Setup.setupPlayer(in);
+        player_1.setColour(Colour.W);
+        player_2.setColour(Colour.B);
 
-        while (player1Wins != gameLength || player2Wins != gameLength) {
+        while (player1Wins != gameLength && player2Wins != gameLength) {
 
             Dice[] bothDie = Setup.setupDie();
             Points[] allPoints = Setup.defaultBoard();
-
-            System.out.println("Please enter name of player 1:");
-            Player player_1 = Setup.setupPlayer(in);
-            System.out.println("Please enter name of player 2:");
-            Player player_2 = Setup.setupPlayer(in);
-            player_1.setColour(Colour.W);
-            player_2.setColour(Colour.B);
 
             Setup.getFirstTurn(bothDie, player_1, player_2);
             boolean moveMade = true;
             int spacesToMove;
             int[] dieToRemove;
-            while (allPoints[26].getLength() != 15 || allPoints[27].getLength() != 15) {
-
+            while (allPoints[26].getLength() != 15 && allPoints[27].getLength() != 15) {
                 if (moveMade) {
                     bothDie = Setup.setupDie();
                     Dice.rollDie(bothDie);
@@ -59,7 +57,8 @@ public class Backgammon {
                             "===========================================================================================================================================\n");
                     Board.Draw(allPoints, bothDie, player_1, player_2, player1Wins, player2Wins, gameLength);
                     ArrayList<String> possibleMoves = ValidMoves.possibleMoves(bothDie, allPoints, player_1, player_2);
-                    ArrayList<String> possibleMovesLastQuarter = ValidMoves.possibleMovesLastQuarter(bothDie, allPoints, player_1,
+                    ArrayList<String> possibleMovesLastQuarter = ValidMoves.possibleMovesLastQuarter(bothDie, allPoints,
+                            player_1,
                             player_2);
                     moveMade = Controller.checkSize(possibleMoves, possibleMovesLastQuarter, allPoints, player_1,
                             player_2);
@@ -89,13 +88,11 @@ public class Backgammon {
 
             }
 
-            in.close();
-
-            if (player_1.getCheckerCount() == 0) {
-                System.out.println("Game over!" + player_1 + " has won!");
+            if (allPoints[26].getLength() == 15) {
+                System.out.println("Game over! " + player_1 + " has won!");
                 player1Wins += 1;
-            } else if (player_2.getCheckerCount() == 0) {
-                System.out.println("Game over!" + player_2 + " has won!");
+            } else if (allPoints[27].getLength() == 15) {
+                System.out.println("Game over! " + player_2 + " has won!");
                 player2Wins += 1;
             } else {
                 System.out.println("Game over!");
@@ -106,6 +103,7 @@ public class Backgammon {
         } else if (player2Wins == gameLength) {
             System.out.println("Match over, player 2 has won!");
         }
+        in.close();
 
     }
 
