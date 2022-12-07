@@ -546,8 +546,12 @@ public class ValidMoves {
             removeDoubleMoves(possibleMovesLastQuarter);
             Collections.sort(possibleMovesLastQuarter);
             for (int i = 0; i < possibleMovesLastQuarter.size(); i++) {
+                if (Integer.parseInt(possibleMovesLastQuarter.get(i).split(" ")[1])>24) {
+                    System.out.println("[" + listOrder[i] + "]: " + possibleMovesLastQuarter.get(i).split(" ")[0] + "-Stackoff");
+                } else {
                 System.out.println("[" + listOrder[i] + "]: " + possibleMovesLastQuarter.get(i).split(" ")[0] + "-"
                         + possibleMovesLastQuarter.get(i).split(" ")[1]);
+                }
             }
         }
     }
