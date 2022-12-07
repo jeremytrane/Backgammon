@@ -40,12 +40,11 @@ public class Backgammon {
             Dice[] bothDie = Setup.setupDie();
             Points[] allPoints = Setup.defaultBoard();
 
+            Setup.getFirstTurn(bothDie, player_1, player_2);
+            boolean moveMade = true;
+            int spacesToMove;
+            int[] dieToRemove;
             while (allPoints[26].getLength() != 15 && allPoints[27].getLength() != 15) {
-                Setup.getFirstTurn(bothDie, player_1, player_2);
-                boolean moveMade = true;
-                int spacesToMove;
-                int[] dieToRemove;
-                System.out.println(allPoints[26].getLength());
                 if (moveMade) {
                     bothDie = Setup.setupDie();
                     Dice.rollDie(bothDie);
@@ -58,8 +57,7 @@ public class Backgammon {
                             "===========================================================================================================================================\n");
                     Board.Draw(allPoints, bothDie, player_1, player_2, player1Wins, player2Wins, gameLength);
                     ArrayList<String> possibleMoves = ValidMoves.possibleMoves(bothDie, allPoints, player_1, player_2);
-                    ArrayList<String> possibleMovesLastQuarter = ValidMoves.possibleMovesLastQuarter(bothDie, allPoints,
-                            player_1,
+                    ArrayList<String> possibleMovesLastQuarter = ValidMoves.possibleMovesLastQuarter(bothDie, allPoints, player_1,
                             player_2);
                     moveMade = Controller.checkSize(possibleMoves, possibleMovesLastQuarter, allPoints, player_1,
                             player_2);
@@ -88,6 +86,7 @@ public class Backgammon {
                 }
 
             }
+
 
             if (allPoints[26].getLength() == 15) {
                 System.out.println("Game over! " + player_1 + " has won!");
